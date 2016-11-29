@@ -633,6 +633,70 @@
 	      };
 	    }
 	  }, {
+	    key: 'DownOneCastle2',
+	    value: function DownOneCastle2(d) {
+	
+	      console.log("thetop is" + " " + thetop);
+	      if (countme2 == 0) {
+	        c2top = c2top + 63 * d;
+	      }
+	      countme2++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(c2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(c2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'RightOneCastle2',
+	    value: function RightOneCastle2(d) {
+	      if (countmeup2 == 0) {
+	        c2left = c2left + 63 * d;
+	      }
+	      countmeup2++;
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(c2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(c2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'UpOneCastle2',
+	    value: function UpOneCastle2(d) {
+	      if (countup2 == 0) {
+	        c2top = c2top - 63 * d;
+	      }
+	      countup2++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(c2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(c2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'LeftOneCastle2',
+	    value: function LeftOneCastle2(d) {
+	      if (countleft2 == 0) {
+	        c2left = c2left - 63 * d;
+	      }
+	      countleft2++;
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(c2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(c2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
 	    key: 'initialQueen',
 	    value: function initialQueen() {
 	
@@ -1187,15 +1251,12 @@
 	      };
 	    }
 	  }, {
-	    key: 'finalChildButtonStyles',
-	    value: function finalChildButtonStyles(childIndex) {
-	      var _finalChildDeltaPosit = finalChildDeltaPositions(childIndex),
-	          deltaX = _finalChildDeltaPosit.deltaX,
-	          deltaY = _finalChildDeltaPosit.deltaY;
+	    key: 'DownOneCastle',
+	    value: function DownOneCastle(d) {
 	
 	      console.log("thetop is" + " " + thetop);
 	      if (countme == 0) {
-	        thetop1 = thetop + 450;
+	        thetop1 = thetop + 63 * d;
 	        thetop = thetop1;
 	      }
 	      countme++;
@@ -1353,12 +1414,13 @@
 	          stylep8 = this.initialP8();
 	        } else if (count < 300 && count > 127) {
 	          style1 = this.BishopDownRight(4, 4);
-	          style = this.finalChildButtonStyles(index);
+	          style = this.DownOneCastle(7);
 	          stylek1 = this.KnightOneLeftDownTwo();
 	          styleq = this.QueenDown(7);
 	          styleking = this.KingDown();
 	          stylek2 = this.Knight2LeftDownTwo();
 	          styleb2 = this.Bishop2DownLeft(4, 4);
+	          stylec2 = this.DownOneCastle2(7);
 	        } else if (count > 300 && count < 400) {
 	          move = 6;
 	          style = this.RightOneCastle(move);
@@ -1367,7 +1429,8 @@
 	          styleq = this.QueenUp(6);
 	          styleking = this.KingRight();
 	          stylek2 = this.Knight2RightDownOne();
-	          styleb2 = this.BishopDownRight(3, 3);
+	          styleb2 = this.Bishop2DownRight(3, 3);
+	          stylec2 = this.LeftOneCastle2(6);
 	        } else if (count > 400 && count < 600) {
 	          move = 3;
 	          style = this.UpOneCastle(move);
@@ -1377,6 +1440,7 @@
 	          styleking = this.KingUp();
 	          stylek2 = this.Knight2LeftUpOne();
 	          styleb2 = this.Bishop2UpLeft(3, 3);
+	          stylec2 = this.UpOneCastle2(6);
 	        } else if (count > 650 && count < 800) {
 	          move = 4;
 	          style = this.LeftOneCastle(move);
@@ -1386,6 +1450,7 @@
 	          styleking = this.KingLeft();
 	          stylek2 = this.Knight2RightDownTwo();
 	          styleb2 = this.Bishop2UpRight(2, 2);
+	          stylec2 = this.RightOneCastle2(5);
 	        } else if (count > 800 && count < 950) {
 	
 	          stylek1 = this.KnightOneRightUpTwo();
