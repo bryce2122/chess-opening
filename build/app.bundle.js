@@ -76,6 +76,19 @@
 	var style;
 	var style1;
 	var stylek1;
+	var styleq;
+	var styleking;
+	var stylek2;
+	var styleb2;
+	var stylec2;
+	var stylep1;
+	var stylep2;
+	var stylep3;
+	var stylep4;
+	var stylep5;
+	var stylep6;
+	var stylep7;
+	var stylep8;
 	var thetop = -500;
 	var thetop1;
 	var countme = 0;
@@ -91,6 +104,76 @@
 	var countbdl = 0;
 	var countbur = 0;
 	var countbul = 0;
+	var k1left = 130;
+	var k1top = -590;
+	var qleft = 200;
+	var qtop = -640;
+	var countk1rightup2 = 0;
+	var countk1rightup1 = 0;
+	var countk1rightdown2 = 0;
+	var countk1rightdown1 = 0;
+	var countk1leftup2 = 0;
+	var countk1leftup1 = 0;
+	var countk1leftdown2 = 0;
+	var countk1leftdown1 = 0;
+	
+	var countqd = 0;
+	var countqu = 0;
+	var countqr = 0;
+	var countql = 0;
+	var countqdr = 0;
+	var countqdl = 0;
+	var countqur = 0;
+	var countqul = 0;
+	var kingtop = -685;
+	var kingleft = 260;
+	var countkd = 0;
+	var countku = 0;
+	var countkr = 0;
+	var countkl = 0;
+	var countkdr = 0;
+	var countkdl = 0;
+	var countkur = 0;
+	var countkul = 0;
+	var k2top = -730;
+	var k2left = 320;
+	var countk2rightup2 = 0;
+	var countk2rightup1 = 0;
+	var countk2rightdown2 = 0;
+	var countk2rightdown1 = 0;
+	var countk2leftup2 = 0;
+	var countk2leftup1 = 0;
+	var countk2leftdown2 = 0;
+	var countk2leftdown1 = 0;
+	var countb2dr = 0;
+	var countb2dl = 0;
+	var countb2ur = 0;
+	var countb2ul = 0;
+	var b2left = 385;
+	var b2top = -780;
+	var countme2 = 0;
+	var countmeup2 = 0;
+	var countup2 = 0;
+	var countleft2 = 0;
+	var c2left = 445;
+	var c2top = -830;
+	var p1left = 5;
+	var p1top = -810;
+	var p2left = 70;
+	var p2top = -860;
+	var p3left = 130;
+	var p3top = -910;
+	var p4left = 200;
+	var p4top = -960;
+	var p5left = 260;
+	var p5top = -1010;
+	var p6left = 320;
+	var p6top = -1055;
+	var p7left = 380;
+	var p7top = -1100;
+	var p8left = 440;
+	var p8top = -1150;
+	
 	// Components 
 	
 	//Constants 
@@ -99,7 +182,7 @@
 	var MAIN_BUTTON_DIAM = 90;
 	var CHILD_BUTTON_DIAM = 48;
 	// The number of child buttons that fly out from the main button
-	var NUM_CHILDREN = 3;
+	var NUM_CHILDREN = 16;
 	// Hard code the position values of the mainButton
 	var M_X = 490;
 	var M_Y = 450;
@@ -190,6 +273,668 @@
 	      };
 	    }
 	  }, {
+	    key: 'initialP1',
+	    value: function initialP1() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-810, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(5, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'initialP2',
+	    value: function initialP2() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-860, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(70, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'initialP3',
+	    value: function initialP3() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-910, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(130, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'initialP4',
+	    value: function initialP4() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-960, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(200, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'initialP5',
+	    value: function initialP5() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-1010, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(260, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'initialP6',
+	    value: function initialP6() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-1055, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(320, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'initialP7',
+	    value: function initialP7() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-1100, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(380, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'initialP8',
+	    value: function initialP8() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-1150, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(440, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'initialKnight2',
+	    value: function initialKnight2() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-730, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(320, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'Knight2LeftUpTwo',
+	    value: function Knight2LeftUpTwo() {
+	      if (countk2leftup2 == 0) {
+	
+	        k2left = k2left - 63;
+	        k2top = k2top - 126;
+	      }
+	      countk2leftup2++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'Knight2LeftUpOne',
+	    value: function Knight2LeftUpOne() {
+	
+	      if (countk2leftup1 == 0) {
+	
+	        k2left = k2left - 126;
+	        k2top = k2top - 63;
+	      }
+	      countk2leftup1++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'Knight2LeftDownTwo',
+	    value: function Knight2LeftDownTwo() {
+	
+	      if (countk2leftdown2 == 0) {
+	
+	        k2left = k2left - 63;
+	        k2top = k2top + 126;
+	      }
+	      countk2leftdown2++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'Knight2LeftDownOne',
+	    value: function Knight2LeftDownOne() {
+	
+	      if (countk2leftdown1 == 0) {
+	
+	        k2left = k2left - 126;
+	        k2top = k2top + 63;
+	      }
+	      countk2leftdown1++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'Knight2RightUpTwo',
+	    value: function Knight2RightUpTwo() {
+	
+	      if (countk2rightup2 == 0) {
+	
+	        k2left = k2left + 63;
+	        k2top = k2top - 126;
+	      }
+	      countk2rightup2++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'Knight2RightUpOne',
+	    value: function Knight2RightUpOne() {
+	
+	      if (countk2rightup1 == 0) {
+	
+	        k2left = k2left + 126;
+	        k2top = k2top - 63;
+	      }
+	      countk2rightup1++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'Knight2RightDownTwo',
+	    value: function Knight2RightDownTwo() {
+	
+	      if (countk2rightdown2 == 0) {
+	
+	        k2left = k2left + 63;
+	        k2top = k2top + 126;
+	      }
+	      countk2rightdown2++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'Knight2RightDownOne',
+	    value: function Knight2RightDownOne() {
+	
+	      if (countk2rightdown1 == 0) {
+	
+	        k2left = k2left + 126;
+	        k2top = k2top + 63;
+	      }
+	
+	      countk2rightdown1++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'initialBishop2',
+	    value: function initialBishop2() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-780, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(385, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'Bishop2DownRight',
+	    value: function Bishop2DownRight(d, l) {
+	
+	      if (countb2dr == 0) {
+	        b2left = b2left + 63 * l;
+	        b2top = b2top + 63 * d;
+	      }
+	      countb2dr++;
+	
+	      return {
+	
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(b2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(b2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'Bishop2DownLeft',
+	    value: function Bishop2DownLeft(d, l) {
+	
+	      if (countb2dl == 0) {
+	        b2left = b2left - 63 * l;
+	        b2top = b2top + 63 * d;
+	      }
+	      countb2dl++;
+	
+	      return {
+	
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(b2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(b2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'Bishop2UpRight',
+	    value: function Bishop2UpRight(d, l) {
+	
+	      if (countb2ur == 0) {
+	        b2left = b2left + 63 * l;
+	        b2top = b2top - 63 * d;
+	      }
+	      countb2ur++;
+	
+	      return {
+	
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(b2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(b2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'Bishop2UpLeft',
+	    value: function Bishop2UpLeft(d, l) {
+	
+	      if (countb2ul == 0) {
+	        b2left = b2left - 63 * l;
+	        b2top = b2top - 63 * d;
+	      }
+	      countb2ul++;
+	
+	      return {
+	
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(b2top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(b2left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'initialCastle2',
+	    value: function initialCastle2() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-830, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(445, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'initialQueen',
+	    value: function initialQueen() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-640, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(200, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'QueenDown',
+	    value: function QueenDown(d) {
+	
+	      if (countqd == 0) {
+	        qtop = qtop + 63 * d;
+	      }
+	      countqd++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(qtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(qleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'QueenRight',
+	    value: function QueenRight(d) {
+	      if (countqr == 0) {
+	        qleft = qleft + 63 * d;
+	      }
+	      countqr++;
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(qtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(qleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'QueenUp',
+	    value: function QueenUp(d) {
+	      if (countqu == 0) {
+	        qtop = qtop - 63 * d;
+	      }
+	      countqu++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(qtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(qleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'QueenLeft',
+	    value: function QueenLeft(d) {
+	      if (countql == 0) {
+	        qleft = qleft - 63 * d;
+	      }
+	      countql++;
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(qtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(qleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'QueenDownRight',
+	    value: function QueenDownRight(d, l) {
+	
+	      if (countqdr == 0) {
+	        qleft = qleft + 63 * l;
+	        qtop = qtop + 63 * d;
+	      }
+	      countqdr++;
+	
+	      return {
+	
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(qtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(qleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'QueenDownLeft',
+	    value: function QueenDownLeft(d, l) {
+	
+	      if (countqdl == 0) {
+	        qleft = qleft - 63 * l;
+	        qtop = qtop + 63 * d;
+	      }
+	      countqdl++;
+	
+	      return {
+	
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(qtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(qleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'QueenUpRight',
+	    value: function QueenUpRight(d, l) {
+	
+	      if (countqur == 0) {
+	        qleft = qleft + 63 * l;
+	        qtop = qtop - 63 * d;
+	      }
+	      countqur++;
+	
+	      return {
+	
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(qtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(qleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'QueenUpLeft',
+	    value: function QueenUpLeft(d, l) {
+	
+	      if (countqul == 0) {
+	        qleft = qleft - 63 * l;
+	        qtop = qtop - 63 * d;
+	      }
+	      countqul++;
+	
+	      return {
+	
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(qtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(qleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'initialKing',
+	    value: function initialKing() {
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(-685, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(260, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KingDown',
+	    value: function KingDown() {
+	
+	      if (countkd == 0) {
+	        kingtop = kingtop + 63;
+	      }
+	      countkd++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(kingtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(kingleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KingRight',
+	    value: function KingRight() {
+	      if (countkr == 0) {
+	        kingleft = kingleft + 63;
+	      }
+	      countkr++;
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(kingtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(kingleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KingUp',
+	    value: function KingUp(d) {
+	      if (countku == 0) {
+	        kingtop = kingtop - 63;
+	      }
+	      countku++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(kingtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(kingleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KingLeft',
+	    value: function KingLeft(d) {
+	      if (countkl == 0) {
+	        kingleft = kingleft - 63;
+	      }
+	      countkl++;
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(kingtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(kingleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KingDownRight',
+	    value: function KingDownRight() {
+	
+	      if (countkdr == 0) {
+	        kingleft = kingleft + 63;
+	        kingtop = kingtop + 63;
+	      }
+	      countkdr++;
+	
+	      return {
+	
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(kingtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(kingleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KingDownLeft',
+	    value: function KingDownLeft() {
+	
+	      if (countkdl == 0) {
+	        kingleft = kingleft - 63;
+	        kingtop = kingtop + 63;
+	      }
+	      countkdl++;
+	
+	      return {
+	
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(kingtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(kingleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KingUpRight',
+	    value: function KingUpRight() {
+	
+	      if (countkur == 0) {
+	        kingleft = kingleft + 63;
+	        kingtop = kingtop - 63;
+	      }
+	      countkur++;
+	
+	      return {
+	
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(kingtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(kingleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KingUpLeft',
+	    value: function KingUpLeft() {
+	
+	      if (countkul == 0) {
+	        kingleft = kingleft - 63;
+	        kingtop = kingtop - 63;
+	      }
+	      countkul++;
+	
+	      return {
+	
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(kingtop, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(kingleft, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
 	    key: 'initialKnightOne',
 	    value: function initialKnightOne() {
 	
@@ -198,6 +943,158 @@
 	        height: CHILD_BUTTON_DIAM,
 	        top: (0, _reactMotion.spring)(-590, SPRING_CONFIG),
 	        left: (0, _reactMotion.spring)(130, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KnightOneLeftUpTwo',
+	    value: function KnightOneLeftUpTwo() {
+	      if (countk1leftup2 == 0) {
+	
+	        k1left = k1left - 63;
+	        k1top = k1top - 126;
+	      }
+	      countk1leftup2++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k1top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k1left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KnightOneLeftUpOne',
+	    value: function KnightOneLeftUpOne() {
+	
+	      if (countk1leftup1 == 0) {
+	
+	        k1left = k1left - 126;
+	        k1top = k1top - 63;
+	      }
+	      countk1leftup1++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k1top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k1left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KnightOneLeftDownTwo',
+	    value: function KnightOneLeftDownTwo() {
+	
+	      if (countk1leftdown2 == 0) {
+	
+	        k1left = k1left - 63;
+	        k1top = k1top + 126;
+	      }
+	      countk1leftdown2++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k1top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k1left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KnightOneLeftDownOne',
+	    value: function KnightOneLeftDownOne() {
+	
+	      if (countk1leftdown1 == 0) {
+	
+	        k1left = k1left - 126;
+	        k1top = k1top + 63;
+	      }
+	      countk1leftdown1++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k1top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k1left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KnightOneRightUpTwo',
+	    value: function KnightOneRightUpTwo() {
+	
+	      if (countk1rightup2 == 0) {
+	
+	        k1left = k1left + 63;
+	        k1top = k1top - 126;
+	      }
+	      countk1rightup2++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k1top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k1left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KnightOneRightUpOne',
+	    value: function KnightOneRightUpOne() {
+	
+	      if (countk1rightup1 == 0) {
+	
+	        k1left = k1left + 126;
+	        k1top = k1top - 63;
+	      }
+	      countk1rightup1++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k1top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k1left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KnightOneRightDownTwo',
+	    value: function KnightOneRightDownTwo() {
+	
+	      if (countk1rightdown2 == 0) {
+	
+	        k1left = k1left + 63;
+	        k1top = k1top + 126;
+	      }
+	      countk1rightdown2++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k1top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k1left, SPRING_CONFIG)
+	
+	      };
+	    }
+	  }, {
+	    key: 'KnightOneRightDownOne',
+	    value: function KnightOneRightDownOne() {
+	
+	      if (countk1rightdown1 == 0) {
+	
+	        k1left = k1left + 126;
+	        k1top = k1top + 63;
+	      }
+	
+	      countk1rightdown1++;
+	
+	      return {
+	        width: CHILD_BUTTON_DIAM,
+	        height: CHILD_BUTTON_DIAM,
+	        top: (0, _reactMotion.spring)(k1top, SPRING_CONFIG),
+	        left: (0, _reactMotion.spring)(k1left, SPRING_CONFIG)
 	
 	      };
 	    }
@@ -411,9 +1308,24 @@
 	      } else if (index == 1) {
 	
 	        var c = 9821;
-	      } else {
+	      } else if (index == 2) {
 	
 	        var c = 9822;
+	      } else if (index == 3) {
+	
+	        var c = 9819;
+	      } else if (index == 4) {
+	
+	        var c = 9818;
+	      } else if (index == 5) {
+	        var c = 9822;
+	      } else if (index == 6) {
+	        var c = 9821;
+	      } else if (index == 7) {
+	        var c = 9820;
+	      } else {
+	
+	        var c = 9823;
 	      }
 	
 	      var es = decodeURIComponent(escape(c));
@@ -426,21 +1338,77 @@
 	          style1 = this.initialBishopOne();
 	          style = this.initialChildButtonStyles();
 	          stylek1 = this.initialKnightOne();
+	          styleq = this.initialQueen();
+	          styleking = this.initialKing();
+	          stylek2 = this.initialKnight2();
+	          styleb2 = this.initialBishop2();
+	          stylec2 = this.initialCastle2();
+	          stylep1 = this.initialP1();
+	          stylep2 = this.initialP2();
+	          stylep3 = this.initialP3();
+	          stylep4 = this.initialP4();
+	          stylep5 = this.initialP5();
+	          stylep6 = this.initialP6();
+	          stylep7 = this.initialP7();
+	          stylep8 = this.initialP8();
 	        } else if (count < 300 && count > 127) {
 	          style1 = this.BishopDownRight(4, 4);
 	          style = this.finalChildButtonStyles(index);
-	        } else if (count > 300 && count < 500) {
+	          stylek1 = this.KnightOneLeftDownTwo();
+	          styleq = this.QueenDown(7);
+	          styleking = this.KingDown();
+	          stylek2 = this.Knight2LeftDownTwo();
+	          styleb2 = this.Bishop2DownLeft(4, 4);
+	        } else if (count > 300 && count < 400) {
 	          move = 6;
 	          style = this.RightOneCastle(move);
 	          style1 = this.BishopDownLeft(3, 3);
-	        } else if (count > 500 && count < 700) {
+	          stylek1 = this.KnightOneRightDownOne();
+	          styleq = this.QueenUp(6);
+	          styleking = this.KingRight();
+	          stylek2 = this.Knight2RightDownOne();
+	          styleb2 = this.BishopDownRight(3, 3);
+	        } else if (count > 400 && count < 600) {
 	          move = 3;
 	          style = this.UpOneCastle(move);
 	          style1 = this.BishopUpRight(3, 3);
-	        } else {
+	          stylek1 = this.KnightOneLeftUpOne();
+	          styleq = this.QueenRight(4);
+	          styleking = this.KingUp();
+	          stylek2 = this.Knight2LeftUpOne();
+	          styleb2 = this.Bishop2UpLeft(3, 3);
+	        } else if (count > 650 && count < 800) {
 	          move = 4;
 	          style = this.LeftOneCastle(move);
 	          style1 = this.BishopUpLeft(2, 2);
+	          stylek1 = this.KnightOneRightDownTwo();
+	          styleq = this.QueenLeft(4);
+	          styleking = this.KingLeft();
+	          stylek2 = this.Knight2RightDownTwo();
+	          styleb2 = this.Bishop2UpRight(2, 2);
+	        } else if (count > 800 && count < 950) {
+	
+	          stylek1 = this.KnightOneRightUpTwo();
+	          styleq = this.QueenDownRight(4, 4);
+	          styleking = this.KingDownLeft();
+	          stylek2 = this.Knight2RightUpTwo();
+	        } else if (count > 950 && count < 1100) {
+	          stylek1 = this.KnightOneLeftDownOne();
+	          styleq = this.QueenUpLeft(4, 4);
+	          styleking = this.KingDownRight();
+	          stylek2 = this.Knight2LeftDownOne();
+	        } else if (count > 1100 && count < 1250) {
+	
+	          stylek1 = this.KnightOneLeftUpTwo();
+	          styleq = this.QueenDownLeft(3, 3);
+	          styleking = this.KingUpLeft();
+	          stylek2 = this.Knight2LeftUpTwo();
+	        } else if (count > 1250) {
+	
+	          stylek1 = this.KnightOneRightUpOne();
+	          styleq = this.QueenUpRight(4, 4);
+	          styleking = this.KingUpRight();
+	          stylek2 = this.Knight2RightUpOne();
 	        }
 	      }
 	
@@ -516,7 +1484,7 @@
 	            );
 	          }
 	        );
-	      } else {
+	      } else if (index == 2) {
 	
 	        return React.createElement(
 	          _reactMotion.Motion,
@@ -552,6 +1520,474 @@
 	            );
 	          }
 	        );
+	      } else if (index == 3) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: styleq, key: index },
+	          function (_ref4) {
+	            var width = _ref4.width,
+	                height = _ref4.height,
+	                top = _ref4.top,
+	                left = _ref4.left,
+	                scale = _ref4.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
+	      } else if (index == 4) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: styleking, key: index },
+	          function (_ref5) {
+	            var width = _ref5.width,
+	                height = _ref5.height,
+	                top = _ref5.top,
+	                left = _ref5.left,
+	                scale = _ref5.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
+	      } else if (index == 5) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: stylek2, key: index },
+	          function (_ref6) {
+	            var width = _ref6.width,
+	                height = _ref6.height,
+	                top = _ref6.top,
+	                left = _ref6.left,
+	                scale = _ref6.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
+	      } else if (index == 6) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: styleb2, key: index },
+	          function (_ref7) {
+	            var width = _ref7.width,
+	                height = _ref7.height,
+	                top = _ref7.top,
+	                left = _ref7.left,
+	                scale = _ref7.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
+	      } else if (index == 7) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: stylec2, key: index },
+	          function (_ref8) {
+	            var width = _ref8.width,
+	                height = _ref8.height,
+	                top = _ref8.top,
+	                left = _ref8.left,
+	                scale = _ref8.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
+	      } else if (index == 8) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: stylep1, key: index },
+	          function (_ref9) {
+	            var width = _ref9.width,
+	                height = _ref9.height,
+	                top = _ref9.top,
+	                left = _ref9.left,
+	                scale = _ref9.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
+	      } else if (index == 9) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: stylep2, key: index },
+	          function (_ref10) {
+	            var width = _ref10.width,
+	                height = _ref10.height,
+	                top = _ref10.top,
+	                left = _ref10.left,
+	                scale = _ref10.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
+	      } else if (index == 10) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: stylep3, key: index },
+	          function (_ref11) {
+	            var width = _ref11.width,
+	                height = _ref11.height,
+	                top = _ref11.top,
+	                left = _ref11.left,
+	                scale = _ref11.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
+	      } else if (index == 11) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: stylep4, key: index },
+	          function (_ref12) {
+	            var width = _ref12.width,
+	                height = _ref12.height,
+	                top = _ref12.top,
+	                left = _ref12.left,
+	                scale = _ref12.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
+	      } else if (index == 12) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: stylep5, key: index },
+	          function (_ref13) {
+	            var width = _ref13.width,
+	                height = _ref13.height,
+	                top = _ref13.top,
+	                left = _ref13.left,
+	                scale = _ref13.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
+	      } else if (index == 13) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: stylep6, key: index },
+	          function (_ref14) {
+	            var width = _ref14.width,
+	                height = _ref14.height,
+	                top = _ref14.top,
+	                left = _ref14.left,
+	                scale = _ref14.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
+	      } else if (index == 14) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: stylep7, key: index },
+	          function (_ref15) {
+	            var width = _ref15.width,
+	                height = _ref15.height,
+	                top = _ref15.top,
+	                left = _ref15.left,
+	                scale = _ref15.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
+	      } else if (index == 15) {
+	
+	        return React.createElement(
+	          _reactMotion.Motion,
+	          { style: stylep8, key: index },
+	          function (_ref16) {
+	            var width = _ref16.width,
+	                height = _ref16.height,
+	                top = _ref16.top,
+	                left = _ref16.left,
+	                scale = _ref16.scale;
+	            return React.createElement(
+	              'div',
+	              {
+	                className: 'child-button',
+	                style: {
+	                  width: width,
+	                  height: height,
+	                  top: top,
+	                  left: left
+	
+	                } },
+	              React.createElement(
+	                'span',
+	                { style: {
+	
+	                    color: "black",
+	                    fontSize: 50,
+	                    fontWeight: 'bold',
+	                    cursor: 'move'
+	                  } },
+	                String.fromCharCode(c)
+	              )
+	            );
+	          }
+	        );
 	      }
 	    }
 	  }, {
@@ -561,12 +1997,12 @@
 	      return React.createElement(
 	        _reactMotion.Motion,
 	        { style: style, key: index },
-	        function (_ref4) {
-	          var width = _ref4.width,
-	              height = _ref4.height,
-	              top = _ref4.top,
-	              left = _ref4.left,
-	              scale = _ref4.scale;
+	        function (_ref17) {
+	          var width = _ref17.width,
+	              height = _ref17.height,
+	              top = _ref17.top,
+	              left = _ref17.left,
+	              scale = _ref17.scale;
 	          return React.createElement(
 	            'div',
 	            {
@@ -940,32 +2376,7 @@
 	    if (x === knightX && y === knightY) {
 	
 	      return React.createElement(K, null);
-	    } else if (x == 0 && y == 0) {} else if (x == 7 && y == 0) {
-	
-	      return React.createElement(APP, null);
-	    } else if (x == 1 && y == 0) {} else if (x == 2 && y == 0) {
-	
-	      return;
-	
-	      React.createElement(EBishop, null);
-	    } else if (x == 3 && y == 0) {
-	
-	      return React.createElement(EQueen, null);
-	    } else if (x == 4 && y == 0) {
-	
-	      return React.createElement(EKing, null);
-	    } else if (x == 5 && y == 0 && count < 127) {
-	
-	      return React.createElement(EKnight, null);
-	    } else if (x == 6 && y == 2 && count > 127) {
-	      return React.createElement(EKnight, null);
-	    } else if (x == 6 && y == 0) {
-	
-	      return React.createElement(EBishop, null);
-	    } else if (y == 1) {
-	
-	      return React.createElement(EPawn, null);
-	    }
+	    } else if (x == 0 && y == 0) {} else if (x == 7 && y == 0) {} else if (x == 1 && y == 0) {} else if (x == 2 && y == 0) {} else if (x == 3 && y == 0) {} else if (x == 4 && y == 0) {} else if (x == 5 && y == 0 && count < 127) {} else if (x == 6 && y == 2 && count > 127) {} else if (x == 6 && y == 0) {} else if (y == 1) {}
 	  },
 	
 	  render: function render() {

@@ -19,6 +19,19 @@ var PropTypes = React.PropTypes;
 var style;
 var style1;
 var stylek1;
+var styleq;
+var styleking;
+var stylek2;
+var styleb2;
+var stylec2;
+var stylep1;
+var stylep2;
+var stylep3;
+var stylep4;
+var stylep5;
+var stylep6;
+var stylep7;
+var stylep8;
 var thetop = -500
 var thetop1;
 var countme = 0;
@@ -36,6 +49,81 @@ var countbur = 0;
 var countbul = 0;
 var k1left = 130;
 var k1top = -590;
+var qleft = 200;
+var qtop = -640;
+var countk1rightup2 = 0;
+var countk1rightup1 = 0;
+var countk1rightdown2 = 0;
+var countk1rightdown1 = 0;
+var countk1leftup2 = 0;
+var countk1leftup1 = 0;
+var countk1leftdown2 = 0;
+var countk1leftdown1 = 0;
+
+
+var countqd = 0;
+var countqu = 0;
+var countqr = 0;
+var countql = 0;
+var countqdr = 0;
+var countqdl = 0;
+var countqur = 0;
+var countqul = 0;
+var kingtop = -685;
+var kingleft = 260;
+var countkd = 0;
+var countku = 0;
+var countkr = 0;
+var countkl = 0;
+var countkdr = 0;
+var countkdl = 0;
+var countkur = 0;
+var countkul = 0;
+var k2top = -730;
+var k2left = 320;
+var countk2rightup2 = 0;
+var countk2rightup1 = 0;
+var countk2rightdown2 = 0;
+var countk2rightdown1 = 0;
+var countk2leftup2 = 0;
+var countk2leftup1 = 0;
+var countk2leftdown2 = 0;
+var countk2leftdown1 = 0;
+var countb2dr = 0;
+var countb2dl = 0;
+var countb2ur = 0;
+var countb2ul = 0;
+var b2left = 385;
+var b2top = -780
+var countme2 = 0;
+var countmeup2 = 0
+var countup2 = 0;
+var countleft2 = 0;
+var c2left = 445;
+var c2top =  -830;
+var p1left = 5;
+var p1top = -810;
+var p2left = 70;
+var p2top = -860;
+var p3left = 130;
+var p3top = -910;
+var p4left = 200;
+var p4top = -960;
+var p5left = 260;
+var p5top = -1010;
+var p6left = 320;
+var p6top = -1055;
+var p7left = 380;
+var p7top = -1100;
+var p8left = 440;
+var p8top = -1150;
+
+
+
+
+
+
+
 // Components 
 
 //Constants 
@@ -44,7 +132,7 @@ var k1top = -590;
 const MAIN_BUTTON_DIAM = 90;
 const CHILD_BUTTON_DIAM = 48;
 // The number of child buttons that fly out from the main button
-const NUM_CHILDREN = 3;
+const NUM_CHILDREN = 16;
 // Hard code the position values of the mainButton
 const M_X = 490;
 const M_Y = 450;
@@ -135,7 +223,918 @@ setInterval(this.animateChildButtonsWithDelay, 5000);
 
   
 
+    initialP1(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-810, SPRING_CONFIG),
+      left: spring(5, SPRING_CONFIG),
+      
+      
+    };
+  }
+
+
+  initialP2(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-860, SPRING_CONFIG),
+      left: spring(70, SPRING_CONFIG),
+      
+      
+    };
+  }
+initialP3(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-910, SPRING_CONFIG),
+      left: spring(130, SPRING_CONFIG),
+      
+      
+    };
+  }
+
+initialP4(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-960, SPRING_CONFIG),
+      left: spring(200, SPRING_CONFIG),
+      
+      
+    };
+  }
+    
+initialP5(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-1010, SPRING_CONFIG),
+      left: spring(260, SPRING_CONFIG),
+      
+      
+    };
+  }
+
+
+initialP6(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-1055, SPRING_CONFIG),
+      left: spring(320, SPRING_CONFIG),
+      
+      
+    };
+  }
+
+
+
+   initialP7(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-1100, SPRING_CONFIG),
+      left: spring(380, SPRING_CONFIG),
+      
+      
+    };
+  } 
+
+
+
+initialP8(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-1150, SPRING_CONFIG),
+      left: spring(440, SPRING_CONFIG),
+      
+      
+    };
+  }
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    initialKnight2(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-730, SPRING_CONFIG),
+      left: spring(320, SPRING_CONFIG),
+      
+      
+    };
+  }
+
+ Knight2LeftUpTwo(){
+ if (countk2leftup2 == 0) {
+
+  k2left = k2left - 63
+  k2top = k2top - 126
+ }
+  countk2leftup2++;
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(k2top, SPRING_CONFIG),
+      left: spring(k2left, SPRING_CONFIG),
+      
+      
+    };
   
+
+
+  }
+
+Knight2LeftUpOne(){
+
+  if (countk2leftup1 == 0) {
+
+  k2left = k2left - 126
+  k2top = k2top - 63
+ }
+  countk2leftup1++;
+
+
+
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(k2top, SPRING_CONFIG),
+      left: spring(k2left, SPRING_CONFIG),
+      
+      
+    };
+  
+
+
+  }
+
+
+Knight2LeftDownTwo(){
+
+  if (countk2leftdown2 == 0) {
+
+  k2left = k2left - 63
+  k2top = k2top + 126
+ }
+  countk2leftdown2++;
+
+
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(k2top, SPRING_CONFIG),
+      left: spring(k2left, SPRING_CONFIG),
+      
+      
+    };
+  
+
+
+  }
+  
+Knight2LeftDownOne(){
+
+  if (countk2leftdown1 == 0) {
+
+  k2left = k2left - 126
+  k2top = k2top + 63
+ }
+  countk2leftdown1++;
+
+
+
+
+
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(k2top, SPRING_CONFIG),
+      left: spring(k2left, SPRING_CONFIG),
+      
+      
+    };
+  
+
+
+  }
+
+  
+Knight2RightUpTwo(){
+
+ 
+ if (countk2rightup2 == 0) {
+
+  k2left = k2left + 63
+  k2top = k2top - 126
+ }
+  countk2rightup2++;
+
+
+
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(k2top, SPRING_CONFIG),
+      left: spring(k2left, SPRING_CONFIG),
+      
+      
+    };
+  
+
+
+  }
+
+
+Knight2RightUpOne(){
+
+  
+   if (countk2rightup1 == 0) {
+
+  k2left = k2left + 126
+  k2top = k2top - 63
+ }
+  countk2rightup1++;
+
+
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(k2top, SPRING_CONFIG),
+      left: spring(k2left, SPRING_CONFIG),
+      
+      
+    };
+  
+
+
+  }
+  
+Knight2RightDownTwo(){
+
+  
+   if (countk2rightdown2 == 0) {
+
+  k2left = k2left + 63
+  k2top = k2top + 126
+ }
+  countk2rightdown2++;
+
+
+
+
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(k2top, SPRING_CONFIG),
+      left: spring(k2left, SPRING_CONFIG),
+      
+      
+    };
+  
+
+
+  }
+
+Knight2RightDownOne(){
+
+   if (countk2rightdown1 == 0) {
+
+  k2left = k2left + 126
+  k2top = k2top + 63
+ }
+
+countk2rightdown1++;
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(k2top, SPRING_CONFIG),
+      left: spring(k2left, SPRING_CONFIG),
+      
+      
+    };
+  
+
+
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ initialBishop2(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-780, SPRING_CONFIG),
+      left: spring(385, SPRING_CONFIG),
+      
+      
+    };
+  
+
+}
+
+
+  Bishop2DownRight(d,l) {
+
+  if(countb2dr == 0){
+  b2left = b2left + (63 * l)
+  b2top = b2top + (63 * d)
+  }
+  countb2dr++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(b2top, SPRING_CONFIG),
+      left: spring(b2left, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+
+  Bishop2DownLeft(d,l) {
+
+  if(countb2dl == 0){
+  b2left = b2left - (63 * l)
+  b2top = b2top + (63 * d)
+  }
+  countb2dl++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(b2top, SPRING_CONFIG),
+      left: spring(b2left, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+
+  Bishop2UpRight(d,l) {
+
+  if(countb2ur == 0){
+  b2left = b2left + (63 * l)
+  b2top = b2top - (63 * d)
+  }
+  countb2ur++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(b2top, SPRING_CONFIG),
+      left: spring(b2left, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+  
+  Bishop2UpLeft(d,l) {
+
+  if(countb2ul == 0){
+  b2left = b2left - (63 * l)
+  b2top = b2top - (63 * d)
+  }
+  countb2ul++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(b2top, SPRING_CONFIG),
+      left: spring(b2left, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ initialCastle2(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-830, SPRING_CONFIG),
+      left: spring(445, SPRING_CONFIG),
+      
+      
+    };
+  
+
+   }
+
+
+
+
+   initialQueen(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-640, SPRING_CONFIG),
+      left: spring(200, SPRING_CONFIG),
+      
+      
+    };
+  
+
+
+  }
+
+QueenDown(d) {
+    
+    if(countqd == 0) {
+    qtop = qtop + (63 * d)
+    }
+    countqd++;
+   
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(qtop  , SPRING_CONFIG),
+      left: spring(qleft , SPRING_CONFIG),
+      
+      
+    };
+  }
+
+  QueenRight(d) {
+    if(countqr == 0) {
+    qleft = qleft + (63 * d)
+    }
+    countqr++;
+       return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(qtop , SPRING_CONFIG),
+      left: spring( qleft , SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+    QueenUp(d) {
+       if(countqu == 0) {
+    qtop = qtop - (63 * d)
+    }
+    countqu++;
+       
+       return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(qtop , SPRING_CONFIG),
+      left: spring(qleft , SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+  
+   QueenLeft(d) {
+    if(countql == 0) {
+    qleft = qleft - (63 * d)
+    }
+    countql++;
+       return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(qtop , SPRING_CONFIG),
+      left: spring( qleft , SPRING_CONFIG),
+      
+      
+    };
+}
+     
+
+QueenDownRight(d,l) {
+
+  if(countqdr == 0){
+  qleft = qleft + (63 * l)
+  qtop = qtop + (63 * d)
+  }
+  countqdr++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(qtop, SPRING_CONFIG),
+      left: spring(qleft, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+
+  QueenDownLeft(d,l) {
+
+  if(countqdl == 0){
+  qleft = qleft - (63 * l)
+  qtop = qtop + (63 * d)
+  }
+  countqdl++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(qtop, SPRING_CONFIG),
+      left: spring(qleft, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+
+  QueenUpRight(d,l) {
+
+  if(countqur == 0){
+  qleft = qleft + (63 * l)
+  qtop = qtop - (63 * d)
+  }
+  countqur++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(qtop, SPRING_CONFIG),
+      left: spring(qleft, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+  
+  QueenUpLeft(d,l) {
+
+  if(countqul == 0){
+  qleft = qleft - (63 * l)
+  qtop = qtop - (63 * d)
+  }
+  countqul++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(qtop, SPRING_CONFIG),
+      left: spring(qleft, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     initialKing(){
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(-685, SPRING_CONFIG),
+      left: spring(260, SPRING_CONFIG),
+      
+      
+    };
+  
+
+
+  }
+
+KingDown() {
+    
+    if(countkd == 0) {
+    kingtop = kingtop + 63 
+    }
+    countkd++;
+   
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(kingtop  , SPRING_CONFIG),
+      left: spring(kingleft , SPRING_CONFIG),
+      
+      
+    };
+  }
+
+  KingRight() {
+    if(countkr == 0) {
+    kingleft = kingleft + 63 
+    }
+    countkr++;
+       return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(kingtop , SPRING_CONFIG),
+      left: spring( kingleft , SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+    KingUp(d) {
+       if(countku == 0) {
+    kingtop = kingtop - 63 
+    }
+    countku++;
+       
+       return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(kingtop , SPRING_CONFIG),
+      left: spring(kingleft , SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+  
+   KingLeft(d) {
+    if(countkl == 0) {
+    kingleft = kingleft - 63 
+    }
+    countkl++;
+       return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(kingtop , SPRING_CONFIG),
+      left: spring( kingleft , SPRING_CONFIG),
+      
+      
+    };
+}
+     
+
+KingDownRight() {
+
+  if(countkdr == 0){
+  kingleft = kingleft + 63 
+  kingtop = kingtop + 63 
+  }
+  countkdr++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(kingtop, SPRING_CONFIG),
+      left: spring(kingleft, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+
+  KingDownLeft() {
+
+  if(countkdl == 0){
+  kingleft = kingleft - 63 
+  kingtop = kingtop + 63 
+  }
+  countkdl++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(kingtop, SPRING_CONFIG),
+      left: spring(kingleft, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+
+  KingUpRight() {
+
+  if(countkur == 0){
+  kingleft = kingleft + 63 
+  kingtop = kingtop - 63 
+  }
+  countkur++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(kingtop, SPRING_CONFIG),
+      left: spring(kingleft, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+  
+  KingUpLeft() {
+
+  if(countkul == 0){
+  kingleft = kingleft - 63 
+  kingtop = kingtop - 63 
+  }
+  countkul++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(kingtop, SPRING_CONFIG),
+      left: spring(kingleft, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+
+
+
+
+
+
+
+
+
+
 
   initialKnightOne(){
 
@@ -153,12 +1152,18 @@ setInterval(this.animateChildButtonsWithDelay, 5000);
   }
 
 KnightOneLeftUpTwo(){
+ if (countk1leftup2 == 0) {
+
+  k1left = k1left - 63
+  k1top = k1top - 126
+ }
+  countk1leftup2++;
 
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-590, SPRING_CONFIG),
-      left: spring(130, SPRING_CONFIG),
+      top: spring(k1top, SPRING_CONFIG),
+      left: spring(k1left, SPRING_CONFIG),
       
       
     };
@@ -169,11 +1174,21 @@ KnightOneLeftUpTwo(){
 
 KnightOneLeftUpOne(){
 
+  if (countk1leftup1 == 0) {
+
+  k1left = k1left - 126
+  k1top = k1top - 63
+ }
+  countk1leftup1++;
+
+
+
+
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-590, SPRING_CONFIG),
-      left: spring(130, SPRING_CONFIG),
+      top: spring(k1top, SPRING_CONFIG),
+      left: spring(k1left, SPRING_CONFIG),
       
       
     };
@@ -185,11 +1200,20 @@ KnightOneLeftUpOne(){
 
 KnightOneLeftDownTwo(){
 
+  if (countk1leftdown2 == 0) {
+
+  k1left = k1left - 63
+  k1top = k1top + 126
+ }
+  countk1leftdown2++;
+
+
+
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-590, SPRING_CONFIG),
-      left: spring(130, SPRING_CONFIG),
+      top: spring(k1top, SPRING_CONFIG),
+      left: spring(k1left, SPRING_CONFIG),
       
       
     };
@@ -200,11 +1224,23 @@ KnightOneLeftDownTwo(){
   
 KnightOneLeftDownOne(){
 
+  if (countk1leftdown1 == 0) {
+
+  k1left = k1left - 126
+  k1top = k1top + 63
+ }
+  countk1leftdown1++;
+
+
+
+
+
+
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-590, SPRING_CONFIG),
-      left: spring(130, SPRING_CONFIG),
+      top: spring(k1top, SPRING_CONFIG),
+      left: spring(k1left, SPRING_CONFIG),
       
       
     };
@@ -216,11 +1252,22 @@ KnightOneLeftDownOne(){
   
 KnightOneRightUpTwo(){
 
+ 
+ if (countk1rightup2 == 0) {
+
+  k1left = k1left + 63
+  k1top = k1top - 126
+ }
+  countk1rightup2++;
+
+
+
+
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-590, SPRING_CONFIG),
-      left: spring(130, SPRING_CONFIG),
+      top: spring(k1top, SPRING_CONFIG),
+      left: spring(k1left, SPRING_CONFIG),
       
       
     };
@@ -232,11 +1279,21 @@ KnightOneRightUpTwo(){
 
 KnightOneRightUpOne(){
 
+  
+   if (countk1rightup1 == 0) {
+
+  k1left = k1left + 126
+  k1top = k1top - 63
+ }
+  countk1rightup1++;
+
+
+
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-590, SPRING_CONFIG),
-      left: spring(130, SPRING_CONFIG),
+      top: spring(k1top, SPRING_CONFIG),
+      left: spring(k1left, SPRING_CONFIG),
       
       
     };
@@ -247,11 +1304,23 @@ KnightOneRightUpOne(){
   
 KnightOneRightDownTwo(){
 
+  
+   if (countk1rightdown2 == 0) {
+
+  k1left = k1left + 63
+  k1top = k1top + 126
+ }
+  countk1rightdown2++;
+
+
+
+
+
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-590, SPRING_CONFIG),
-      left: spring(130, SPRING_CONFIG),
+      top: spring(k1top, SPRING_CONFIG),
+      left: spring(k1left, SPRING_CONFIG),
       
       
     };
@@ -262,11 +1331,19 @@ KnightOneRightDownTwo(){
 
 KnightOneRightDownOne(){
 
+   if (countk1rightdown1 == 0) {
+
+  k1left = k1left + 126
+  k1top = k1top + 63
+ }
+
+countk1rightdown1++;
+
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-590, SPRING_CONFIG),
-      left: spring(130, SPRING_CONFIG),
+      top: spring(k1top, SPRING_CONFIG),
+      left: spring(k1left, SPRING_CONFIG),
       
       
     };
@@ -505,10 +1582,38 @@ KnightOneRightDownOne(){
 
         var c = 9821}
       
-    else {
+    else if(index == 2) {
 
       var c = 9822
     }
+   else if(index == 3){
+
+    var c = 9819
+   }
+else if(index == 4) {
+
+ var c = 9818
+}
+
+else if(index == 5) {
+ var c = 9822
+
+}
+
+else if(index == 6){
+ var c = 9821
+
+}
+
+else if(index == 7){
+ var c = 9820
+
+} 
+
+else {
+
+  var c = 9823
+}
 
 
 
@@ -524,37 +1629,103 @@ KnightOneRightDownOne(){
       style1 = this.initialBishopOne();
       style = this.initialChildButtonStyles()
       stylek1 = this.initialKnightOne()
+      styleq = this.initialQueen()
+      styleking = this.initialKing()
+      stylek2 = this.initialKnight2()
+      styleb2 = this.initialBishop2()
+      stylec2 = this.initialCastle2()
+      stylep1 = this.initialP1()
+      stylep2 = this.initialP2()
+      stylep3 = this.initialP3()
+      stylep4 = this.initialP4()
+      stylep5 = this.initialP5()
+      stylep6 = this.initialP6()
+      stylep7 = this.initialP7()
+      stylep8 = this.initialP8()
     }
 
     else if (count < 300 && count > 127) {
       style1 = this.BishopDownRight(4,4);
       style = this.finalChildButtonStyles(index)
+      stylek1 = this.KnightOneLeftDownTwo()
+      styleq = this.QueenDown(7)
+      styleking = this.KingDown()
+      stylek2 = this.Knight2LeftDownTwo()
+      styleb2 = this.Bishop2DownLeft(4,4)
     }
 
-    else if (count > 300 && count < 500)
+    else if (count > 300 && count < 400)
 
     {
     move = 6;
     style = this.RightOneCastle(move)
     style1 = this.BishopDownLeft(3,3)
+    stylek1 = this.KnightOneRightDownOne()
+    styleq = this.QueenUp(6)
+    styleking = this.KingRight();
+    stylek2 = this.Knight2RightDownOne()
+    styleb2 = this.BishopDownRight(3,3)
     }
 
-    else if (count > 500 && count < 700) {
+    else if (count > 400 && count < 600) {
   move = 3
   style = this.UpOneCastle(move)
   style1 = this.BishopUpRight(3,3)
-
+  stylek1 = this.KnightOneLeftUpOne()
+  styleq = this.QueenRight(4)
+  styleking = this.KingUp() 
+  stylek2 = this.Knight2LeftUpOne()  
+  styleb2 = this.Bishop2UpLeft(3,3) 
     }
-else {
+else if (count > 650 && count < 800) {
     move = 4
    style = this.LeftOneCastle(move)
  style1 = this.BishopUpLeft(2,2)
+stylek1 = this.KnightOneRightDownTwo()
+styleq = this.QueenLeft(4)
+styleking = this.KingLeft();
+stylek2 = this.Knight2RightDownTwo()
+styleb2 = this.Bishop2UpRight(2,2)
 }
 
+
+else if(count > 800 && count < 950){
+
+stylek1 = this.KnightOneRightUpTwo()
+styleq = this.QueenDownRight(4,4)
+styleking = this.KingDownLeft();
+stylek2 = this.Knight2RightUpTwo()
 }
     
+else if(count > 950 && count < 1100){
+stylek1 = this.KnightOneLeftDownOne()
+styleq = this.QueenUpLeft(4,4)
+styleking = this.KingDownRight()  
+stylek2 = this.Knight2LeftDownOne() 
+  } 
 
- 
+
+else if(count > 1100 && count < 1250){
+
+stylek1 = this.KnightOneLeftUpTwo()
+styleq = this.QueenDownLeft(3,3)
+styleking =this.KingUpLeft();
+stylek2 = this.Knight2LeftUpTwo()
+}
+
+ else if(count > 1250) {
+
+
+stylek1 = this.KnightOneRightUpOne()
+styleq = this.QueenUpRight(4,4)
+styleking = this.KingUpRight();
+stylek2 = this.Knight2RightUpOne()
+ }  
+
+}
+
+
+
     if(index == 0) {
 
     return (
@@ -578,6 +1749,7 @@ else {
         fontWeight: 'bold',
         cursor: 'move'
       }}>
+
 { String.fromCharCode(c) }</span>
       </div>
 
@@ -618,7 +1790,7 @@ else if(index == 1) {
 
 }
 
-else {
+else if(index == 2) {
 
     return (
       <Motion style={stylek1} key={index}>
@@ -648,43 +1820,406 @@ else {
       </Motion>
     );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
+ else if(index == 3) {
 
 
+ return (
+      <Motion style={styleq} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
 
+    }
+      </Motion>
+    );
+}
 
+else if(index == 4){
 
+return (
+      <Motion style={styleking} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
 
+    }
+      </Motion>
+    );
+}
+else if(index == 5){
 
+return (
+      <Motion style={stylek2} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
 
+    }
+      </Motion>
+    );
+}
 
+else if(index == 6){
+
+return (
+      <Motion style={styleb2} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
+
+    }
+      </Motion>
+    );
+}
+
+else if(index == 7){
+
+return (
+      <Motion style={stylec2} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
+
+    }
+      </Motion>
+    );
+}
+else if(index == 8){
+
+return (
+      <Motion style={stylep1} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
+
+    }
+      </Motion>
+    );
+}
+
+else if(index == 9){
+
+return (
+      <Motion style={stylep2} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
+
+    }
+      </Motion>
+    );
+}
+else if(index == 10){
+
+return (
+      <Motion style={stylep3} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
+
+    }
+      </Motion>
+    );
+}
+else if(index == 11){
+
+return (
+      <Motion style={stylep4} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
+
+    }
+      </Motion>
+    );
+}
+
+else if(index == 12){
+
+return (
+      <Motion style={stylep5} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
+
+    }
+      </Motion>
+    );
+}
+
+else if(index == 13){
+
+return (
+      <Motion style={stylep6} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
+
+    }
+      </Motion>
+    );
+}
+else if(index == 14){
+
+return (
+      <Motion style={stylep7} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
+
+    }
+      </Motion>
+    );
+}
+
+else if(index == 15){
+
+return (
+      <Motion style={stylep8} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(c) }</span>
+      </div>
+
+    }
+      </Motion>
+    );
+}
 
 
 
@@ -1145,7 +2680,7 @@ else if(x == 0 && y == 0) {
 
 else if(x == 7 && y == 0){
   
-  return <APP/>
+  
 }
 
 else if(x == 1 && y == 0){
@@ -1155,41 +2690,41 @@ else if(x == 1 && y == 0){
 
 else if(x == 2 && y == 0){
 
-  return 
+  
     
-          <EBishop/>
+          
       
 }
 
 
 else if(x == 3 && y == 0){
 
-  return <EQueen/>
+  
 }
 
 else if(x == 4 && y == 0){
 
-  return <EKing/>
+  
 }
 else if(x == 5 && y == 0 && count < 127){
 
-  return <EKnight/>
+  
 }
 
 else if(x == 6 && y == 2 && count > 127){
-  return <EKnight/>
+
 
 }
 
 
 else if(x == 6 && y == 0){
 
-  return <EBishop/>
+  
 }
 
 else if(y == 1 ){
 
-  return <EPawn/>
+ 
 }
 
 
