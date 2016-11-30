@@ -117,7 +117,30 @@ var p7left = 380;
 var p7top = -1100;
 var p8left = 440;
 var p8top = -1150;
-
+var countp1up = 0;
+var countp1right = 0;
+var countp1left = 0;
+var countp2up = 0;
+var countp2right = 0;
+var countp2left = 0;
+var countp3up = 0;
+var countp3right = 0;
+var countp3left = 0;
+var countp4up = 0;
+var countp4right = 0;
+var countp4left = 0;
+var countp5up = 0;
+var countp5right = 0;
+var countp5left = 0;
+var countp6up = 0;
+var countp6right = 0;
+var countp6left = 0;
+var countp7up = 0;
+var countp7right = 0;
+var countp7left = 0;
+var countp8up = 0;
+var countp8right = 0;
+var countp8left = 0;
 
 
 
@@ -236,6 +259,86 @@ setInterval(this.animateChildButtonsWithDelay, 5000);
   }
 
 
+  p1Up(d){
+
+    if (countp1up == 0) {
+
+      p1top = p1top + (63 * d)
+     countp1up++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p1top, SPRING_CONFIG),
+      left: spring(p1left, SPRING_CONFIG),
+      
+      
+    };
+  
+  }
+  p1Right(){
+
+    if (countp1right == 0) {
+
+      p1left = p1left + 63
+      p1top = p1top + 63
+      countp1right++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p1top, SPRING_CONFIG),
+      left: spring(p1left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+    p1Left(){
+
+    if (countp1left == 0) {
+
+      p1left = p1left - 63
+      p1top = p1top + 63
+      countp1left++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p1top, SPRING_CONFIG),
+      left: spring(p1left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   initialP2(){
 
   return {
@@ -247,6 +350,100 @@ setInterval(this.animateChildButtonsWithDelay, 5000);
       
     };
   }
+
+
+  p2Up(d){
+
+    if (countp2up == 0) {
+
+      p2top = p2top + (63 * d)
+     countp2up++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p2top, SPRING_CONFIG),
+      left: spring(p2left, SPRING_CONFIG),
+      
+      
+    };
+  
+  }
+  p2Right(){
+
+    if (countp2right == 0) {
+
+      p2left = p2left + 63
+      p2top = p2top + 63
+      countp2right++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p2top, SPRING_CONFIG),
+      left: spring(p2left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+    p2Left(){
+
+    if (countp2left == 0) {
+
+      p2left = p2left - 63
+      p2top = p2top + 63
+      countp2left++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p2top, SPRING_CONFIG),
+      left: spring(p2left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 initialP3(){
 
   return {
@@ -258,6 +455,97 @@ initialP3(){
       
     };
   }
+
+
+  p3Up(d){
+
+    if (countp3up == 0) {
+
+      p3top = p3top + (63 * d)
+     countp3up++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p3top, SPRING_CONFIG),
+      left: spring(p3left, SPRING_CONFIG),
+      
+      
+    };
+  
+  }
+  p3Right(){
+
+    if (countp3right == 0) {
+
+      p3left = p3left + 63
+      p3top = p3top + 63
+      countp3right++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p3top, SPRING_CONFIG),
+      left: spring(p3left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+    p3Left(){
+
+    if (countp3left == 0) {
+
+      p3left = p3left - 63
+      p3top = p3top + 63
+      countp3left++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p3top, SPRING_CONFIG),
+      left: spring(p3left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 initialP4(){
 
@@ -271,6 +559,99 @@ initialP4(){
     };
   }
     
+
+
+  p4Up(d){
+
+    if (countp4up == 0) {
+
+      p4top = p4top + (63 * d)
+     countp4up++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p4top, SPRING_CONFIG),
+      left: spring(p4left, SPRING_CONFIG),
+      
+      
+    };
+  
+  }
+  p4Right(){
+
+    if (countp4right == 0) {
+
+      p4left = p4left + 63
+      p4top = p4top + 63
+      countp4right++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p4top, SPRING_CONFIG),
+      left: spring(p4left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+    p4Left(){
+
+    if (countp4left == 0) {
+
+      p4left = p4left - 63
+      p4top = p4top + 63
+      countp4left++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p4top, SPRING_CONFIG),
+      left: spring(p4left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 initialP5(){
 
   return {
@@ -284,6 +665,98 @@ initialP5(){
   }
 
 
+
+  p5Up(d){
+
+    if (countp5up == 0) {
+
+      p5top = p5top + (63 * d)
+     countp5up++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p5top, SPRING_CONFIG),
+      left: spring(p5left, SPRING_CONFIG),
+      
+      
+    };
+  
+  }
+  p5Right(){
+
+    if (countp5right == 0) {
+
+      p5left = p5left + 63
+      p5top = p5top + 63
+      countp5right++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p5top, SPRING_CONFIG),
+      left: spring(p5left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+    p5Left(){
+
+    if (countp5left == 0) {
+
+      p5left = p5left - 63
+      p5top = p5top + 63
+      countp5left++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p5top, SPRING_CONFIG),
+      left: spring(p5left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 initialP6(){
 
   return {
@@ -295,6 +768,99 @@ initialP6(){
       
     };
   }
+
+
+
+    p6Up(d){
+
+    if (countp6up == 0) {
+
+      p6top = p6top + (63 * d)
+     countp6up++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p6top, SPRING_CONFIG),
+      left: spring(p6left, SPRING_CONFIG),
+      
+      
+    };
+  
+  }
+  p6Right(){
+
+    if (countp6right == 0) {
+
+      p6left = p6left + 63
+      p6top = p6top + 63
+      countp6right++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p6top, SPRING_CONFIG),
+      left: spring(p6left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+    p6Left(){
+
+    if (countp6left == 0) {
+
+      p6left = p6left - 63
+      p6top = p6top + 63
+      countp6left++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p6top, SPRING_CONFIG),
+      left: spring(p6left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -312,6 +878,99 @@ initialP6(){
 
 
 
+
+  p7Up(d){
+
+    if (countp7up == 0) {
+
+      p7top = p7top + (63 * d)
+     countp7up++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p7top, SPRING_CONFIG),
+      left: spring(p7left, SPRING_CONFIG),
+      
+      
+    };
+  
+  }
+  p7Right(){
+
+    if (countp7right == 0) {
+
+      p7left = p7left + 63
+      p7top = p7top + 63
+      countp7right++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p7top, SPRING_CONFIG),
+      left: spring(p7left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+    p7Left(){
+
+    if (countp7left == 0) {
+
+      p7left = p7left - 63
+      p7top = p7top + 63
+      countp7left++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p7top, SPRING_CONFIG),
+      left: spring(p7left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 initialP8(){
 
   return {
@@ -325,7 +984,69 @@ initialP8(){
   }
 
 
+  p8Up(d){
 
+    if (countp8up == 0) {
+
+      p8top = p8top + (63 * d)
+     countp8up++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p8top, SPRING_CONFIG),
+      left: spring(p8left, SPRING_CONFIG),
+      
+      
+    };
+  
+  }
+  p8Right(){
+
+    if (countp8right == 0) {
+
+      p8left = p8left + 63
+      p8top = p8top + 63
+      countp8right++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p8top, SPRING_CONFIG),
+      left: spring(p8left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
+
+
+
+    p8Left(){
+
+    if (countp8left == 0) {
+
+      p8left = p8left - 63
+      p8top = p8top + 63
+      countp8left++;
+    }
+
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(p8top, SPRING_CONFIG),
+      left: spring(p8left, SPRING_CONFIG),
+      
+      
+    };
+
+
+
+  }
 
 
 
@@ -1762,6 +2483,18 @@ else {
       stylek2 = this.Knight2LeftDownTwo()
       styleb2 = this.Bishop2DownLeft(4,4)
       stylec2 = this.DownOneCastle2(7)
+      stylep1 = this.p1Up(1)
+      stylep2 = this.p2Up(2)
+      stylep3 = this.p3Up(2)
+      stylep4 = this.p4Up(1)
+      stylep5 = this.p5Up(1)
+      stylep6 = this.p6Up(1)
+      stylep7 = this.p7Up(2)
+      stylep8 = this.p8Up(2)
+
+
+
+
     }
 
     else if (count > 300 && count < 400)
@@ -1776,6 +2509,15 @@ else {
     stylek2 = this.Knight2RightDownOne()
     styleb2 = this.Bishop2DownRight(3,3)
     stylec2 = this.LeftOneCastle2(6)
+    stylep1 = this.p1Right()
+    stylep2 = this.p2Right()
+    stylep3 = this.p3Right()
+    stylep4 = this.p4Right()
+    stylep5 = this.p5Left()
+    stylep6 = this.p6Left()
+    stylep7 = this.p7Left()
+    stylep8 = this.p8Left()
+
     }
 
     else if (count > 400 && count < 600) {
