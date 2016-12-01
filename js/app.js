@@ -3475,7 +3475,9 @@ var Knight = React.createClass({
         color: "white",
         fontSize: 50,
         fontWeight: 'bold',
-        cursor: 'move'
+        cursor: 'move',
+        position: 'relative',
+        zIndex: 3
       }}>
         ♘
       </span>
@@ -3546,7 +3548,10 @@ var Square = React.createClass({
 
   render: function () {
     var black = this.props.black;
-    var fill = black ? 'grey' : 'green';
+   
+
+   var fill = black ? 'green' : 'grey';
+
     var stroke = black ? 'green' : 'grey';
 
     return (
@@ -3651,67 +3656,20 @@ var BoardSquare = React.createClass({
       <div style={{
         position: 'relative',
         width: '100%',
-        height: '100%'
+        height: '100%',
+        zIndex: "0"
       }}>
         <Square black={black}>
           {this.props.children}
         </Square>
-        {isOver && !canDrop && this.renderOverlay('red')}
-        {!isOver && canDrop && this.renderOverlay('yellow')}
-        {isOver && canDrop && this.renderOverlay('blue')}
+        {x == 2 && y == 7 && count < 140 && this.renderOverlay('purple')}
+       
       </div>
     );
   }
 })
 
  
-
-var BoardSquare2 = React.createClass({
-  propTypes: {
-    x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired,
-    isOver: PropTypes.bool.isRequired,
-    canDrop: PropTypes.bool.isRequired
-  },
-
-  renderOverlay: function (color) {
-    return (
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        height: '100%',
-        width: '100%',
-        zIndex: 0, 
-        opacity: 0.5,
-        backgroundColor: color,
-      }} />
-    );
-  },
-
-  render: function () {
-    var x = this.props.x;
-    var y = this.props.y;
-    var connectDropTarget = this.props.connectDropTarget;
-    var isOver = this.props.isOver;
-    var black = (x + y) % 2 === 1;
-    var canDrop = this.props.canDrop
-    return connectDropTarget(
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        height: '100%'
-      }}>
-        <Square black={black}>
-          {this.props.children}
-        </Square>
-        {isOver && !canDrop && this.renderOverlay('red')}
-        {!isOver && canDrop && this.renderOverlay('yellow')}
-        {isOver && canDrop && this.renderOverlay('blue')}
-      </div>
-    );
-  }
-})
 
 
 
@@ -3747,7 +3705,7 @@ var BoardSquare2 = React.createClass({
 
  var BS1 = DropTarget(ItemTypes.KNIGHT, squareTargetK, collectme)(BoardSquare)
  
- var BS2 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare2)
+ var BS2 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare)
 // function checkTarget(){
 
 //   if(dragstate == 'k'){
@@ -3799,7 +3757,7 @@ renderSquare: function (i,BS) {
       
   return (
     <div key={i}
-         style={{ width: '12.5%', height: '12.5%' }}>
+         style={{ width: '12.5%', height: '12.5%', color: "red",  backgroundColor: "blue"}}>
       <span>
 
       <BS x={x}
