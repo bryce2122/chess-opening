@@ -3014,55 +3014,6 @@
 	  }
 	});
 	
-	var BoardSquare2 = React.createClass({
-	  displayName: 'BoardSquare2',
-	
-	  propTypes: {
-	    x: PropTypes.number.isRequired,
-	    y: PropTypes.number.isRequired,
-	    isOver: PropTypes.bool.isRequired,
-	    canDrop: PropTypes.bool.isRequired
-	  },
-	
-	  renderOverlay: function renderOverlay(color) {
-	    return React.createElement('div', { style: {
-	        position: 'absolute',
-	        top: 0,
-	        left: 0,
-	        height: '100%',
-	        width: '100%',
-	        zIndex: 0,
-	        opacity: 0.5,
-	        backgroundColor: color
-	      } });
-	  },
-	
-	  render: function render() {
-	    var x = this.props.x;
-	    var y = this.props.y;
-	    var connectDropTarget = this.props.connectDropTarget;
-	    var isOver = this.props.isOver;
-	    var black = (x + y) % 2 === 1;
-	    var canDrop = this.props.canDrop;
-	    return connectDropTarget(React.createElement(
-	      'div',
-	      { style: {
-	          position: 'relative',
-	          width: '100%',
-	          height: '100%'
-	        } },
-	      React.createElement(
-	        Square,
-	        { black: black },
-	        this.props.children
-	      ),
-	      isOver && !canDrop && this.renderOverlay('red'),
-	      !isOver && canDrop && this.renderOverlay('yellow'),
-	      isOver && canDrop && this.renderOverlay('blue')
-	    ));
-	  }
-	});
-	
 	var flowme = "what";
 	function bf() {
 	
@@ -3071,7 +3022,7 @@
 	
 	var BS1 = DropTarget(ItemTypes.KNIGHT, squareTargetK, collectme)(BoardSquare);
 	
-	var BS2 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare2);
+	var BS2 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare);
 	// function checkTarget(){
 	
 	//   if(dragstate == 'k'){
@@ -3173,7 +3124,7 @@
 	
 	function dragState() {
 	
-	  B = DragDropContext(HTML5Backend)(Board);
+	  console.log(dragstate);
 	}
 	
 	setInterval(dragState, 100);
@@ -3204,11 +3155,7 @@
 	  ), document.getElementById('container'));
 	});
 	
-	$(".t").animate({
-	  left: 100,
-	  top: 100
 	
-	}, 'slow');
 
 /***/ },
 /* 1 */

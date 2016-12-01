@@ -20,6 +20,7 @@
     "webpack": "^1.13.3"
   },
   "dependencies": {
+    "lodash.flow": "^3.5.0",
     "lodash.range": "^3.2.0",
     "react-dnd": "^2.1.4",
     "react-dnd-html5-backend": "^2.1.2",

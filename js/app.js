@@ -12,7 +12,10 @@ var DragDropContext = require('react-dnd').DragDropContext
 var HTML5Backend = require('react-dnd-html5-backend');
 var DragSource = require('react-dnd').DragSource;
 var DropTarget = require('react-dnd').DropTarget;
+var flow = require('lodash/flow');
 var count = 0;
+var BS1;
+var dragstate;
 var arr = []
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group')
 var PropTypes = React.PropTypes;
@@ -60,7 +63,7 @@ var countk1leftup1 = 0;
 var countk1leftdown2 = 0;
 var countk1leftdown1 = 0;
 
-
+var index = 0;
 var countqd = 0;
 var countqu = 0;
 var countqr = 0;
@@ -186,6 +189,31 @@ function finalChildDeltaPositions(index) {
     deltaY: FLY_OUT_RADIUS * Math.sin(toRadians(angle)) + (CHILD_BUTTON_DIAM/2)
   };
 }
+
+
+
+function RightOneCastle(d) {
+    if(countmeup == 0) {
+    theleft1 = theleft + (63 * d)
+    theleft = theleft1}
+    countmeup++;
+       return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(thetop , SPRING_CONFIG),
+      left: spring( theleft , SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+
+
+
+var mstyle = RightOneCastle(4)
+
+
 
 
 class APP extends React.Component {
@@ -3205,22 +3233,56 @@ return <span style={{
  });    
 
  var EKnight = React.createClass({
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   render: function () {
 
     
   
-return <span className="k" style={{
-        
+
+
+return (
+      <Motion style={mstyle} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        zIndex: 3,
         color: "black",
         fontSize: 50,
         fontWeight: 'bold',
-        cursor: 'move',
-        position: 'relative'
+        cursor: 'move'
       }}>
-      ♘</span>
+{ String.fromCharCode(9820) }</span>
+      </div>
 
-  }
- });
+    }
+      </Motion>
+    );
+ }});
 
 
 var EBishop = React.createClass({
@@ -3309,8 +3371,8 @@ return <span style={{
 
 
 
-var knightPosition = [1, 7];
-
+var knightPosition = [2, 7];
+var knightPosition2 = [5,7]
 var observer = null;
 
 function emitChange() {
@@ -3342,15 +3404,50 @@ var canMoveKnight = function (toX, toY) {
          (Math.abs(dx) === 1 && Math.abs(dy) === 2);
 }
 
+var moveKnight2 = function (toX, toY) {
+  knightPosition2 = [toX, toY];
+  emitChange();
+}
+
+var canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
+         (Math.abs(dx) === 1 && Math.abs(dy) === 2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 var ItemTypes = {
-  KNIGHT: 'knight'
+  KNIGHT: 'knight',
+  KNIGHT2: 'knight'
+
 };
 
 var knightSource = {
   beginDrag: function (props) {
-    return {};
+    return {name: props.id};
   }
 };
+
+var knight2Source = {
+  beginDrag: function (props) {
+    return {name: props.id};
+  }
+};
+
 
 function collect(connect, monitor) {
   return {
@@ -3369,7 +3466,9 @@ var Knight = React.createClass({
   render: function () {
     var connectDragSource = this.props.connectDragSource;
     var isDragging = this.props.isDragging;
-
+    if(isDragging){
+      dragstate = "k"
+    }
     return connectDragSource(
       <span style={{
         opacity: isDragging ? 0.5 : 1,
@@ -3385,8 +3484,51 @@ var Knight = React.createClass({
 });
 
 
+var k = "knight"
+var K = DragSource(k, knightSource, collect)(Knight);
 
-var K = DragSource(ItemTypes.KNIGHT, knightSource, collect)(Knight);
+
+
+
+var Knight2 = React.createClass({
+  propTypes: {
+    connectDragSource: PropTypes.func.isRequired,
+    isDragging: PropTypes.bool.isRequired
+  },
+
+  render: function () {
+    var connectDragSource = this.props.connectDragSource;
+    var isDragging = this.props.isDragging;
+
+    if(isDragging){
+
+      dragstate = "k2";
+    }
+
+    return connectDragSource(
+      <span style={{
+        opacity: isDragging ? 0.5 : 1,
+        color: "white",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+        ♘
+      </span>
+    );
+  }
+});
+
+var k2 = "knight2"
+
+var K2 = DragSource(k2, knight2Source, collect)(Knight2);
+
+
+
+
+
+
+
 
 
 
@@ -3421,7 +3563,7 @@ var Square = React.createClass({
 });
 
 
-var squareTarget = {
+var squareTargetK = {
   canDrop: function (props) {
     return canMoveKnight(props.x, props.y);
   },
@@ -3429,15 +3571,51 @@ var squareTarget = {
   drop: function (props) {
     moveKnight(props.x, props.y);
   }
+
+
 };
+
+var squareTargetK2 = {
+  canDrop: function (props) {
+    return canMoveKnight2(props.x, props.y);
+  },
+
+  drop: function (props) {
+    moveKnight2(props.x, props.y);
+  }
+
+
+};
+
+
+
+
 
 function collectme(connect, monitor) {
   return {
     connectDropTarget: connect.dropTarget(),
     isOver: monitor.isOver(),
-    canDrop: monitor.canDrop()
+    canDrop: monitor.canDrop(),
+    
+
+
   };
 }
+ function collectme2(connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver(),
+    canDrop: monitor.canDrop(),
+    
+
+
+  };
+}
+
+
+
+
+
 
 var BoardSquare = React.createClass({
   propTypes: {
@@ -3455,7 +3633,7 @@ var BoardSquare = React.createClass({
         left: 0,
         height: '100%',
         width: '100%',
-        zIndex: 1, 
+        zIndex: 0, 
         opacity: 0.5,
         backgroundColor: color,
       }} />
@@ -3480,17 +3658,120 @@ var BoardSquare = React.createClass({
         </Square>
         {isOver && !canDrop && this.renderOverlay('red')}
         {!isOver && canDrop && this.renderOverlay('yellow')}
-        {isOver && canDrop && this.renderOverlay('green')}
+        {isOver && canDrop && this.renderOverlay('blue')}
       </div>
     );
   }
 })
 
-var BS = DropTarget(ItemTypes.KNIGHT, squareTarget, collectme)(BoardSquare);
+ 
 
-  arr.push(<K/>)
-    arr.push(<EKnight/>)
+var BoardSquare2 = React.createClass({
+  propTypes: {
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+    isOver: PropTypes.bool.isRequired,
+    canDrop: PropTypes.bool.isRequired
+  },
 
+  renderOverlay: function (color) {
+    return (
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        height: '100%',
+        width: '100%',
+        zIndex: 0, 
+        opacity: 0.5,
+        backgroundColor: color,
+      }} />
+    );
+  },
+
+  render: function () {
+    var x = this.props.x;
+    var y = this.props.y;
+    var connectDropTarget = this.props.connectDropTarget;
+    var isOver = this.props.isOver;
+    var black = (x + y) % 2 === 1;
+    var canDrop = this.props.canDrop
+    return connectDropTarget(
+      <div style={{
+        position: 'relative',
+        width: '100%',
+        height: '100%'
+      }}>
+        <Square black={black}>
+          {this.props.children}
+        </Square>
+        {isOver && !canDrop && this.renderOverlay('red')}
+        {!isOver && canDrop && this.renderOverlay('yellow')}
+        {isOver && canDrop && this.renderOverlay('blue')}
+      </div>
+    );
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ var flowme = "what"
+ function bf() {
+
+  return (flow(
+   DropTarget(ItemTypes.KNIGHT, squareTargetK, collectme),
+   DropTarget(yes, squareTargetK2, collectme),
+   DropTarget(ItemTypes.KNIGHT, squareTargetK, collectme)
+   
+
+
+)(BoardSquare));
+
+
+ }
+
+ var BS1 = DropTarget(ItemTypes.KNIGHT, squareTargetK, collectme)(BoardSquare)
+ 
+ var BS2 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare2)
+// function checkTarget(){
+
+//   if(dragstate == 'k'){
+
+//     BS1 = DropTarget(k, squareTargetK, collectme)(BoardSquare)
+
+//   }
+// else if(dragstate == 'k2'){
+
+//   BS1 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare)
+// }
+
+// else {
+
+//   BS1 = DropTarget(k, squareTargetK, collectme)(BoardSquare)
+
+// }
+
+
+// }
+
+
+//   setInterval(checkTarget, 100); 
+    
 
 
 var Board = React.createClass({
@@ -3502,18 +3783,32 @@ var Board = React.createClass({
 
   
 
-renderSquare: function (i) {
+renderSquare: function (i,BS) {
   var x = i % 8;
   var y = Math.floor(i / 8);
   var kn = this.renderPiece(x,y)
  console.log(kn)
+  
+ 
+
+
+
+
+     
+
+      
   return (
     <div key={i}
          style={{ width: '12.5%', height: '12.5%' }}>
+      <span>
+
       <BS x={x}
                    y={y}>
         {this.renderPiece(x, y)}
+        
       </BS>
+      
+    </span>
     </div>
   );
 },
@@ -3521,6 +3816,8 @@ renderSquare: function (i) {
 renderPiece: function (x, y) {
   var knightX = this.props.knightPosition[0]
   var knightY = this.props.knightPosition[1];
+  var knight2X = this.props.knightPosition2[0]
+  var knight2Y = this.props.knightPosition2[1]
   console.log(knightPosition[0])
   console.log(count);
   count++;
@@ -3528,8 +3825,9 @@ renderPiece: function (x, y) {
   
     return <K/>
   }
-else if(x == 0 && y == 0) {
+else if(x == knight2X && y == knight2Y) {
 
+return <K2/>
   
 }
 
@@ -3591,8 +3889,18 @@ else if(y == 1 ){
 
 render: function () {
 var squares = [];
+    console.log("rerendering")
+    console.log(BS1)
     for (let i = 0; i < 64; i++) {
-      squares.push(this.renderSquare(i));
+      
+
+      if(count < 128) {
+        squares.push(this.renderSquare(i,BS1));}
+
+        else {
+          squares.push(this.renderSquare(i,BS2));
+
+        }
     }
     return (
       <div style={{
@@ -3610,11 +3918,41 @@ var squares = [];
 
  var B = DragDropContext(HTML5Backend)(Board);
 
+
+
+function dragState(){
+
+   B = DragDropContext(HTML5Backend)(Board);
+}
+
+setInterval(dragState, 100);
+
+
+var knightPosition = [2, 7];
+
+var observer = null;
+
+function emitChange() {
+  observer(knightPosition);
+
+}
+
+var observe = function (o) {
+  if (observer) {
+    throw new Error('Multiple observers not implemented.');
+  }
+
+  observer = o;
+  emitChange();
+}
+
+
+
 observe(function (knightPosition) {
   ReactDOM.render(
     <span>
     
-    <B knightPosition={knightPosition} />
+    <B knightPosition={knightPosition} knightPosition2={knightPosition2} />
    <APP/>
     </span>,
    
