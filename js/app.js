@@ -36,7 +36,7 @@ var stylep5;
 var stylep6;
 var stylep7;
 var stylep8;
-var thetop = -490
+var thetop = 15
 var thetop1;
 var countme = 0;
 var move;
@@ -46,15 +46,15 @@ var theleft1;
 var countup = 0;
 var countleft = 0;
 var bleft = 70;
-var btop = -538;
+var btop = 15;
 var countbdr = 0;
 var countbdl = 0;
 var countbur = 0;
 var countbul = 0;
 var k1left = 133;
-var k1top = -586;
+var k1top = 15;
 var qleft = 196;
-var qtop = -634;
+var qtop = 15;
 var countk1rightup2 = 0;
 var countk1rightup1 = 0;
 var countk1rightdown2 = 0;
@@ -63,7 +63,6 @@ var countk1leftup2 = 0;
 var countk1leftup1 = 0;
 var countk1leftdown2 = 0;
 var countk1leftdown1 = 0;
-var killsquare = [];
 var index = 0;
 var countqd = 0;
 var countqu = 0;
@@ -73,7 +72,7 @@ var countqdr = 0;
 var countqdl = 0;
 var countqur = 0;
 var countqul = 0;
-var kingtop = -682;
+var kingtop = 15;
 var kingleft = 259;
 var countkd = 0;
 var countku = 0;
@@ -83,7 +82,7 @@ var countkdr = 0;
 var countkdl = 0;
 var countkur = 0;
 var countkul = 0;
-var k2top = -730;
+var k2top = 15;
 var k2left = 322;
 var countk2rightup2 = 0;
 var countk2rightup1 = 0;
@@ -98,29 +97,29 @@ var countb2dl = 0;
 var countb2ur = 0;
 var countb2ul = 0;
 var b2left = 385;
-var b2top = -778
+var b2top = 15
 var countme2 = 0;
 var countmeup2 = 0
 var countup2 = 0;
 var countleft2 = 0;
 var c2left = 448;
-var c2top =  -826;
+var c2top =  15;
 var p1left = 7;
-var p1top = -811;
+var p1top = 81;
 var p2left = 70;
-var p2top = -859;
+var p2top = 81;
 var p3left = 133;
-var p3top = -907;
+var p3top = 81;
 var p4left = 196;
-var p4top = -955;
+var p4top = 81;
 var p5left = 259;
-var p5top = -1003;
+var p5top = 81;
 var p6left = 322;
-var p6top = -1051;
+var p6top = 81;
 var p7left = 385;
-var p7top = -1099;
+var p7top = 81;
 var p8left = 448;
-var p8top = -1147;
+var p8top = 81;
 var countp1up = 0;
 var countp1right = 0;
 var countp1left = 0;
@@ -148,9 +147,10 @@ var countp8left = 0;
 var check = []
 var a;
 var grid = []
- 
- 
-
+var killsquare = [0,1,2,3,4,5,6,7,8,9,10,12,13,14,15]
+var prevkillsquare = [0,1,2,3,4,5,6,7,8,9,10,12,13,14,15]
+var prevc = []
+var pcheck = [2,7,5,7]
  
 
 
@@ -248,8 +248,13 @@ class APP extends React.Component {
   
    
 setInterval(this.animateChildButtonsWithDelay, 5000);
+ 
 
-setInterval(this.cPosition, 1000) 
+
+  
+
+
+setInterval(this.cPosition, 200) 
   }
 
   
@@ -260,6 +265,7 @@ setInterval(this.cPosition, 1000)
     grid = []
     var top = 18
     var left = 15
+   prevkillsquare = killsquare.slice();
     
     for(i = 0; i < 64; i++) {
     square = {[i]: {top: top, left: left, empty: true}}
@@ -276,39 +282,39 @@ setInterval(this.cPosition, 1000)
 
 
 
-    console.log("The position of castle one is" + " " + JSON.stringify($("#C1").offset(),null,4))
+    // console.log("The position of castle one is" + " " + JSON.stringify($("#C1").offset(),null,4))
     check.push([$("#C1").offset().top,$("#C1").offset().left])
-    console.log("The position of knight one is" + " " + JSON.stringify($("#k1").offset(),null,4))
+    // console.log("The position of knight one is" + " " + JSON.stringify($("#k1").offset(),null,4))
     check.push([$("#k1").offset().top,$("#k1").offset().left])
-    console.log("The position of bishop one is" + " " + JSON.stringify($("#b1").offset(),null,4))
+    // console.log("The position of bishop one is" + " " + JSON.stringify($("#b1").offset(),null,4))
     check.push([$("#b1").offset().top,$("#b1").offset().left])
-    console.log("The position of the queen one is" + " " + JSON.stringify($("#q").offset(),null,4))
+    // console.log("The position of the queen one is" + " " + JSON.stringify($("#q").offset(),null,4))
     check.push([$("#q").offset().top,$("#q").offset().left])
-    console.log("The position of the king one is" + " " + JSON.stringify($("#k").offset(),null,4))
+    // console.log("The position of the king one is" + " " + JSON.stringify($("#k").offset(),null,4))
     check.push([$("#k").offset().top,$("#k").offset().left])
-    console.log("The position of knight two is" + " " + JSON.stringify($("#k2").offset(),null,4))
+    // console.log("The position of knight two is" + " " + JSON.stringify($("#k2").offset(),null,4))
     check.push([$("#k2").offset().top,$("#k2").offset().left])
-    console.log("The position of bishop two is" + " " + JSON.stringify($("#b2").offset(),null,4))
+    // console.log("The position of bishop two is" + " " + JSON.stringify($("#b2").offset(),null,4))
     check.push([$("#b2").offset().top,$("#b2").offset().left])
-    console.log("The position of castle two is" + " " + JSON.stringify($("#c2").offset(),null,4))
+    // console.log("The position of castle two is" + " " + JSON.stringify($("#c2").offset(),null,4))
     check.push([$("#c2").offset().top,$("#c2").offset().left])
-    console.log("The position of pawn one is" + " " + JSON.stringify($("#p1").offset(),null,4))
+    // console.log("The position of pawn one is" + " " + JSON.stringify($("#p1").offset(),null,4))
     check.push([$("#p1").offset().top,$("#p1").offset().left])
-    console.log("The position of pawn two is" + " " + JSON.stringify($("#p2").offset(),null,4))
+    // console.log("The position of pawn two is" + " " + JSON.stringify($("#p2").offset(),null,4))
     check.push([$("#p2").offset().top,$("#p2").offset().left])
-    console.log("The position of pawn three is" + " " + JSON.stringify($("#p3").offset(),null,4))
+    // console.log("The position of pawn three is" + " " + JSON.stringify($("#p3").offset(),null,4))
     check.push([$("#p3").offset().top,$("#p3").offset().left])
-    console.log("The position of pawn four is" + " " + JSON.stringify($("#p4").offset(),null,4))
+    // console.log("The position of pawn four is" + " " + JSON.stringify($("#p4").offset(),null,4))
     check.push([$("#p4").offset().top,$("#C1").offset().left])
-    console.log("The position of pawn five is" + " " + JSON.stringify($("#p5").offset(),null,4))
+    // console.log("The position of pawn five is" + " " + JSON.stringify($("#p5").offset(),null,4))
     check.push([$("#p5").offset().top,$("#p5").offset().left])
-    console.log("The position of pawn six is" + " " + JSON.stringify($("#p6").offset(),null,4))
+    // console.log("The position of pawn six is" + " " + JSON.stringify($("#p6").offset(),null,4))
     check.push([$("#p6").offset().top,$("#p6").offset().left])
-    console.log("The position of pawn seven is" + " " + JSON.stringify($("#p7").offset(),null,4))
+    // console.log("The position of pawn seven is" + " " + JSON.stringify($("#p7").offset(),null,4))
     check.push([$("#p7").offset().top,$("#p7").offset().left])
-    console.log("The position of pawn eight is" + " " + JSON.stringify($("#p8").offset(),null,4))
+    // console.log("The position of pawn eight is" + " " + JSON.stringify($("#p8").offset(),null,4))
     check.push([$("#p8").offset().top,$("#p8").offset().left])
-    console.log("Getting top pos of cast1 is " + " " + $("#C1").offset().top )
+    // console.log("Getting top pos of cast1 is " + " " + $("#C1").offset().top )
  
 
 
@@ -323,16 +329,16 @@ setInterval(this.cPosition, 1000)
     })
      })
 
-console.log(check)
+// console.log(check)
 
-console.log(grid)
+// console.log(grid)
 killsquare = grid.filter(c => c[Object.keys(c)].empty === false).map(c => Object.keys(c)).reduce(
     (a,b) => a.concat(b))
 
 
 
 
-console.log("the killsquare" + " " + killsquare)
+// console.log("the killsquare" + " " + killsquare)
 
 
 
@@ -2500,7 +2506,7 @@ initialCastle() {
     });
 
      this.animateChildButtonsWithDelay();
-     console.log("animating")
+     // console.log("animating")
    }
   }
 
@@ -2513,11 +2519,22 @@ initialCastle() {
     range(NUM_CHILDREN).forEach((index) => {
       let {childButtons} = this.state;
       setTimeout(() => {
-        console.log("the index is " + index)
+        // console.log("the index is " + index)
         childButtons[index]  = this.renderChildButton(index);
         this.setState({childButtons: childButtons.slice(0)});
       }, index * 50);
+    
+
+
     });
+  
+
+if(count == 1){
+
+$("#p4").hide()
+
+}
+
   }
 
   renderChildButton(index) {
@@ -2527,7 +2544,7 @@ initialCastle() {
    
 
 
-    console.log("the index is" + index)
+    // console.log("the index is" + index)
     
     if(index == 0){
     
@@ -2572,14 +2589,14 @@ else {
 
 
   var es =  decodeURIComponent(escape(c));
- console.log(es);
+ // console.log(es);
 
     
     
-      console.log("animation")
+      // console.log("animation")
     if(index == 0){
 
-    if (count <= 130) {
+    if (count == 0) {
       
       style1 = this.initialBishopOne();
       stylec = this.initialCastle()
@@ -2599,108 +2616,108 @@ else {
       stylep8 = this.initialP8()
     }
 
-    else if (count < 300 && count > 135) {
-      style1 = this.BishopDownRight(4,4);
-      move = 6
-      stylec = this.DownOneCastle(2)
-      stylek1 = this.KnightOneLeftDownTwo()
-      styleq = this.QueenDown(7)
-      styleking = this.KingDown()
-      stylek2 = this.Knight2LeftDownTwo()
-      styleb2 = this.Bishop2DownLeft(4,4)
-      stylec2 = this.DownOneCastle2(7)
-      stylep1 = this.p1Up(1)
-      stylep2 = this.p2Up(2)
-      stylep3 = this.p3Up(2)
-      stylep4 = this.p4Up(1)
-      stylep5 = this.p5Up(1)
-      stylep6 = this.p6Up(1)
-      stylep7 = this.p7Up(2)
-      stylep8 = this.p8Up(2)
+    else if (count == 1) {
+      // style1 = this.BishopDownRight(4,4);
+      // move = 6
+      // stylec = this.DownOneCastle(2)
+      // stylek1 = this.KnightOneLeftDownTwo()
+      // styleq = this.QueenDown(7)
+      // styleking = this.KingDown()
+      // stylek2 = this.Knight2LeftDownTwo()
+      // styleb2 = this.Bishop2DownLeft(4,4)
+      // stylec2 = this.DownOneCastle2(7)
+      // stylep1 = this.p1Up(1)
+      // stylep2 = this.p2Up(2)
+      // stylep3 = this.p3Up(2)
+      stylep4 = this.p4Up(2)
+      // stylep5 = this.p5Up(1)
+      // stylep6 = this.p6Up(1)
+      // stylep7 = this.p7Up(2)
+      // stylep8 = this.p8Up(2)
 
 
 
 
     }
 
-    else if (count > 300 && count < 400)
+    else if (count == 2)
 
     {
-    move = 6;
-    stylec = this.RightOneCastle(move)
-    style1 = this.BishopDownLeft(3,3)
-    stylek1 = this.KnightOneRightDownOne()
-    styleq = this.QueenUp(6)
-    styleking = this.KingRight();
-    stylek2 = this.Knight2RightDownOne()
-    styleb2 = this.Bishop2DownRight(3,3)
-    stylec2 = this.LeftOneCastle2(6)
-    stylep1 = this.p1Right()
-    stylep2 = this.p2Right()
-    stylep3 = this.p3Right()
-    stylep4 = this.p4Right()
-    stylep5 = this.p5Left()
-    stylep6 = this.p6Left()
-    stylep7 = this.p7Left()
-    stylep8 = this.p8Left()
+    // move = 6;
+    // stylec = this.RightOneCastle(move)
+    // style1 = this.BishopDownLeft(3,3)
+    // stylek1 = this.KnightOneRightDownOne()
+    // styleq = this.QueenUp(6)
+    // styleking = this.KingRight();
+    // stylek2 = this.Knight2RightDownOne()
+    // styleb2 = this.Bishop2DownRight(3,3)
+    // stylec2 = this.LeftOneCastle2(6)
+    // stylep1 = this.p1Right()
+    // stylep2 = this.p2Right()
+    // stylep3 = this.p3Right()
+    // stylep4 = this.p4Right()
+    // stylep5 = this.p5Left()
+    // stylep6 = this.p6Left()
+    // stylep7 = this.p7Left()
+    // stylep8 = this.p8Left()
 
     }
 
-    else if (count > 400 && count < 600) {
-  move = 3
-  stylec = this.UpOneCastle(1)
-  style1 = this.BishopUpRight(3,3)
-  stylek1 = this.KnightOneLeftUpOne()
-  styleq = this.QueenRight(4)
-  styleking = this.KingUp() 
-  stylek2 = this.Knight2LeftUpOne()  
-  styleb2 = this.Bishop2UpLeft(3,3) 
-  stylec2 = this.UpOneCastle2(1)
+    else if (count == 3) {
+  // move = 3
+  // stylec = this.UpOneCastle(1)
+  // style1 = this.BishopUpRight(3,3)
+  // stylek1 = this.KnightOneLeftUpOne()
+  // styleq = this.QueenRight(4)
+  // styleking = this.KingUp() 
+  // stylek2 = this.Knight2LeftUpOne()  
+  // styleb2 = this.Bishop2UpLeft(3,3) 
+  // stylec2 = this.UpOneCastle2(1)
     }
-else if (count > 650 && count < 800) {
-    move = 4
-   stylec = this.RightOneCastle(3)
- style1 = this.BishopUpLeft(2,2)
-stylek1 = this.KnightOneRightDownTwo()
-styleq = this.QueenLeft(4)
-styleking = this.KingLeft();
-stylek2 = this.Knight2RightDownTwo()
-styleb2 = this.Bishop2UpRight(2,2)
-stylec2 = this.RightOneCastle2(5)
+else if (count == 4) {
+//     move = 4
+//    stylec = this.RightOneCastle(3)
+//  style1 = this.BishopUpLeft(2,2)
+// stylek1 = this.KnightOneRightDownTwo()
+// styleq = this.QueenLeft(4)
+// styleking = this.KingLeft();
+// stylek2 = this.Knight2RightDownTwo()
+// styleb2 = this.Bishop2UpRight(2,2)
+// stylec2 = this.RightOneCastle2(5)
 }
 
 
-else if(count > 800 && count < 950){
+else if(count == 5){
 
-stylek1 = this.KnightOneRightUpTwo()
-styleq = this.QueenDownRight(4,4)
-styleking = this.KingDownLeft();
-stylek2 = this.Knight2RightUpTwo()
+// stylek1 = this.KnightOneRightUpTwo()
+// styleq = this.QueenDownRight(4,4)
+// styleking = this.KingDownLeft();
+// stylek2 = this.Knight2RightUpTwo()
 }
     
-else if(count > 950 && count < 1100){
-stylek1 = this.KnightOneLeftDownOne()
-styleq = this.QueenUpLeft(4,4)
-styleking = this.KingDownRight()  
-stylek2 = this.Knight2LeftDownOne() 
+else if(count == 6){
+// stylek1 = this.KnightOneLeftDownOne()
+// styleq = this.QueenUpLeft(4,4)
+// styleking = this.KingDownRight()  
+// stylek2 = this.Knight2LeftDownOne() 
   } 
 
 
-else if(count > 1100 && count < 1250){
+else if(count == 7){
 
-stylek1 = this.KnightOneLeftUpTwo()
-styleq = this.QueenDownLeft(3,3)
-styleking =this.KingUpLeft();
-stylek2 = this.Knight2LeftUpTwo()
+// stylek1 = this.KnightOneLeftUpTwo()
+// styleq = this.QueenDownLeft(3,3)
+// styleking =this.KingUpLeft();
+// stylek2 = this.Knight2LeftUpTwo()
 }
 
- else if(count > 1250) {
+ else if(count == 8) {
 
 
-stylek1 = this.KnightOneRightUpOne()
-styleq = this.QueenUpRight(4,4)
-styleking = this.KingUpRight();
-stylek2 = this.Knight2RightUpOne()
+// stylek1 = this.KnightOneRightUpOne()
+// styleq = this.QueenUpRight(4,4)
+// styleking = this.KingUpRight();
+// stylek2 = this.Knight2RightUpOne()
  }  
 
 }
@@ -3290,7 +3307,7 @@ return (
   render() {
     let {isOpen, childButtons} = this.state;
     let mainButtonRotation = isOpen ? {rotate: spring(0, [500, 30])} : {rotate: spring(-135, [500, 30])};
-    console.log("rendering");
+    // console.log("rendering");
     
     return (
       
@@ -3469,12 +3486,14 @@ var EPawn = React.createClass({
 
     
   
-return <span style={{
+return <span id="ep" style={{
         
         color: "black",
         fontSize: 50,
         fontWeight: 'bold',
-        cursor: 'move'
+        cursor: 'move',
+        position: 'relative',
+        zIndex: "20"
       }}>
       ♟</span>
 
@@ -3625,7 +3644,7 @@ var Knight = React.createClass({
       dragstate = "k"
     }
     return connectDragSource(
-      <span style={{
+      <span id="wk" style={{
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
@@ -3717,7 +3736,10 @@ var Square = React.createClass({
         color: stroke,
         width: '100%',
         height: '100%',
-        opacity: 1.0
+        position: 'relative',
+        zIndex: -1
+
+        
       }}>
         {this.props.children}
       </div>
@@ -3797,7 +3819,7 @@ var BoardSquare = React.createClass({
         height: '100%',
         width: '100%',
         zIndex: 2, 
-        opacity: 0.5,
+        
         backgroundColor: color,
       }} />
     );
@@ -3815,7 +3837,7 @@ var BoardSquare = React.createClass({
         position: 'relative',
         width: '100%',
         height: '100%',
-        zIndex: "0"
+        zIndex: 0
       }}>
         <Square black={black}>
           {this.props.children}
@@ -3902,6 +3924,27 @@ var Board = React.createClass({
 
   
 
+componentDidMount() {
+
+setInterval(this.checkpos,10)
+
+
+},
+
+
+checkpos() {
+
+if(prevkillsquare.toString() != killsquare.toString()){
+  console.log("previous" + " " + prevkillsquare.toString())
+  console.log("current" + " " + killsquare.toString())
+
+  this.forceUpdate()
+}
+
+},
+
+
+
 renderSquare: function (i,BS) {
   var x = i % 8;
   var y = Math.floor(i / 8);
@@ -3918,8 +3961,9 @@ renderSquare: function (i,BS) {
       
   return (
     <div key={i}
-         style={{ width: '12.5%', height: '12.5%', color: "red",  backgroundColor: "blue"}}>
-      <span>
+         style={{ width: '12.5%', height: '12.5%', color: "red",  backgroundColor: "blue",
+         position: 'relative', zIndex: -{i}}}>
+      <span id ={i} style={{position:'relative', zIndex:1}}>
 
       <BS x={x}
                    y={y}>
@@ -3939,10 +3983,30 @@ renderPiece: function (x, y) {
   var knight2Y = this.props.knightPosition2[1]
   console.log(knightPosition[0])
   console.log(count);
+  
+  
+
+  console.log("knightx" + " " + knightX)
+  console.log("knighty" + " " + knightY)
+  console.log("knight2X" + " " + knight2X)
+  console.log("knight2Y" + " " + knight2Y)
+
+prevc = pcheck.slice(0)
+
+pcheck = []
+
+pcheck.push(knightX,knightY,knight2X,knight2Y)
+
+if(pcheck.toString() != prevc.toString()){
+
   count++;
+}
+
+  console.log("the count is " + " " + count)
+
   if (x === knightX && y === knightY) {
   
-    return <K/>
+    // return <K/>
   }
 else if(x == knight2X && y == knight2Y) {
 
@@ -3956,16 +4020,18 @@ else if(x == 7 && y == 0){
 }
 
 else if(x == 1 && y == 0){
-
+ console.log("what are the killsquares?")
+  console.log("prevkillsquare" + " " + prevkillsquare)
+  console.log("ks" + " " + killsquare)
+  
   
 }
 
 else if(x == 2 && y == 4 && !killsquare.includes("34")){
 
-  console.log("what are the killsquares?")
-  console.log(killsquare)
+
   
-  return <K2/>
+  return <EPawn/>
           
       
 }
@@ -3976,8 +4042,8 @@ else if(x == 3 && y == 0){
   
 }
 
-else if(x == 4 && y == 0){
-
+else if(x == 4 && y == 7){
+return <K/>
   
 }
 else if(x == 5 && y == 0 && count < 127){
@@ -3985,8 +4051,8 @@ else if(x == 5 && y == 0 && count < 127){
   
 }
 
-else if(x == 6 && y == 2 && count > 127){
-
+else if(x == 6 && y == 2 && count == 130){
+// this.forceUpdate();
 
 }
 
@@ -3997,6 +4063,7 @@ else if(x == 6 && y == 4){
 }
 
 else if(y == 1 ){
+
 
  
 }
@@ -4012,6 +4079,9 @@ render: function () {
 var squares = [];
     console.log("rerendering")
     console.log(BS1)
+    
+
+
     for (let i = 0; i < 64; i++) {
       
 
@@ -4028,7 +4098,9 @@ var squares = [];
         width: '100%',
         height: '100%',
         display: 'flex',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        position: 'relative',
+        zIndex: 0
       }}>
 
       {squares}
@@ -4081,7 +4153,39 @@ observe(function (knightPosition) {
   );
 });
 
+// $( "#wk" ).hover(function() {
+//   $( this ).hide();
+  
+// });
 
+$("#ep").animate(
+                {
+                        "left" : "1000px"
+                }, 
+                5000
+        );
 
+// function moveAnimate(element, newParent){
+//     //Allow passing in either a jQuery object or selector
+//     element = $(element);
+//     newParent= $(newParent);
 
+//     var oldOffset = element.offset();
+//     element.appendTo(newParent);
+//     var newOffset = element.offset();
 
+//     var temp = element.clone().appendTo('body');
+//     temp.css({
+//         'position': 'absolute',
+//         'left': oldOffset.left,
+//         'top': oldOffset.top,
+//         'z-index': 1000
+//     });
+//     element.hide();
+//     temp.animate({'top': newOffset.top, 'left': newOffset.left}, 'slow', function(){
+//        element.show();
+//        temp.remove();
+//     });
+// }
+
+// moveAnimate("#ep", "35" )
