@@ -7,8 +7,8 @@ import range from 'lodash.range';
 var React = require('react');
 var ReactDOM = require('react-dom');
 var DragDropContext = require('react-dnd').DragDropContext
-
-
+var square;
+var i;
 var HTML5Backend = require('react-dnd-html5-backend');
 var DragSource = require('react-dnd').DragSource;
 var DropTarget = require('react-dnd').DropTarget;
@@ -63,7 +63,7 @@ var countk1leftup2 = 0;
 var countk1leftup1 = 0;
 var countk1leftdown2 = 0;
 var countk1leftdown1 = 0;
-var killsquare;
+var killsquare = [];
 var index = 0;
 var countqd = 0;
 var countqu = 0;
@@ -146,22 +146,12 @@ var countp8up = 0;
 var countp8right = 0;
 var countp8left = 0;
 var check = []
-
+var a;
 var grid = []
  
- var top = 18
+ 
 
- var left = 15
-
- for(i = 0; i < 64; i++) {
-    square = {[i]: {top: top, left: left, empty: true}}
-     grid.push(square)
-     left = left + 63
-     if((i + 1) % 8 == 0) {
-     left = 15
-     top = top + 63
-         }
- }
+ 
 
 
 
@@ -267,25 +257,57 @@ setInterval(this.cPosition, 1000)
 
   cPosition(){
     check = []
+    grid = []
+    var top = 18
+    var left = 15
+    
+    for(i = 0; i < 64; i++) {
+    square = {[i]: {top: top, left: left, empty: true}}
+     grid.push(square)
+     left = left + 63
+     if((i + 1) % 8 == 0) {
+     left = 15
+     top = top + 63
+         }
+ }
+
+
+
+
+
+
     console.log("The position of castle one is" + " " + JSON.stringify($("#C1").offset(),null,4))
     check.push([$("#C1").offset().top,$("#C1").offset().left])
     console.log("The position of knight one is" + " " + JSON.stringify($("#k1").offset(),null,4))
     check.push([$("#k1").offset().top,$("#k1").offset().left])
     console.log("The position of bishop one is" + " " + JSON.stringify($("#b1").offset(),null,4))
-    
+    check.push([$("#b1").offset().top,$("#b1").offset().left])
     console.log("The position of the queen one is" + " " + JSON.stringify($("#q").offset(),null,4))
+    check.push([$("#q").offset().top,$("#q").offset().left])
     console.log("The position of the king one is" + " " + JSON.stringify($("#k").offset(),null,4))
+    check.push([$("#k").offset().top,$("#k").offset().left])
     console.log("The position of knight two is" + " " + JSON.stringify($("#k2").offset(),null,4))
+    check.push([$("#k2").offset().top,$("#k2").offset().left])
     console.log("The position of bishop two is" + " " + JSON.stringify($("#b2").offset(),null,4))
+    check.push([$("#b2").offset().top,$("#b2").offset().left])
     console.log("The position of castle two is" + " " + JSON.stringify($("#c2").offset(),null,4))
+    check.push([$("#c2").offset().top,$("#c2").offset().left])
     console.log("The position of pawn one is" + " " + JSON.stringify($("#p1").offset(),null,4))
+    check.push([$("#p1").offset().top,$("#p1").offset().left])
     console.log("The position of pawn two is" + " " + JSON.stringify($("#p2").offset(),null,4))
+    check.push([$("#p2").offset().top,$("#p2").offset().left])
     console.log("The position of pawn three is" + " " + JSON.stringify($("#p3").offset(),null,4))
+    check.push([$("#p3").offset().top,$("#p3").offset().left])
     console.log("The position of pawn four is" + " " + JSON.stringify($("#p4").offset(),null,4))
+    check.push([$("#p4").offset().top,$("#C1").offset().left])
     console.log("The position of pawn five is" + " " + JSON.stringify($("#p5").offset(),null,4))
+    check.push([$("#p5").offset().top,$("#p5").offset().left])
     console.log("The position of pawn six is" + " " + JSON.stringify($("#p6").offset(),null,4))
+    check.push([$("#p6").offset().top,$("#p6").offset().left])
     console.log("The position of pawn seven is" + " " + JSON.stringify($("#p7").offset(),null,4))
+    check.push([$("#p7").offset().top,$("#p7").offset().left])
     console.log("The position of pawn eight is" + " " + JSON.stringify($("#p8").offset(),null,4))
+    check.push([$("#p8").offset().top,$("#p8").offset().left])
     console.log("Getting top pos of cast1 is " + " " + $("#C1").offset().top )
  
 
@@ -294,18 +316,23 @@ setInterval(this.cPosition, 1000)
      
      check.forEach(b => {
  if(b[0] == c[Object.keys(c)].top && b[1] == c[Object.keys(c)].left){
-     c[a].empty = false
+     c[Object.keys(c)].empty = false
      }
+   
+
     })
      })
 
+console.log(check)
+
+console.log(grid)
 killsquare = grid.filter(c => c[Object.keys(c)].empty === false).map(c => Object.keys(c)).reduce(
     (a,b) => a.concat(b))
 
 
 
 
-
+console.log("the killsquare" + " " + killsquare)
 
 
 
@@ -3933,10 +3960,12 @@ else if(x == 1 && y == 0){
   
 }
 
-else if(x == 2 && y == 0){
+else if(x == 2 && y == 4 && !killsquare.includes("34")){
 
+  console.log("what are the killsquares?")
+  console.log(killsquare)
   
-  
+  return <K2/>
           
       
 }

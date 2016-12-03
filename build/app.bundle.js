@@ -56,6 +56,8 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -65,7 +67,8 @@
 	var React = __webpack_require__(10);
 	var ReactDOM = __webpack_require__(47);
 	var DragDropContext = __webpack_require__(198).DragDropContext;
-	
+	var square;
+	var i;
 	var HTML5Backend = __webpack_require__(334);
 	var DragSource = __webpack_require__(198).DragSource;
 	var DropTarget = __webpack_require__(198).DropTarget;
@@ -120,7 +123,7 @@
 	var countk1leftup1 = 0;
 	var countk1leftdown2 = 0;
 	var countk1leftdown1 = 0;
-	
+	var killsquare = [];
 	var index = 0;
 	var countqd = 0;
 	var countqu = 0;
@@ -202,6 +205,9 @@
 	var countp8up = 0;
 	var countp8right = 0;
 	var countp8left = 0;
+	var check = [];
+	var a;
+	var grid = [];
 	
 	// Components 
 	
@@ -302,24 +308,76 @@
 	  }, {
 	    key: 'cPosition',
 	    value: function cPosition() {
+	      check = [];
+	      grid = [];
+	      var top = 18;
+	      var left = 15;
+	
+	      for (i = 0; i < 64; i++) {
+	        square = _defineProperty({}, i, { top: top, left: left, empty: true });
+	        grid.push(square);
+	        left = left + 63;
+	        if ((i + 1) % 8 == 0) {
+	          left = 15;
+	          top = top + 63;
+	        }
+	      }
 	
 	      console.log("The position of castle one is" + " " + JSON.stringify($("#C1").offset(), null, 4));
+	      check.push([$("#C1").offset().top, $("#C1").offset().left]);
 	      console.log("The position of knight one is" + " " + JSON.stringify($("#k1").offset(), null, 4));
+	      check.push([$("#k1").offset().top, $("#k1").offset().left]);
 	      console.log("The position of bishop one is" + " " + JSON.stringify($("#b1").offset(), null, 4));
+	      check.push([$("#b1").offset().top, $("#b1").offset().left]);
 	      console.log("The position of the queen one is" + " " + JSON.stringify($("#q").offset(), null, 4));
+	      check.push([$("#q").offset().top, $("#q").offset().left]);
 	      console.log("The position of the king one is" + " " + JSON.stringify($("#k").offset(), null, 4));
+	      check.push([$("#k").offset().top, $("#k").offset().left]);
 	      console.log("The position of knight two is" + " " + JSON.stringify($("#k2").offset(), null, 4));
+	      check.push([$("#k2").offset().top, $("#k2").offset().left]);
 	      console.log("The position of bishop two is" + " " + JSON.stringify($("#b2").offset(), null, 4));
+	      check.push([$("#b2").offset().top, $("#b2").offset().left]);
 	      console.log("The position of castle two is" + " " + JSON.stringify($("#c2").offset(), null, 4));
+	      check.push([$("#c2").offset().top, $("#c2").offset().left]);
 	      console.log("The position of pawn one is" + " " + JSON.stringify($("#p1").offset(), null, 4));
+	      check.push([$("#p1").offset().top, $("#p1").offset().left]);
 	      console.log("The position of pawn two is" + " " + JSON.stringify($("#p2").offset(), null, 4));
+	      check.push([$("#p2").offset().top, $("#p2").offset().left]);
 	      console.log("The position of pawn three is" + " " + JSON.stringify($("#p3").offset(), null, 4));
+	      check.push([$("#p3").offset().top, $("#p3").offset().left]);
 	      console.log("The position of pawn four is" + " " + JSON.stringify($("#p4").offset(), null, 4));
+	      check.push([$("#p4").offset().top, $("#C1").offset().left]);
 	      console.log("The position of pawn five is" + " " + JSON.stringify($("#p5").offset(), null, 4));
+	      check.push([$("#p5").offset().top, $("#p5").offset().left]);
 	      console.log("The position of pawn six is" + " " + JSON.stringify($("#p6").offset(), null, 4));
+	      check.push([$("#p6").offset().top, $("#p6").offset().left]);
 	      console.log("The position of pawn seven is" + " " + JSON.stringify($("#p7").offset(), null, 4));
+	      check.push([$("#p7").offset().top, $("#p7").offset().left]);
 	      console.log("The position of pawn eight is" + " " + JSON.stringify($("#p8").offset(), null, 4));
+	      check.push([$("#p8").offset().top, $("#p8").offset().left]);
 	      console.log("Getting top pos of cast1 is " + " " + $("#C1").offset().top);
+	
+	      grid.forEach(function (c) {
+	
+	        check.forEach(function (b) {
+	          if (b[0] == c[Object.keys(c)].top && b[1] == c[Object.keys(c)].left) {
+	            c[Object.keys(c)].empty = false;
+	          }
+	        });
+	      });
+	
+	      console.log(check);
+	
+	      console.log(grid);
+	      killsquare = grid.filter(function (c) {
+	        return c[Object.keys(c)].empty === false;
+	      }).map(function (c) {
+	        return Object.keys(c);
+	      }).reduce(function (a, b) {
+	        return a.concat(b);
+	      });
+	
+	      console.log("the killsquare" + " " + killsquare);
 	    }
 	  }, {
 	    key: 'mainButtonStyles',
@@ -3185,19 +3243,25 @@
 	    } else if (x == knight2X && y == knight2Y) {
 	
 	      return React.createElement(K2, null);
-	    } else if (x == 7 && y == 0) {} else if (x == 1 && y == 0) {} else if (x == 2 && y == 0) {} else if (x == 3 && y == 0) {} else if (x == 4 && y == 0) {} else if (x == 5 && y == 0 && count < 127) {} else if (x == 6 && y == 2 && count > 127) {} else if (x == 6 && y == 4) {} else if (y == 1) {}
+	    } else if (x == 7 && y == 0) {} else if (x == 1 && y == 0) {} else if (x == 2 && y == 4 && !killsquare.includes("34")) {
+	
+	      console.log("what are the killsquares?");
+	      console.log(killsquare);
+	
+	      return React.createElement(K2, null);
+	    } else if (x == 3 && y == 0) {} else if (x == 4 && y == 0) {} else if (x == 5 && y == 0 && count < 127) {} else if (x == 6 && y == 2 && count > 127) {} else if (x == 6 && y == 4) {} else if (y == 1) {}
 	  },
 	
 	  render: function render() {
 	    var squares = [];
 	    console.log("rerendering");
 	    console.log(BS1);
-	    for (var i = 0; i < 64; i++) {
+	    for (var _i = 0; _i < 64; _i++) {
 	
 	      if (count < 128) {
-	        squares.push(this.renderSquare(i, BS1));
+	        squares.push(this.renderSquare(_i, BS1));
 	      } else {
-	        squares.push(this.renderSquare(i, BS2));
+	        squares.push(this.renderSquare(_i, BS2));
 	      }
 	    }
 	    return React.createElement(
