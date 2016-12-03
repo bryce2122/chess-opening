@@ -22,6 +22,7 @@ var PropTypes = React.PropTypes;
 var style;
 var style1;
 var stylek1;
+var stylec;
 var styleq;
 var styleking;
 var stylek2;
@@ -35,25 +36,25 @@ var stylep5;
 var stylep6;
 var stylep7;
 var stylep8;
-var thetop = -500
+var thetop = -490
 var thetop1;
 var countme = 0;
 var move;
-var theleft = 7
+var theleft = -245
 var countmeup = 0
 var theleft1;
 var countup = 0;
 var countleft = 0;
 var bleft = 70;
-var btop = -540;
+var btop = -538;
 var countbdr = 0;
 var countbdl = 0;
 var countbur = 0;
 var countbul = 0;
-var k1left = 130;
-var k1top = -590;
-var qleft = 200;
-var qtop = -640;
+var k1left = 133;
+var k1top = -586;
+var qleft = 196;
+var qtop = -634;
 var countk1rightup2 = 0;
 var countk1rightup1 = 0;
 var countk1rightdown2 = 0;
@@ -62,7 +63,7 @@ var countk1leftup2 = 0;
 var countk1leftup1 = 0;
 var countk1leftdown2 = 0;
 var countk1leftdown1 = 0;
-
+var killsquare;
 var index = 0;
 var countqd = 0;
 var countqu = 0;
@@ -72,8 +73,8 @@ var countqdr = 0;
 var countqdl = 0;
 var countqur = 0;
 var countqul = 0;
-var kingtop = -685;
-var kingleft = 260;
+var kingtop = -682;
+var kingleft = 259;
 var countkd = 0;
 var countku = 0;
 var countkr = 0;
@@ -83,7 +84,7 @@ var countkdl = 0;
 var countkur = 0;
 var countkul = 0;
 var k2top = -730;
-var k2left = 320;
+var k2left = 322;
 var countk2rightup2 = 0;
 var countk2rightup1 = 0;
 var countk2rightdown2 = 0;
@@ -97,29 +98,29 @@ var countb2dl = 0;
 var countb2ur = 0;
 var countb2ul = 0;
 var b2left = 385;
-var b2top = -780
+var b2top = -778
 var countme2 = 0;
 var countmeup2 = 0
 var countup2 = 0;
 var countleft2 = 0;
-var c2left = 445;
-var c2top =  -830;
-var p1left = 5;
-var p1top = -810;
+var c2left = 448;
+var c2top =  -826;
+var p1left = 7;
+var p1top = -811;
 var p2left = 70;
-var p2top = -860;
-var p3left = 130;
-var p3top = -910;
-var p4left = 200;
-var p4top = -960;
-var p5left = 260;
-var p5top = -1010;
-var p6left = 320;
-var p6top = -1055;
-var p7left = 380;
-var p7top = -1100;
-var p8left = 440;
-var p8top = -1150;
+var p2top = -859;
+var p3left = 133;
+var p3top = -907;
+var p4left = 196;
+var p4top = -955;
+var p5left = 259;
+var p5top = -1003;
+var p6left = 322;
+var p6top = -1051;
+var p7left = 385;
+var p7top = -1099;
+var p8left = 448;
+var p8top = -1147;
 var countp1up = 0;
 var countp1right = 0;
 var countp1left = 0;
@@ -144,9 +145,23 @@ var countp7left = 0;
 var countp8up = 0;
 var countp8right = 0;
 var countp8left = 0;
+var check = []
 
+var grid = []
+ 
+ var top = 18
 
+ var left = 15
 
+ for(i = 0; i < 64; i++) {
+    square = {[i]: {top: top, left: left, empty: true}}
+     grid.push(square)
+     left = left + 63
+     if((i + 1) % 8 == 0) {
+     left = 15
+     top = top + 63
+         }
+ }
 
 
 
@@ -244,12 +259,66 @@ class APP extends React.Component {
    
 setInterval(this.animateChildButtonsWithDelay, 5000);
 
+setInterval(this.cPosition, 1000) 
   }
 
   
 
 
+  cPosition(){
+    check = []
+    console.log("The position of castle one is" + " " + JSON.stringify($("#C1").offset(),null,4))
+    check.push([$("#C1").offset().top,$("#C1").offset().left])
+    console.log("The position of knight one is" + " " + JSON.stringify($("#k1").offset(),null,4))
+    check.push([$("#k1").offset().top,$("#k1").offset().left])
+    console.log("The position of bishop one is" + " " + JSON.stringify($("#b1").offset(),null,4))
+    
+    console.log("The position of the queen one is" + " " + JSON.stringify($("#q").offset(),null,4))
+    console.log("The position of the king one is" + " " + JSON.stringify($("#k").offset(),null,4))
+    console.log("The position of knight two is" + " " + JSON.stringify($("#k2").offset(),null,4))
+    console.log("The position of bishop two is" + " " + JSON.stringify($("#b2").offset(),null,4))
+    console.log("The position of castle two is" + " " + JSON.stringify($("#c2").offset(),null,4))
+    console.log("The position of pawn one is" + " " + JSON.stringify($("#p1").offset(),null,4))
+    console.log("The position of pawn two is" + " " + JSON.stringify($("#p2").offset(),null,4))
+    console.log("The position of pawn three is" + " " + JSON.stringify($("#p3").offset(),null,4))
+    console.log("The position of pawn four is" + " " + JSON.stringify($("#p4").offset(),null,4))
+    console.log("The position of pawn five is" + " " + JSON.stringify($("#p5").offset(),null,4))
+    console.log("The position of pawn six is" + " " + JSON.stringify($("#p6").offset(),null,4))
+    console.log("The position of pawn seven is" + " " + JSON.stringify($("#p7").offset(),null,4))
+    console.log("The position of pawn eight is" + " " + JSON.stringify($("#p8").offset(),null,4))
+    console.log("Getting top pos of cast1 is " + " " + $("#C1").offset().top )
+ 
 
+
+    grid.forEach(c => {
+     
+     check.forEach(b => {
+ if(b[0] == c[Object.keys(c)].top && b[1] == c[Object.keys(c)].left){
+     c[a].empty = false
+     }
+    })
+     })
+
+killsquare = grid.filter(c => c[Object.keys(c)].empty === false).map(c => Object.keys(c)).reduce(
+    (a,b) => a.concat(b))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+
+
+  
 
 
   mainButtonStyles() {
@@ -261,16 +330,7 @@ setInterval(this.animateChildButtonsWithDelay, 5000);
     };
   }
 
-  initialChildButtonStyles() {
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(-500, SPRING_CONFIG),
-      left: spring(5, SPRING_CONFIG),
-      
-      
-    };
-  }
+  
 
   
 
@@ -279,8 +339,8 @@ setInterval(this.animateChildButtonsWithDelay, 5000);
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-810, SPRING_CONFIG),
-      left: spring(5, SPRING_CONFIG),
+      top: spring(p1top, SPRING_CONFIG),
+      left: spring(p1left, SPRING_CONFIG),
       
       
     };
@@ -372,8 +432,8 @@ setInterval(this.animateChildButtonsWithDelay, 5000);
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-860, SPRING_CONFIG),
-      left: spring(70, SPRING_CONFIG),
+      top: spring(p2top, SPRING_CONFIG),
+      left: spring(p2left, SPRING_CONFIG),
       
       
     };
@@ -477,8 +537,8 @@ initialP3(){
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-910, SPRING_CONFIG),
-      left: spring(130, SPRING_CONFIG),
+      top: spring(p3top, SPRING_CONFIG),
+      left: spring(p3left, SPRING_CONFIG),
       
       
     };
@@ -580,8 +640,8 @@ initialP4(){
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-960, SPRING_CONFIG),
-      left: spring(200, SPRING_CONFIG),
+      top: spring(p4top, SPRING_CONFIG),
+      left: spring(p4left, SPRING_CONFIG),
       
       
     };
@@ -685,8 +745,8 @@ initialP5(){
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-1010, SPRING_CONFIG),
-      left: spring(260, SPRING_CONFIG),
+      top: spring(p5top, SPRING_CONFIG),
+      left: spring(p5left, SPRING_CONFIG),
       
       
     };
@@ -790,8 +850,8 @@ initialP6(){
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-1055, SPRING_CONFIG),
-      left: spring(320, SPRING_CONFIG),
+      top: spring(p6top, SPRING_CONFIG),
+      left: spring(p6left, SPRING_CONFIG),
       
       
     };
@@ -897,8 +957,8 @@ initialP6(){
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-1100, SPRING_CONFIG),
-      left: spring(380, SPRING_CONFIG),
+      top: spring(p7top, SPRING_CONFIG),
+      left: spring(p7left, SPRING_CONFIG),
       
       
     };
@@ -1004,8 +1064,8 @@ initialP8(){
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-1150, SPRING_CONFIG),
-      left: spring(440, SPRING_CONFIG),
+      top: spring(p8top, SPRING_CONFIG),
+      left: spring(p8left, SPRING_CONFIG),
       
       
     };
@@ -1093,8 +1153,8 @@ initialP8(){
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-730, SPRING_CONFIG),
-      left: spring(320, SPRING_CONFIG),
+      top: spring(k2top, SPRING_CONFIG),
+      left: spring(k2left, SPRING_CONFIG),
       
       
     };
@@ -1343,8 +1403,8 @@ countk2rightdown1++;
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-780, SPRING_CONFIG),
-      left: spring(385, SPRING_CONFIG),
+      top: spring(b2top, SPRING_CONFIG),
+      left: spring(b2left, SPRING_CONFIG),
       
       
     };
@@ -1474,8 +1534,8 @@ countk2rightdown1++;
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-830, SPRING_CONFIG),
-      left: spring(445, SPRING_CONFIG),
+      top: spring(c2top, SPRING_CONFIG),
+      left: spring(c2left, SPRING_CONFIG),
       
       
     };
@@ -1600,8 +1660,8 @@ countk2rightdown1++;
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-640, SPRING_CONFIG),
-      left: spring(200, SPRING_CONFIG),
+      top: spring(qtop, SPRING_CONFIG),
+      left: spring(qleft, SPRING_CONFIG),
       
       
     };
@@ -1823,8 +1883,8 @@ QueenDownRight(d,l) {
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-685, SPRING_CONFIG),
-      left: spring(260, SPRING_CONFIG),
+      top: spring(kingtop, SPRING_CONFIG),
+      left: spring(kingleft, SPRING_CONFIG),
       
       
     };
@@ -1999,8 +2059,8 @@ KingDownRight() {
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-590, SPRING_CONFIG),
-      left: spring(130, SPRING_CONFIG),
+      top: spring(k1top, SPRING_CONFIG),
+      left: spring(k1left, SPRING_CONFIG),
       
       
     };
@@ -2225,8 +2285,8 @@ countk1rightdown1++;
   return {
       width: CHILD_BUTTON_DIAM,
       height: CHILD_BUTTON_DIAM,
-      top: spring(-540, SPRING_CONFIG),
-      left: spring(70, SPRING_CONFIG),
+      top: spring(btop, SPRING_CONFIG),
+      left: spring(bleft, SPRING_CONFIG),
       
       
     };
@@ -2319,7 +2379,16 @@ countk1rightdown1++;
 
 
 
-
+initialCastle() {
+    return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(thetop, SPRING_CONFIG),
+      left: spring(theleft, SPRING_CONFIG),
+      
+      
+    };
+  }
 
 
 
@@ -2330,8 +2399,8 @@ countk1rightdown1++;
     
     console.log("thetop is" + " " + thetop)
     if(countme == 0) {
-    thetop1 = thetop + (63 * d)
-    thetop = thetop1}
+    thetop = thetop + (63 * d)
+    }
     countme++;
    
     return {
@@ -2346,8 +2415,8 @@ countk1rightdown1++;
 
   RightOneCastle(d) {
     if(countmeup == 0) {
-    theleft1 = theleft + (63 * d)
-    theleft = theleft1}
+    thelef1 = theleft + (63 * d)
+    }
     countmeup++;
        return {
       width: CHILD_BUTTON_DIAM,
@@ -2362,8 +2431,8 @@ countk1rightdown1++;
   }
     UpOneCastle(d) {
        if(countup == 0) {
-    thetop1 = thetop - (63 * d)
-    thetop = thetop1}
+    thetop = thetop - (63 * d)
+    }
     countup++;
        
        return {
@@ -2380,8 +2449,8 @@ countk1rightdown1++;
   
    LeftOneCastle(d) {
     if(countleft == 0) {
-    theleft1 = theleft - (63 * d)
-    theleft = theleft1}
+    theleft = theleft - (63 * d)
+    }
     countleft++;
        return {
       width: CHILD_BUTTON_DIAM,
@@ -2483,9 +2552,10 @@ else {
       console.log("animation")
     if(index == 0){
 
-    if (count <= 128) {
+    if (count <= 130) {
+      
       style1 = this.initialBishopOne();
-      style = this.initialChildButtonStyles()
+      stylec = this.initialCastle()
       stylek1 = this.initialKnightOne()
       styleq = this.initialQueen()
       styleking = this.initialKing()
@@ -2502,9 +2572,10 @@ else {
       stylep8 = this.initialP8()
     }
 
-    else if (count < 300 && count > 127) {
+    else if (count < 300 && count > 135) {
       style1 = this.BishopDownRight(4,4);
-      style = this.DownOneCastle(7)
+      move = 6
+      stylec = this.DownOneCastle(2)
       stylek1 = this.KnightOneLeftDownTwo()
       styleq = this.QueenDown(7)
       styleking = this.KingDown()
@@ -2529,7 +2600,7 @@ else {
 
     {
     move = 6;
-    style = this.RightOneCastle(move)
+    stylec = this.RightOneCastle(move)
     style1 = this.BishopDownLeft(3,3)
     stylek1 = this.KnightOneRightDownOne()
     styleq = this.QueenUp(6)
@@ -2550,18 +2621,18 @@ else {
 
     else if (count > 400 && count < 600) {
   move = 3
-  style = this.UpOneCastle(move)
+  stylec = this.UpOneCastle(1)
   style1 = this.BishopUpRight(3,3)
   stylek1 = this.KnightOneLeftUpOne()
   styleq = this.QueenRight(4)
   styleking = this.KingUp() 
   stylek2 = this.Knight2LeftUpOne()  
   styleb2 = this.Bishop2UpLeft(3,3) 
-  stylec2 = this.UpOneCastle2(6)
+  stylec2 = this.UpOneCastle2(1)
     }
 else if (count > 650 && count < 800) {
     move = 4
-   style = this.LeftOneCastle(move)
+   stylec = this.RightOneCastle(3)
  style1 = this.BishopUpLeft(2,2)
 stylek1 = this.KnightOneRightDownTwo()
 styleq = this.QueenLeft(4)
@@ -2612,10 +2683,11 @@ stylek2 = this.Knight2RightUpOne()
     if(index == 0) {
 
     return (
-      <Motion style={style} key={index}>
+      <Motion style={stylec} key={index}>
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "C1"
             style={{
               width: width,
               height: height,
@@ -2628,9 +2700,11 @@ stylek2 = this.Knight2RightUpOne()
           <span style={{
         
         color: "black",
-        fontSize: 50,
+        fontSize: 25,
         fontWeight: 'bold',
-        cursor: 'move'
+        cursor: 'move',
+
+        
       }}>
 
 { String.fromCharCode(c) }</span>
@@ -2648,6 +2722,7 @@ else if(index == 1) {
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "b1"
             style={{
               width: width,
               height: height,
@@ -2680,6 +2755,7 @@ else if(index == 2) {
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "k1"
             style={{
               width: width,
               height: height,
@@ -2713,6 +2789,7 @@ else if(index == 2) {
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "q"
             style={{
               width: width,
               height: height,
@@ -2744,6 +2821,7 @@ return (
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "k"
             style={{
               width: width,
               height: height,
@@ -2774,6 +2852,7 @@ return (
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "k2"
             style={{
               width: width,
               height: height,
@@ -2805,6 +2884,7 @@ return (
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "b2"
             style={{
               width: width,
               height: height,
@@ -2836,6 +2916,7 @@ return (
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "c2"
             style={{
               width: width,
               height: height,
@@ -2866,6 +2947,7 @@ return (
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "p1"
             style={{
               width: width,
               height: height,
@@ -2897,6 +2979,7 @@ return (
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "p2"
             style={{
               width: width,
               height: height,
@@ -2927,6 +3010,7 @@ return (
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "p3"
             style={{
               width: width,
               height: height,
@@ -2957,6 +3041,7 @@ return (
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "p4"
             style={{
               width: width,
               height: height,
@@ -2988,6 +3073,7 @@ return (
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "p5"
             style={{
               width: width,
               height: height,
@@ -3019,6 +3105,7 @@ return (
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "p6"
             style={{
               width: width,
               height: height,
@@ -3049,6 +3136,7 @@ return (
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "p7"
             style={{
               width: width,
               height: height,
@@ -3080,6 +3168,7 @@ return (
         {({width, height, top, left,  scale}) => 
           <div  
             className="child-button"
+            id = "p8"
             style={{
               width: width,
               height: height,
@@ -3303,6 +3392,15 @@ return <span style={{
  });
 
 
+
+
+
+
+
+
+
+
+
 var EQueen = React.createClass({
   render: function () {
 
@@ -3356,11 +3454,41 @@ return <span style={{
   }
  });
 
+var EK2 = React.createClass({
 
+render: function() {
 
+return ( <Motion style={s} key={index}>
+        {({width, height, top, left,  scale}) => 
+          <div  
+            className="child-button"
+            style={{
+              width: width,
+              height: height,
+              top: top,
+              left: left
+              
+            }}>
+      
+          
+          <span style={{
+        
+        color: "black",
+        fontSize: 50,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+{ String.fromCharCode(9820) }</span>
+      </div>
 
+    }
+      </Motion>
+    
 
+)
 
+}
+})
 
 
 
@@ -3513,7 +3641,9 @@ var Knight2 = React.createClass({
         color: "white",
         fontSize: 50,
         fontWeight: 'bold',
-        cursor: 'move'
+        cursor: 'move',
+        position: 'relative',
+        zIndex: 3
       }}>
         ♘
       </span>
@@ -3559,7 +3689,8 @@ var Square = React.createClass({
         backgroundColor: fill,
         color: stroke,
         width: '100%',
-        height: '100%'
+        height: '100%',
+        opacity: 1.0
       }}>
         {this.props.children}
       </div>
@@ -3638,7 +3769,7 @@ var BoardSquare = React.createClass({
         left: 0,
         height: '100%',
         width: '100%',
-        zIndex: 0, 
+        zIndex: 2, 
         opacity: 0.5,
         backgroundColor: color,
       }} />
@@ -3663,7 +3794,10 @@ var BoardSquare = React.createClass({
           {this.props.children}
         </Square>
         {x == 2 && y == 7 && count < 140 && this.renderOverlay('purple')}
-       
+        {x == 5 && y == 7 && count > 140 && count < 260 && this.renderOverlay('purple')}
+        {isOver && !canDrop && this.renderOverlay('red')}
+        {!isOver && canDrop && this.renderOverlay('yellow')}
+        {isOver && canDrop && this.renderOverlay('blue')}
       </div>
     );
   }
@@ -3802,7 +3936,7 @@ else if(x == 1 && y == 0){
 else if(x == 2 && y == 0){
 
   
-    
+  
           
       
 }
@@ -3828,7 +3962,7 @@ else if(x == 6 && y == 2 && count > 127){
 }
 
 
-else if(x == 6 && y == 0){
+else if(x == 6 && y == 4){
 
   
 }
@@ -3921,8 +4055,4 @@ observe(function (knightPosition) {
 
 
 
-$(".t").animate({
-      left: 100,
-      top: 100
 
-    }, 'slow');
