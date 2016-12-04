@@ -3071,21 +3071,15 @@
 	
 	  render: function render() {
 	    var black = this.props.black;
-	
-	    var fill = black ? 'green' : 'grey';
-	
-	    var stroke = black ? 'green' : 'grey';
-	
+	    var fill = black ? 'white' : 'green';
+	    var stroke = "black";
 	    return React.createElement(
 	      'div',
 	      { style: {
 	          backgroundColor: fill,
 	          color: stroke,
 	          width: '100%',
-	          height: '100%',
-	          position: 'relative',
-	          zIndex: -1
-	
+	          height: '100%'
 	        } },
 	      this.props.children
 	    );
@@ -3164,10 +3158,10 @@
 	    return connectDropTarget(React.createElement(
 	      'div',
 	      { style: {
-	          position: 'relative',
+	
 	          width: '100%',
-	          height: '100%',
-	          zIndex: 0
+	          height: '100%'
+	
 	        } },
 	      React.createElement(
 	        Square,
@@ -3192,30 +3186,21 @@
 	var BS1 = DropTarget(ItemTypes.KNIGHT, squareTargetK, collectme)(BoardSquare);
 	
 	var BS2 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare);
-	// function checkTarget(){
+	function checkTarget() {
 	
-	//   if(dragstate == 'k'){
+	  if (dragstate == 'k') {
 	
-	//     BS1 = DropTarget(k, squareTargetK, collectme)(BoardSquare)
+	    BS1 = DropTarget(k, squareTargetK, collectme)(BoardSquare);
+	  } else if (dragstate == 'k2') {
 	
-	//   }
-	// else if(dragstate == 'k2'){
+	    BS1 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare);
+	  } else {
 	
-	//   BS1 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare)
-	// }
+	    BS1 = DropTarget(k, squareTargetK, collectme)(BoardSquare);
+	  }
+	}
 	
-	// else {
-	
-	//   BS1 = DropTarget(k, squareTargetK, collectme)(BoardSquare)
-	
-	// }
-	
-	
-	// }
-	
-	
-	//   setInterval(checkTarget, 100); 
-	
+	setInterval(checkTarget, 100);
 	
 	var Board = React.createClass({
 	  displayName: 'Board',
@@ -3245,6 +3230,9 @@
 	    var kn = this.renderPiece(x, y);
 	    console.log(kn);
 	
+	    // var black = (x + y) % 2 === 1;
+	
+	
 	    return React.createElement(
 	      'div',
 	      { key: i,
@@ -3252,7 +3240,7 @@
 	          position: 'relative', zIndex: -{ i: i } } },
 	      React.createElement(
 	        'span',
-	        { id: i, style: { position: 'relative', zIndex: 1 } },
+	        { id: i, style: { position: 'relative', zIndex: 0 } },
 	        React.createElement(
 	          BS,
 	          { x: x,
@@ -3294,7 +3282,8 @@
 	      // return <K/>
 	    } else if (x == knight2X && y == knight2Y) {
 	
-	      return React.createElement(K2, null);
+	      // return <K2/>
+	
 	    } else if (x == 7 && y == 0) {} else if (x == 1 && y == 0) {
 	      console.log("what are the killsquares?");
 	      console.log("prevkillsquare" + " " + prevkillsquare);
@@ -3303,7 +3292,8 @@
 	
 	      return React.createElement(EPawn, null);
 	    } else if (x == 3 && y == 0) {} else if (x == 4 && y == 7) {
-	      return React.createElement(K, null);
+	      // return <K/>
+	
 	    } else if (x == 5 && y == 0 && count < 127) {} else if (x == 6 && y == 2 && count == 130) {
 	      // this.forceUpdate();
 	
@@ -3337,6 +3327,76 @@
 	    );
 	  }
 	});
+	
+	// var Board = React.createClass({
+	//   propTypes: {
+	
+	
+	//     knightPosition2: PropTypes.arrayOf(
+	//       PropTypes.number.isRequired
+	//     ).isRequired,
+	
+	// knightPosition: PropTypes.arrayOf(
+	//       PropTypes.number.isRequired
+	//     ).isRequired
+	
+	
+	//   },
+	
+	//   renderSquare: function (i) {
+	//     var x = i % 8;
+	//     var y = Math.floor(i / 8);
+	//     var black = (x + y) % 2 === 1;
+	
+	//     var knightX = this.props.knightPosition[0]
+	//     var knightY = this.props.knightPosition[1]
+	//     var knight2X = this.props.knightPosition2[0];
+	//     var knight2Y = this.props.knightPosition2[1]
+	//     if (x === 3 && y === 4){
+	
+	//       var piece = <EPawn /> 
+	//     }
+	
+	//     else if(x === knight2X && y === knight2Y){
+	
+	
+	//     }
+	
+	//     else {
+	
+	//       var piece = null;
+	//     }
+	
+	
+	//     return (
+	//       <div key={i}
+	//            style={{ width: '12.5%', height: '12.5%' }}>
+	//         <Square black={black}>
+	//           {piece}
+	//         </Square>
+	//       </div>
+	//     );
+	//   },
+	
+	//   render: function () {
+	//     var squares = [];
+	//     for (let i = 0; i < 64; i++) {
+	//       squares.push(this.renderSquare(i));
+	//     }
+	
+	//     return (
+	//       <div style={{
+	//         width: '100%',
+	//         height: '100%',
+	//         display: 'flex',
+	//         flexWrap: 'wrap'
+	//       }}>
+	//         {squares}
+	//       </div>
+	//     );
+	//   }
+	// });
+	
 	
 	var B = DragDropContext(HTML5Backend)(Board);
 	

@@ -3702,21 +3702,6 @@ var k2 = "knight2"
 var K2 = DragSource(k2, knight2Source, collect)(Knight2);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var Square = React.createClass({
   propTypes: {
     black: PropTypes.bool
@@ -3724,28 +3709,34 @@ var Square = React.createClass({
 
   render: function () {
     var black = this.props.black;
-   
-
-   var fill = black ? 'green' : 'grey';
-
-    var stroke = black ? 'green' : 'grey';
-
+    var fill = black ? 'white' : 'green';
+    var stroke = "black"
     return (
       <div style={{
         backgroundColor: fill,
         color: stroke,
         width: '100%',
-        height: '100%',
-        position: 'relative',
-        zIndex: -1
-
-        
+        height: '100%'
       }}>
         {this.props.children}
       </div>
     );
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var squareTargetK = {
@@ -3834,10 +3825,10 @@ var BoardSquare = React.createClass({
     var canDrop = this.props.canDrop
     return connectDropTarget(
       <div style={{
-        position: 'relative',
+       
         width: '100%',
         height: '100%',
-        zIndex: 0
+        
       }}>
         <Square black={black}>
           {this.props.children}
@@ -3889,29 +3880,29 @@ var BoardSquare = React.createClass({
  var BS1 = DropTarget(ItemTypes.KNIGHT, squareTargetK, collectme)(BoardSquare)
  
  var BS2 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare)
-// function checkTarget(){
+function checkTarget(){
 
-//   if(dragstate == 'k'){
+  if(dragstate == 'k'){
 
-//     BS1 = DropTarget(k, squareTargetK, collectme)(BoardSquare)
+    BS1 = DropTarget(k, squareTargetK, collectme)(BoardSquare)
 
-//   }
-// else if(dragstate == 'k2'){
+  }
+else if(dragstate == 'k2'){
 
-//   BS1 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare)
-// }
+  BS1 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare)
+}
 
-// else {
+else {
 
-//   BS1 = DropTarget(k, squareTargetK, collectme)(BoardSquare)
+  BS1 = DropTarget(k, squareTargetK, collectme)(BoardSquare)
 
-// }
-
-
-// }
+}
 
 
-//   setInterval(checkTarget, 100); 
+}
+
+
+  setInterval(checkTarget, 100); 
     
 
 
@@ -3951,7 +3942,7 @@ renderSquare: function (i,BS) {
   var kn = this.renderPiece(x,y)
  console.log(kn)
   
- 
+  // var black = (x + y) % 2 === 1;
 
 
 
@@ -3963,12 +3954,12 @@ renderSquare: function (i,BS) {
     <div key={i}
          style={{ width: '12.5%', height: '12.5%', color: "red",  backgroundColor: "blue",
          position: 'relative', zIndex: -{i}}}>
-      <span id ={i} style={{position:'relative', zIndex:1}}>
+      <span id ={i} style={{position:'relative', zIndex: 0}}>
 
-      <BS x={x}
-                   y={y}>
+      <BS x = {x} 
+          y = {y}>
         {this.renderPiece(x, y)}
-        
+              
       </BS>
       
     </span>
@@ -4010,7 +4001,7 @@ if(pcheck.toString() != prevc.toString()){
   }
 else if(x == knight2X && y == knight2Y) {
 
-return <K2/>
+// return <K2/>
   
 }
 
@@ -4043,7 +4034,7 @@ else if(x == 3 && y == 0){
 }
 
 else if(x == 4 && y == 7){
-return <K/>
+// return <K/>
   
 }
 else if(x == 5 && y == 0 && count < 127){
@@ -4108,6 +4099,98 @@ var squares = [];
     );
   }
 });
+
+
+
+// var Board = React.createClass({
+//   propTypes: {
+    
+
+//     knightPosition2: PropTypes.arrayOf(
+//       PropTypes.number.isRequired
+//     ).isRequired,
+  
+// knightPosition: PropTypes.arrayOf(
+//       PropTypes.number.isRequired
+//     ).isRequired
+  
+
+
+
+
+//   },
+
+//   renderSquare: function (i) {
+//     var x = i % 8;
+//     var y = Math.floor(i / 8);
+//     var black = (x + y) % 2 === 1;
+
+//     var knightX = this.props.knightPosition[0]
+//     var knightY = this.props.knightPosition[1]
+//     var knight2X = this.props.knightPosition2[0];
+//     var knight2Y = this.props.knightPosition2[1]
+//     if (x === 3 && y === 4){
+
+//       var piece = <EPawn /> 
+//     }
+    
+//     else if(x === knight2X && y === knight2Y){
+
+      
+//     }
+    
+//     else {
+
+//       var piece = null;
+//     }
+
+
+
+//     return (
+//       <div key={i}
+//            style={{ width: '12.5%', height: '12.5%' }}>
+//         <Square black={black}>
+//           {piece}
+//         </Square>
+//       </div>
+//     );
+//   },
+
+//   render: function () {
+//     var squares = [];
+//     for (let i = 0; i < 64; i++) {
+//       squares.push(this.renderSquare(i));
+//     }
+
+//     return (
+//       <div style={{
+//         width: '100%',
+//         height: '100%',
+//         display: 'flex',
+//         flexWrap: 'wrap'
+//       }}>
+//         {squares}
+//       </div>
+//     );
+//   }
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  var B = DragDropContext(HTML5Backend)(Board);
 
