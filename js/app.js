@@ -163,6 +163,7 @@ var pcheck = [2,7,5,7]
  
 var whosemove;
 var C1kill = 0;
+var ECastle1kill = 0;
 var ec1offsetx = 8
 var ec1offsety = 15
 var eb1offsetx = 70.5
@@ -720,8 +721,7 @@ var canMovePawn2 = function (toX, toY) {
   const dx = toX - x;
   const dy = toY - y;
 
-  return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
-         (Math.abs(dx) === 1 && Math.abs(dy) === 2);
+ return (dy === -1 && dx === -1 || dy === -1 && dx === 0)
 }
 
 
@@ -2154,7 +2154,7 @@ renderPiece: function (x, y) {
   var kingY = this.props.kingPosition[1]
   
   Xarray = []
-
+  Yarray = []
   
   try {
 
@@ -2202,7 +2202,9 @@ console.log("the count is" + " " + count)
 
  Xarray.push([ECASTLE1X,ECASTLE1y], [EBISHOP1X, EBISHOP1Y])
 
-
+ Yarray.push([knightX,knightY],[knight2X,knight2Y], [bishopX,bishopY],[bishop2X, bishop2Y],
+  [pawn1X,pawn1Y],[pawn2X,pawn2Y],[pawn3X,pawn3Y],[pawn4X,pawn4Y],[pawn5X,pawn5Y],[pawn6X,
+  pawn6Y],[pawn7X,pawn7Y],[pawn8X,pawn8Y],[castle1X,castle1Y],[castle2X,castle2Y],[queenX,queenY],[kingX,kingY])
 
 
 
@@ -2464,8 +2466,8 @@ else if(x == 3 && y == 5){
 }
 
 
-else if(x == ECASTLE1X && y == ECASTLE1y ){
-
+else if(x == ECASTLE1X && y == ECASTLE1y && ECastle1kill == 0 ){
+console.log("CASTLEWHITE")
  return <ECastle1/> 
 
 }
@@ -2658,9 +2660,28 @@ else if(x == 3 && y == 5){
 
 
 }
-else if(x == ECASTLE1X && y == ECASTLE1y ){
+else if(x == ECASTLE1X && y == ECASTLE1y && ECastle1kill == 0 ){
 
- return <ECastle1/> 
+ console.log("CASTLEBLACK")
+  console.log(Yarray)
+  var cb1 = Yarray.some(function(c) {
+return c[0] == ECASTLE1X && c[1] == ECASTLE1y
+    })
+
+console.log(cb1)
+if(cb1 === false){
+
+  return <ECastle1/>
+}
+else {
+
+  ECastle1kill++;
+}
+
+
+
+
+
 
 }
 
@@ -2849,21 +2870,21 @@ var squares = [];
 
         else if (count == 1) {
           // console.log("the count is 1 push bs2")
-          squares.push(this.renderSquare(i,PB3));
+          squares.push(this.renderSquare(i,PB2));
 
         
         }
     
       else if (count == 2) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,PB5));
+              squares.push(this.renderSquare(i,PB2));
 
       }
       
      
        else if (count == 3) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,PB5));
+              squares.push(this.renderSquare(i,PB2));
 
       }
 
@@ -3058,7 +3079,7 @@ $(element).animate(
                 {
                         
                         
-                        "top" : "437.5px"
+                        "top" : "312.5px"
                 }, 
                 1000
         );
