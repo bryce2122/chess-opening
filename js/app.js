@@ -16,9 +16,13 @@ var flow = require('lodash/flow');
 var count = 0;
 var BS1;
 var dragstate;
+var kkillcount = 0;
 var arr = []
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group')
 var PropTypes = React.PropTypes;
+var eptop = 265
+var epleft = 133
+var epkillcount = 0;
 var style;
 var style1;
 var stylek1;
@@ -247,98 +251,98 @@ class APP extends React.Component {
     this.setState({childButtons: childButtons.slice(0)});
   
    
-setInterval(this.animateChildButtonsWithDelay, 5000);
+// setInterval(this.animateChildButtonsWithDelay, 5000);
  
 
 
   
 
 
-setInterval(this.cPosition, 200) 
-  }
+// setInterval(this.cPosition, 200) 
+//   }
 
   
 
 
-  cPosition(){
-    check = []
-    grid = []
-    var top = 18
-    var left = 15
-   prevkillsquare = killsquare.slice();
+//   cPosition(){
+//     check = []
+//     grid = []
+//     var top = 18
+//     var left = 15
+//    prevkillsquare = killsquare.slice();
     
-    for(i = 0; i < 64; i++) {
-    square = {[i]: {top: top, left: left, empty: true}}
-     grid.push(square)
-     left = left + 63
-     if((i + 1) % 8 == 0) {
-     left = 15
-     top = top + 63
-         }
- }
+//     for(i = 0; i < 64; i++) {
+//     square = {[i]: {top: top, left: left, empty: true}}
+//      grid.push(square)
+//      left = left + 63
+//      if((i + 1) % 8 == 0) {
+//      left = 15
+//      top = top + 63
+//          }
+//  }
 
 
 
 
 
 
-    // console.log("The position of castle one is" + " " + JSON.stringify($("#C1").offset(),null,4))
-    check.push([$("#C1").offset().top,$("#C1").offset().left])
-    // console.log("The position of knight one is" + " " + JSON.stringify($("#k1").offset(),null,4))
-    check.push([$("#k1").offset().top,$("#k1").offset().left])
-    // console.log("The position of bishop one is" + " " + JSON.stringify($("#b1").offset(),null,4))
-    check.push([$("#b1").offset().top,$("#b1").offset().left])
-    // console.log("The position of the queen one is" + " " + JSON.stringify($("#q").offset(),null,4))
-    check.push([$("#q").offset().top,$("#q").offset().left])
-    // console.log("The position of the king one is" + " " + JSON.stringify($("#k").offset(),null,4))
-    check.push([$("#k").offset().top,$("#k").offset().left])
-    // console.log("The position of knight two is" + " " + JSON.stringify($("#k2").offset(),null,4))
-    check.push([$("#k2").offset().top,$("#k2").offset().left])
-    // console.log("The position of bishop two is" + " " + JSON.stringify($("#b2").offset(),null,4))
-    check.push([$("#b2").offset().top,$("#b2").offset().left])
-    // console.log("The position of castle two is" + " " + JSON.stringify($("#c2").offset(),null,4))
-    check.push([$("#c2").offset().top,$("#c2").offset().left])
-    // console.log("The position of pawn one is" + " " + JSON.stringify($("#p1").offset(),null,4))
-    check.push([$("#p1").offset().top,$("#p1").offset().left])
-    // console.log("The position of pawn two is" + " " + JSON.stringify($("#p2").offset(),null,4))
-    check.push([$("#p2").offset().top,$("#p2").offset().left])
-    // console.log("The position of pawn three is" + " " + JSON.stringify($("#p3").offset(),null,4))
-    check.push([$("#p3").offset().top,$("#p3").offset().left])
-    // console.log("The position of pawn four is" + " " + JSON.stringify($("#p4").offset(),null,4))
-    check.push([$("#p4").offset().top,$("#C1").offset().left])
-    // console.log("The position of pawn five is" + " " + JSON.stringify($("#p5").offset(),null,4))
-    check.push([$("#p5").offset().top,$("#p5").offset().left])
-    // console.log("The position of pawn six is" + " " + JSON.stringify($("#p6").offset(),null,4))
-    check.push([$("#p6").offset().top,$("#p6").offset().left])
-    // console.log("The position of pawn seven is" + " " + JSON.stringify($("#p7").offset(),null,4))
-    check.push([$("#p7").offset().top,$("#p7").offset().left])
-    // console.log("The position of pawn eight is" + " " + JSON.stringify($("#p8").offset(),null,4))
-    check.push([$("#p8").offset().top,$("#p8").offset().left])
-    // console.log("Getting top pos of cast1 is " + " " + $("#C1").offset().top )
+//     // console.log("The position of castle one is" + " " + JSON.stringify($("#C1").offset(),null,4))
+//     check.push([$("#C1").offset().top,$("#C1").offset().left])
+//     // console.log("The position of knight one is" + " " + JSON.stringify($("#k1").offset(),null,4))
+//     check.push([$("#k1").offset().top,$("#k1").offset().left])
+//     // console.log("The position of bishop one is" + " " + JSON.stringify($("#b1").offset(),null,4))
+//     check.push([$("#b1").offset().top,$("#b1").offset().left])
+//     // console.log("The position of the queen one is" + " " + JSON.stringify($("#q").offset(),null,4))
+//     check.push([$("#q").offset().top,$("#q").offset().left])
+//     // console.log("The position of the king one is" + " " + JSON.stringify($("#k").offset(),null,4))
+//     check.push([$("#k").offset().top,$("#k").offset().left])
+//     // console.log("The position of knight two is" + " " + JSON.stringify($("#k2").offset(),null,4))
+//     check.push([$("#k2").offset().top,$("#k2").offset().left])
+//     // console.log("The position of bishop two is" + " " + JSON.stringify($("#b2").offset(),null,4))
+//     check.push([$("#b2").offset().top,$("#b2").offset().left])
+//     // console.log("The position of castle two is" + " " + JSON.stringify($("#c2").offset(),null,4))
+//     check.push([$("#c2").offset().top,$("#c2").offset().left])
+//     // console.log("The position of pawn one is" + " " + JSON.stringify($("#p1").offset(),null,4))
+//     check.push([$("#p1").offset().top,$("#p1").offset().left])
+//     // console.log("The position of pawn two is" + " " + JSON.stringify($("#p2").offset(),null,4))
+//     check.push([$("#p2").offset().top,$("#p2").offset().left])
+//     // console.log("The position of pawn three is" + " " + JSON.stringify($("#p3").offset(),null,4))
+//     check.push([$("#p3").offset().top,$("#p3").offset().left])
+//     // console.log("The position of pawn four is" + " " + JSON.stringify($("#p4").offset(),null,4))
+//     check.push([$("#p4").offset().top,$("#C1").offset().left])
+//     // console.log("The position of pawn five is" + " " + JSON.stringify($("#p5").offset(),null,4))
+//     check.push([$("#p5").offset().top,$("#p5").offset().left])
+//     // console.log("The position of pawn six is" + " " + JSON.stringify($("#p6").offset(),null,4))
+//     check.push([$("#p6").offset().top,$("#p6").offset().left])
+//     // console.log("The position of pawn seven is" + " " + JSON.stringify($("#p7").offset(),null,4))
+//     check.push([$("#p7").offset().top,$("#p7").offset().left])
+//     // console.log("The position of pawn eight is" + " " + JSON.stringify($("#p8").offset(),null,4))
+//     check.push([$("#p8").offset().top,$("#p8").offset().left])
+//     // console.log("Getting top pos of cast1 is " + " " + $("#C1").offset().top )
  
 
 
-    grid.forEach(c => {
+//     grid.forEach(c => {
      
-     check.forEach(b => {
- if(b[0] == c[Object.keys(c)].top && b[1] == c[Object.keys(c)].left){
-     c[Object.keys(c)].empty = false
-     }
+//      check.forEach(b => {
+//  if(b[0] == c[Object.keys(c)].top && b[1] == c[Object.keys(c)].left){
+//      c[Object.keys(c)].empty = false
+//      }
    
 
-    })
-     })
+//     })
+//      })
 
-// console.log(check)
+// // console.log(check)
 
-// console.log(grid)
-killsquare = grid.filter(c => c[Object.keys(c)].empty === false).map(c => Object.keys(c)).reduce(
-    (a,b) => a.concat(b))
-
-
+// // console.log(grid)
+// killsquare = grid.filter(c => c[Object.keys(c)].empty === false).map(c => Object.keys(c)).reduce(
+//     (a,b) => a.concat(b))
 
 
-// console.log("the killsquare" + " " + killsquare)
+
+
+// // console.log("the killsquare" + " " + killsquare)
 
 
 
@@ -3500,7 +3504,67 @@ return <span id="ep" style={{
   }
  });
 
-var EK2 = React.createClass({
+
+
+
+
+  function initialBishopOne() {
+
+  return {
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(btop, SPRING_CONFIG),
+      left: spring(bleft, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+
+
+
+ function BishopDownLeft(d,l) {
+
+  if(countbdl == 0){
+  bleft = bleft - (63 * l)
+  btop = btop + (63 * d)
+  }
+  countbdl++;
+
+  return {
+      
+      width: CHILD_BUTTON_DIAM,
+      height: CHILD_BUTTON_DIAM,
+      top: spring(btop, SPRING_CONFIG),
+      left: spring(bleft, SPRING_CONFIG),
+      
+      
+    };
+
+
+  }
+
+var EK2
+
+function castlecheck() {
+
+if(count == 0){
+
+
+var s = initialBishopOne();
+
+}
+
+
+else {
+
+  var s = BishopDownLeft(3,3)
+}
+
+
+
+  EK2 = React.createClass({
 
 render: function() {
 
@@ -3535,9 +3599,9 @@ return ( <Motion style={s} key={index}>
 
 }
 })
+}
 
-
-
+castlecheck();
 
 
 
@@ -3550,18 +3614,11 @@ var knightPosition2 = [5,7]
 var observer = null;
 
 function emitChange() {
-  observer(knightPosition);
+  observer(knightPosition2);
 
 }
 
-var observe = function (o) {
-  if (observer) {
-    throw new Error('Multiple observers not implemented.');
-  }
 
-  observer = o;
-  emitChange();
-}
 
 var moveKnight = function (toX, toY) {
   knightPosition = [toX, toY];
@@ -3709,7 +3766,7 @@ var Square = React.createClass({
 
   render: function () {
     var black = this.props.black;
-    var fill = black ? 'white' : 'green';
+    var fill = black ? 'grey' : 'green';
     var stroke = "black"
     return (
       <div style={{
@@ -3793,7 +3850,57 @@ function collectme(connect, monitor) {
 
 
 
-var BoardSquare = React.createClass({
+// var BoardSquare = React.createClass({
+//   propTypes: {
+//     x: PropTypes.number.isRequired,
+//     y: PropTypes.number.isRequired,
+//     isOver: PropTypes.bool.isRequired,
+//     canDrop: PropTypes.bool.isRequired
+//   },
+
+//   renderOverlay: function (color) {
+//     return (
+//       <div style={{
+//         position: 'absolute',
+//         top: 0,
+//         left: 0,
+//         height: '100%',
+//         width: '100%',
+//         zIndex: 6, 
+//         opacity: 0.5,
+//         backgroundColor: color,
+//       }} />
+//     );
+//   },
+
+//   render: function () {
+//     var x = this.props.x;
+//     var y = this.props.y;
+//     var connectDropTarget = this.props.connectDropTarget;
+//     var isOver = this.props.isOver;
+//     var black = (x + y) % 2 === 1;
+//     var canDrop = this.props.canDrop
+//     return connectDropTarget(
+//       <div style={{
+       
+//         width: '100%',
+//         height: '100%',
+        
+//       }}>
+//         <Square black={black}>
+//           {this.props.children}
+//         </Square>
+//         {x == 2 && y == 7 && count < 140 && this.renderOverlay('purple')}
+//         {x == 5 && y == 7 && count > 140 && count < 260 && this.renderOverlay('purple')}
+//         {isOver && !canDrop && this.renderOverlay('red')}
+//         {!isOver && canDrop && this.renderOverlay('yellow')}
+//         {isOver && canDrop && this.renderOverlay('blue')}
+//       </div>
+//     );
+//   }
+// })
+
+ var BoardSquare = React.createClass({
   propTypes: {
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired,
@@ -3809,8 +3916,8 @@ var BoardSquare = React.createClass({
         left: 0,
         height: '100%',
         width: '100%',
-        zIndex: 2, 
-        
+        zIndex: 1,
+        opacity: 0.5,
         backgroundColor: color,
       }} />
     );
@@ -3825,25 +3932,23 @@ var BoardSquare = React.createClass({
     var canDrop = this.props.canDrop
     return connectDropTarget(
       <div style={{
-       
+        position: 'relative',
         width: '100%',
-        height: '100%',
-        
+        height: '100%'
       }}>
         <Square black={black}>
           {this.props.children}
         </Square>
-        {x == 2 && y == 7 && count < 140 && this.renderOverlay('purple')}
-        {x == 5 && y == 7 && count > 140 && count < 260 && this.renderOverlay('purple')}
+        {x == 2 && y == 7 && count == 0 && this.renderOverlay('purple')}
+        {x == 5 && y == 7 && count == 1 && this.renderOverlay('purple')}
         {isOver && !canDrop && this.renderOverlay('red')}
         {!isOver && canDrop && this.renderOverlay('yellow')}
-        {isOver && canDrop && this.renderOverlay('blue')}
+        {isOver && canDrop && this.renderOverlay('green')}
       </div>
     );
   }
 })
 
- 
 
 
 
@@ -3880,29 +3985,10 @@ var BoardSquare = React.createClass({
  var BS1 = DropTarget(ItemTypes.KNIGHT, squareTargetK, collectme)(BoardSquare)
  
  var BS2 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare)
-function checkTarget(){
-
-  if(dragstate == 'k'){
-
-    BS1 = DropTarget(k, squareTargetK, collectme)(BoardSquare)
-
-  }
-else if(dragstate == 'k2'){
-
-  BS1 = DropTarget(k2, squareTargetK2, collectme)(BoardSquare)
-}
-
-else {
-
-  BS1 = DropTarget(k, squareTargetK, collectme)(BoardSquare)
-
-}
 
 
-}
 
-
-  setInterval(checkTarget, 100); 
+  
     
 
 
@@ -3995,19 +4081,19 @@ if(pcheck.toString() != prevc.toString()){
 
   console.log("the count is " + " " + count)
 
-  if (x === knightX && y === knightY) {
+  if (x === knightX && y === knightY && kkillcount == 0  ) {
   
-    // return <K/>
+    return <K/>
   }
 else if(x == knight2X && y == knight2Y) {
 
-// return <K2/>
+return <K2/>
   
 }
 
-else if(x == 7 && y == 0){
+else if(x == 7 && y == 3){
   
-  
+  return <EK2/>
 }
 
 else if(x == 1 && y == 0){
@@ -4018,24 +4104,58 @@ else if(x == 1 && y == 0){
   
 }
 
-else if(x == 2 && y == 4 && !killsquare.includes("34")){
+else if(x == 2 && y == 4 ){
 
 
-  
+  if(eptop == 265 && epleft == 133 && epkillcount < 300000){
+
+  if(knightX == 2 && knightY == 4 || knight2X == 2 && knight2Y == 4){
+
+    epkillcount++;
+  }
+
+
   return <EPawn/>
-          
-      
+            
+   }   
 }
 
 
-else if(x == 3 && y == 0){
+else if(x == 2 && y == 5 ){
 
-  
+ if(eptop == 327.5 && epleft == 133 && epkillcount < 3000000){
+
+  if(knightX == 2 && knightY == 5 || knight2X == 2 && knight2Y == 5){
+
+    epkillcount++;
+  }
+
+
+  return <EPawn/>
+ } 
+
+
 }
 
-else if(x == 4 && y == 7){
-// return <K/>
+else if(x == 3 && y == 5){
+
+if(eptop == 327.5 && epleft == 195.5 && epkillcount < 300000){
+
+  if(knightX == 3 && knightY == 5 || knight2X == 3 && knight2Y == 5){
+
+    epkillcount++;
+  }
+
+
+  return <EPawn/>
+ } 
   
+
+
+
+
+
+
 }
 else if(x == 5 && y == 0 && count < 127){
 
@@ -4076,13 +4196,31 @@ var squares = [];
     for (let i = 0; i < 64; i++) {
       
 
-      if(count < 128) {
-        squares.push(this.renderSquare(i,BS1));}
+      if(count ==  0) {
+        console.log("the count is 0 push bs1")
+        squares.push(this.renderSquare(i,BS2));}
 
-        else {
-          squares.push(this.renderSquare(i,BS2));
+        else if (count == 1) {
+          console.log("the count is 1 push bs2")
+          squares.push(this.renderSquare(i,BS1));
 
+        
         }
+    
+      else if (count == 2) {
+              console.log("the count is 2 push bs1")
+              squares.push(this.renderSquare(i,BS2));
+
+      }
+      
+     else {
+
+      squares.push(this.renderSquare(i,BS1));
+
+     }
+
+    
+
     }
     return (
       <div style={{
@@ -4209,14 +4347,14 @@ var knightPosition = [2, 7];
 var observer = null;
 
 function emitChange() {
-  observer(knightPosition);
+  observer(knightPosition2);
 
 }
 
 var observe = function (o) {
   if (observer) {
     throw new Error('Multiple observers not implemented.');
-  }
+  } 
 
   observer = o;
   emitChange();
@@ -4224,11 +4362,11 @@ var observe = function (o) {
 
 
 
-observe(function (knightPosition) {
+observe(function (knightPosition2) {
   ReactDOM.render(
     <span>
     
-    <B knightPosition={knightPosition} knightPosition2={knightPosition2} />
+    <B knightPosition2={knightPosition2} knightPosition={knightPosition} />
    <APP/>
     </span>,
    
@@ -4241,12 +4379,70 @@ observe(function (knightPosition) {
   
 // });
 
+function pawnDown() {
+
 $("#ep").animate(
                 {
-                        "left" : "1000px"
+                        "top" : "62.5px",
+                        "left" : "62.5px"
                 }, 
-                5000
+                1000
         );
+}
+
+function animate () {
+
+
+  if(count == 1){
+
+    pawnDown()
+  }
+}
+
+
+setInterval(animate, 100);
+
+
+function checkOffset(){
+
+try {
+   eptop = $("#ep").offset().top 
+  epleft = $("#ep").offset().left  
+  console.log(eptop)
+console.log(epleft)
+
+}
+catch(e) {
+    
+epkillcount++;
+
+}
+
+try {
+   var kntop = $("#wk").offset().top 
+   var knleft = $("#wk").offset().left  
+  console.log(kntop)
+console.log(knleft)
+console.log("killcount" + " " + kkillcount)
+}
+catch(e) {
+console.log("Error. error")    
+kkillcount++;
+
+}
+
+
+
+
+
+
+}
+
+setInterval(checkOffset, 100);
+
+
+
+
 
 // function moveAnimate(element, newParent){
 //     //Allow passing in either a jQuery object or selector
