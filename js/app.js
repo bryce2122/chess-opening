@@ -14,7 +14,7 @@ var HTML5Backend = require('react-dnd-html5-backend');
 var DragSource = require('react-dnd').DragSource;
 var DropTarget = require('react-dnd').DropTarget;
 var flow = require('lodash/flow');
-var count = 0;
+var count = -1;
 var BS1;
 var dragstate;
 var kkillcount = 0;
@@ -163,7 +163,10 @@ var pcheck = [2,7,5,7]
  
 var whosemove;
 
-
+var ec1offsetx = 8
+var ec1offsety = 15
+var eb1offsetx = 70.5
+var eb1offsety = 15
 // Components 
 
 //Constants 
@@ -230,3110 +233,7 @@ var mstyle = RightOneCastle(4)
 
 
 
-class APP extends React.Component {
-  constructor(props) {
-    super(props); 
 
-    this.state = {
-      isOpen: false,
-      childButtons: []
-    };
-
-    // Bind this to the functions 
-    this.toggleMenu = this.toggleMenu.bind(this);
-    this.closeMenu = this.closeMenu.bind(this);
-    this.animateChildButtonsWithDelay = this.animateChildButtonsWithDelay.bind(this);
-   
-  }
-
-  componentDidMount() {
-    window.addEventListener('click', this.closeMenu);
-    let childButtons = [];
-   range(NUM_CHILDREN).forEach(index => {
-      childButtons.push(this.renderChildButton(index));
-    });
-
-    this.setState({childButtons: childButtons.slice(0)});
-  
-   
-// setInterval(this.animateChildButtonsWithDelay, 5000);
- 
-
-
-  
-
-
-// setInterval(this.cPosition, 200) 
-//   }
-
-  
-
-
-//   cPosition(){
-//     check = []
-//     grid = []
-//     var top = 18
-//     var left = 15
-//    prevkillsquare = killsquare.slice();
-    
-//     for(i = 0; i < 64; i++) {
-//     square = {[i]: {top: top, left: left, empty: true}}
-//      grid.push(square)
-//      left = left + 63
-//      if((i + 1) % 8 == 0) {
-//      left = 15
-//      top = top + 63
-//          }
-//  }
-
-
-
-
-
-
-//     // console.log("The position of castle one is" + " " + JSON.stringify($("#C1").offset(),null,4))
-//     check.push([$("#C1").offset().top,$("#C1").offset().left])
-//     // console.log("The position of knight one is" + " " + JSON.stringify($("#k1").offset(),null,4))
-//     check.push([$("#k1").offset().top,$("#k1").offset().left])
-//     // console.log("The position of bishop one is" + " " + JSON.stringify($("#b1").offset(),null,4))
-//     check.push([$("#b1").offset().top,$("#b1").offset().left])
-//     // console.log("The position of the queen one is" + " " + JSON.stringify($("#q").offset(),null,4))
-//     check.push([$("#q").offset().top,$("#q").offset().left])
-//     // console.log("The position of the king one is" + " " + JSON.stringify($("#k").offset(),null,4))
-//     check.push([$("#k").offset().top,$("#k").offset().left])
-//     // console.log("The position of knight two is" + " " + JSON.stringify($("#k2").offset(),null,4))
-//     check.push([$("#k2").offset().top,$("#k2").offset().left])
-//     // console.log("The position of bishop two is" + " " + JSON.stringify($("#b2").offset(),null,4))
-//     check.push([$("#b2").offset().top,$("#b2").offset().left])
-//     // console.log("The position of castle two is" + " " + JSON.stringify($("#c2").offset(),null,4))
-//     check.push([$("#c2").offset().top,$("#c2").offset().left])
-//     // console.log("The position of pawn one is" + " " + JSON.stringify($("#p1").offset(),null,4))
-//     check.push([$("#p1").offset().top,$("#p1").offset().left])
-//     // console.log("The position of pawn two is" + " " + JSON.stringify($("#p2").offset(),null,4))
-//     check.push([$("#p2").offset().top,$("#p2").offset().left])
-//     // console.log("The position of pawn three is" + " " + JSON.stringify($("#p3").offset(),null,4))
-//     check.push([$("#p3").offset().top,$("#p3").offset().left])
-//     // console.log("The position of pawn four is" + " " + JSON.stringify($("#p4").offset(),null,4))
-//     check.push([$("#p4").offset().top,$("#C1").offset().left])
-//     // console.log("The position of pawn five is" + " " + JSON.stringify($("#p5").offset(),null,4))
-//     check.push([$("#p5").offset().top,$("#p5").offset().left])
-//     // console.log("The position of pawn six is" + " " + JSON.stringify($("#p6").offset(),null,4))
-//     check.push([$("#p6").offset().top,$("#p6").offset().left])
-//     // console.log("The position of pawn seven is" + " " + JSON.stringify($("#p7").offset(),null,4))
-//     check.push([$("#p7").offset().top,$("#p7").offset().left])
-//     // console.log("The position of pawn eight is" + " " + JSON.stringify($("#p8").offset(),null,4))
-//     check.push([$("#p8").offset().top,$("#p8").offset().left])
-//     // console.log("Getting top pos of cast1 is " + " " + $("#C1").offset().top )
- 
-
-
-//     grid.forEach(c => {
-     
-//      check.forEach(b => {
-//  if(b[0] == c[Object.keys(c)].top && b[1] == c[Object.keys(c)].left){
-//      c[Object.keys(c)].empty = false
-//      }
-   
-
-//     })
-//      })
-
-// // console.log(check)
-
-// // console.log(grid)
-// killsquare = grid.filter(c => c[Object.keys(c)].empty === false).map(c => Object.keys(c)).reduce(
-//     (a,b) => a.concat(b))
-
-
-
-
-// // console.log("the killsquare" + " " + killsquare)
-
-
-
-
-
-
-
-
-
-  }
-
-
-  
-
-
-  mainButtonStyles() {
-    return {
-      width: MAIN_BUTTON_DIAM,
-      height: MAIN_BUTTON_DIAM,
-      top: M_Y - (MAIN_BUTTON_DIAM/2),
-      left: M_X - (MAIN_BUTTON_DIAM/2)
-    };
-  }
-
-  
-
-  
-
-    initialP1(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p1top, SPRING_CONFIG),
-      left: spring(p1left, SPRING_CONFIG),
-      
-      
-    };
-  }
-
-
-  p1Up(d){
-
-    if (countp1up == 0) {
-
-      p1top = p1top + (63 * d)
-     countp1up++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p1top, SPRING_CONFIG),
-      left: spring(p1left, SPRING_CONFIG),
-      
-      
-    };
-  
-  }
-  p1Right(){
-
-    if (countp1right == 0) {
-
-      p1left = p1left + 63
-      p1top = p1top + 63
-      countp1right++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p1top, SPRING_CONFIG),
-      left: spring(p1left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-    p1Left(){
-
-    if (countp1left == 0) {
-
-      p1left = p1left - 63
-      p1top = p1top + 63
-      countp1left++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p1top, SPRING_CONFIG),
-      left: spring(p1left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  initialP2(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p2top, SPRING_CONFIG),
-      left: spring(p2left, SPRING_CONFIG),
-      
-      
-    };
-  }
-
-
-  p2Up(d){
-
-    if (countp2up == 0) {
-
-      p2top = p2top + (63 * d)
-     countp2up++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p2top, SPRING_CONFIG),
-      left: spring(p2left, SPRING_CONFIG),
-      
-      
-    };
-  
-  }
-  p2Right(){
-
-    if (countp2right == 0) {
-
-      p2left = p2left + 63
-      p2top = p2top + 63
-      countp2right++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p2top, SPRING_CONFIG),
-      left: spring(p2left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-    p2Left(){
-
-    if (countp2left == 0) {
-
-      p2left = p2left - 63
-      p2top = p2top + 63
-      countp2left++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p2top, SPRING_CONFIG),
-      left: spring(p2left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-initialP3(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p3top, SPRING_CONFIG),
-      left: spring(p3left, SPRING_CONFIG),
-      
-      
-    };
-  }
-
-
-  p3Up(d){
-
-    if (countp3up == 0) {
-
-      p3top = p3top + (63 * d)
-     countp3up++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p3top, SPRING_CONFIG),
-      left: spring(p3left, SPRING_CONFIG),
-      
-      
-    };
-  
-  }
-  p3Right(){
-
-    if (countp3right == 0) {
-
-      p3left = p3left + 63
-      p3top = p3top + 63
-      countp3right++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p3top, SPRING_CONFIG),
-      left: spring(p3left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-    p3Left(){
-
-    if (countp3left == 0) {
-
-      p3left = p3left - 63
-      p3top = p3top + 63
-      countp3left++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p3top, SPRING_CONFIG),
-      left: spring(p3left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-initialP4(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p4top, SPRING_CONFIG),
-      left: spring(p4left, SPRING_CONFIG),
-      
-      
-    };
-  }
-    
-
-
-  p4Up(d){
-
-    if (countp4up == 0) {
-
-      p4top = p4top + (63 * d)
-     countp4up++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p4top, SPRING_CONFIG),
-      left: spring(p4left, SPRING_CONFIG),
-      
-      
-    };
-  
-  }
-  p4Right(){
-
-    if (countp4right == 0) {
-
-      p4left = p4left + 63
-      p4top = p4top + 63
-      countp4right++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p4top, SPRING_CONFIG),
-      left: spring(p4left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-    p4Left(){
-
-    if (countp4left == 0) {
-
-      p4left = p4left - 63
-      p4top = p4top + 63
-      countp4left++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p4top, SPRING_CONFIG),
-      left: spring(p4left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-initialP5(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p5top, SPRING_CONFIG),
-      left: spring(p5left, SPRING_CONFIG),
-      
-      
-    };
-  }
-
-
-
-  p5Up(d){
-
-    if (countp5up == 0) {
-
-      p5top = p5top + (63 * d)
-     countp5up++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p5top, SPRING_CONFIG),
-      left: spring(p5left, SPRING_CONFIG),
-      
-      
-    };
-  
-  }
-  p5Right(){
-
-    if (countp5right == 0) {
-
-      p5left = p5left + 63
-      p5top = p5top + 63
-      countp5right++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p5top, SPRING_CONFIG),
-      left: spring(p5left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-    p5Left(){
-
-    if (countp5left == 0) {
-
-      p5left = p5left - 63
-      p5top = p5top + 63
-      countp5left++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p5top, SPRING_CONFIG),
-      left: spring(p5left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-initialP6(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p6top, SPRING_CONFIG),
-      left: spring(p6left, SPRING_CONFIG),
-      
-      
-    };
-  }
-
-
-
-    p6Up(d){
-
-    if (countp6up == 0) {
-
-      p6top = p6top + (63 * d)
-     countp6up++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p6top, SPRING_CONFIG),
-      left: spring(p6left, SPRING_CONFIG),
-      
-      
-    };
-  
-  }
-  p6Right(){
-
-    if (countp6right == 0) {
-
-      p6left = p6left + 63
-      p6top = p6top + 63
-      countp6right++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p6top, SPRING_CONFIG),
-      left: spring(p6left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-    p6Left(){
-
-    if (countp6left == 0) {
-
-      p6left = p6left - 63
-      p6top = p6top + 63
-      countp6left++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p6top, SPRING_CONFIG),
-      left: spring(p6left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   initialP7(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p7top, SPRING_CONFIG),
-      left: spring(p7left, SPRING_CONFIG),
-      
-      
-    };
-  } 
-
-
-
-
-  p7Up(d){
-
-    if (countp7up == 0) {
-
-      p7top = p7top + (63 * d)
-     countp7up++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p7top, SPRING_CONFIG),
-      left: spring(p7left, SPRING_CONFIG),
-      
-      
-    };
-  
-  }
-  p7Right(){
-
-    if (countp7right == 0) {
-
-      p7left = p7left + 63
-      p7top = p7top + 63
-      countp7right++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p7top, SPRING_CONFIG),
-      left: spring(p7left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-    p7Left(){
-
-    if (countp7left == 0) {
-
-      p7left = p7left - 63
-      p7top = p7top + 63
-      countp7left++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p7top, SPRING_CONFIG),
-      left: spring(p7left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-initialP8(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p8top, SPRING_CONFIG),
-      left: spring(p8left, SPRING_CONFIG),
-      
-      
-    };
-  }
-
-
-  p8Up(d){
-
-    if (countp8up == 0) {
-
-      p8top = p8top + (63 * d)
-     countp8up++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p8top, SPRING_CONFIG),
-      left: spring(p8left, SPRING_CONFIG),
-      
-      
-    };
-  
-  }
-  p8Right(){
-
-    if (countp8right == 0) {
-
-      p8left = p8left + 63
-      p8top = p8top + 63
-      countp8right++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p8top, SPRING_CONFIG),
-      left: spring(p8left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-    p8Left(){
-
-    if (countp8left == 0) {
-
-      p8left = p8left - 63
-      p8top = p8top + 63
-      countp8left++;
-    }
-
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(p8top, SPRING_CONFIG),
-      left: spring(p8left, SPRING_CONFIG),
-      
-      
-    };
-
-
-
-  }
-
-
-
-    
-
-
-
-
-
-
-
-
-
-    initialKnight2(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k2top, SPRING_CONFIG),
-      left: spring(k2left, SPRING_CONFIG),
-      
-      
-    };
-  }
-
- Knight2LeftUpTwo(){
- if (countk2leftup2 == 0) {
-
-  k2left = k2left - 63
-  k2top = k2top - 126
- }
-  countk2leftup2++;
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k2top, SPRING_CONFIG),
-      left: spring(k2left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-Knight2LeftUpOne(){
-
-  if (countk2leftup1 == 0) {
-
-  k2left = k2left - 126
-  k2top = k2top - 63
- }
-  countk2leftup1++;
-
-
-
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k2top, SPRING_CONFIG),
-      left: spring(k2left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-
-Knight2LeftDownTwo(){
-
-  if (countk2leftdown2 == 0) {
-
-  k2left = k2left - 63
-  k2top = k2top + 126
- }
-  countk2leftdown2++;
-
-
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k2top, SPRING_CONFIG),
-      left: spring(k2left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-  
-Knight2LeftDownOne(){
-
-  if (countk2leftdown1 == 0) {
-
-  k2left = k2left - 126
-  k2top = k2top + 63
- }
-  countk2leftdown1++;
-
-
-
-
-
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k2top, SPRING_CONFIG),
-      left: spring(k2left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-  
-Knight2RightUpTwo(){
-
- 
- if (countk2rightup2 == 0) {
-
-  k2left = k2left + 63
-  k2top = k2top - 126
- }
-  countk2rightup2++;
-
-
-
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k2top, SPRING_CONFIG),
-      left: spring(k2left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-
-Knight2RightUpOne(){
-
-  
-   if (countk2rightup1 == 0) {
-
-  k2left = k2left + 126
-  k2top = k2top - 63
- }
-  countk2rightup1++;
-
-
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k2top, SPRING_CONFIG),
-      left: spring(k2left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-  
-Knight2RightDownTwo(){
-
-  
-   if (countk2rightdown2 == 0) {
-
-  k2left = k2left + 63
-  k2top = k2top + 126
- }
-  countk2rightdown2++;
-
-
-
-
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k2top, SPRING_CONFIG),
-      left: spring(k2left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-Knight2RightDownOne(){
-
-   if (countk2rightdown1 == 0) {
-
-  k2left = k2left + 126
-  k2top = k2top + 63
- }
-
-countk2rightdown1++;
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k2top, SPRING_CONFIG),
-      left: spring(k2left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- initialBishop2(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(b2top, SPRING_CONFIG),
-      left: spring(b2left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-}
-
-
-  Bishop2DownRight(d,l) {
-
-  if(countb2dr == 0){
-  b2left = b2left + (63 * l)
-  b2top = b2top + (63 * d)
-  }
-  countb2dr++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(b2top, SPRING_CONFIG),
-      left: spring(b2left, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-
-  Bishop2DownLeft(d,l) {
-
-  if(countb2dl == 0){
-  b2left = b2left - (63 * l)
-  b2top = b2top + (63 * d)
-  }
-  countb2dl++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(b2top, SPRING_CONFIG),
-      left: spring(b2left, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-
-  Bishop2UpRight(d,l) {
-
-  if(countb2ur == 0){
-  b2left = b2left + (63 * l)
-  b2top = b2top - (63 * d)
-  }
-  countb2ur++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(b2top, SPRING_CONFIG),
-      left: spring(b2left, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-  
-  Bishop2UpLeft(d,l) {
-
-  if(countb2ul == 0){
-  b2left = b2left - (63 * l)
-  b2top = b2top - (63 * d)
-  }
-  countb2ul++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(b2top, SPRING_CONFIG),
-      left: spring(b2left, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- initialCastle2(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(c2top, SPRING_CONFIG),
-      left: spring(c2left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-   }
-
- DownOneCastle2(d) {
-    
-    // console.log("thetop is" + " " + thetop)
-    if(countme2 == 0) {
-    c2top = c2top + (63 * d)
-    }
-    countme2++;
-   
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(c2top  , SPRING_CONFIG),
-      left: spring(c2left , SPRING_CONFIG),
-      
-      
-    };
-  }
-
-  RightOneCastle2(d) {
-    if(countmeup2 == 0) {
-    c2left = c2left + (63 * d)
-    }
-    countmeup2++;
-       return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(c2top , SPRING_CONFIG),
-      left: spring(c2left , SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-    UpOneCastle2(d) {
-       if(countup2 == 0) {
-    c2top = c2top - (63 * d)
-    }
-    countup2++;
-       
-       return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(c2top , SPRING_CONFIG),
-      left: spring(c2left , SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-  
-   LeftOneCastle2(d) {
-    if(countleft2 == 0) {
-    c2left = c2left - (63 * d)
-    }
-    countleft2++;
-       return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(c2top , SPRING_CONFIG),
-      left: spring( c2left , SPRING_CONFIG),
-      
-      
-    };
-}
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   initialQueen(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(qtop, SPRING_CONFIG),
-      left: spring(qleft, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-QueenDown(d) {
-    
-    if(countqd == 0) {
-    qtop = qtop + (63 * d)
-    }
-    countqd++;
-   
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(qtop  , SPRING_CONFIG),
-      left: spring(qleft , SPRING_CONFIG),
-      
-      
-    };
-  }
-
-  QueenRight(d) {
-    if(countqr == 0) {
-    qleft = qleft + (63 * d)
-    }
-    countqr++;
-       return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(qtop , SPRING_CONFIG),
-      left: spring( qleft , SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-    QueenUp(d) {
-       if(countqu == 0) {
-    qtop = qtop - (63 * d)
-    }
-    countqu++;
-       
-       return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(qtop , SPRING_CONFIG),
-      left: spring(qleft , SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-  
-   QueenLeft(d) {
-    if(countql == 0) {
-    qleft = qleft - (63 * d)
-    }
-    countql++;
-       return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(qtop , SPRING_CONFIG),
-      left: spring( qleft , SPRING_CONFIG),
-      
-      
-    };
-}
-     
-
-QueenDownRight(d,l) {
-
-  if(countqdr == 0){
-  qleft = qleft + (63 * l)
-  qtop = qtop + (63 * d)
-  }
-  countqdr++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(qtop, SPRING_CONFIG),
-      left: spring(qleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-
-  QueenDownLeft(d,l) {
-
-  if(countqdl == 0){
-  qleft = qleft - (63 * l)
-  qtop = qtop + (63 * d)
-  }
-  countqdl++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(qtop, SPRING_CONFIG),
-      left: spring(qleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-
-  QueenUpRight(d,l) {
-
-  if(countqur == 0){
-  qleft = qleft + (63 * l)
-  qtop = qtop - (63 * d)
-  }
-  countqur++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(qtop, SPRING_CONFIG),
-      left: spring(qleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-  
-  QueenUpLeft(d,l) {
-
-  if(countqul == 0){
-  qleft = qleft - (63 * l)
-  qtop = qtop - (63 * d)
-  }
-  countqul++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(qtop, SPRING_CONFIG),
-      left: spring(qleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     initialKing(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(kingtop, SPRING_CONFIG),
-      left: spring(kingleft, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-KingDown() {
-    
-    if(countkd == 0) {
-    kingtop = kingtop + 63 
-    }
-    countkd++;
-   
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(kingtop  , SPRING_CONFIG),
-      left: spring(kingleft , SPRING_CONFIG),
-      
-      
-    };
-  }
-
-  KingRight() {
-    if(countkr == 0) {
-    kingleft = kingleft + 63 
-    }
-    countkr++;
-       return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(kingtop , SPRING_CONFIG),
-      left: spring( kingleft , SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-    KingUp(d) {
-       if(countku == 0) {
-    kingtop = kingtop - 63 
-    }
-    countku++;
-       
-       return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(kingtop , SPRING_CONFIG),
-      left: spring(kingleft , SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-  
-   KingLeft(d) {
-    if(countkl == 0) {
-    kingleft = kingleft - 63 
-    }
-    countkl++;
-       return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(kingtop , SPRING_CONFIG),
-      left: spring( kingleft , SPRING_CONFIG),
-      
-      
-    };
-}
-     
-
-KingDownRight() {
-
-  if(countkdr == 0){
-  kingleft = kingleft + 63 
-  kingtop = kingtop + 63 
-  }
-  countkdr++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(kingtop, SPRING_CONFIG),
-      left: spring(kingleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-
-  KingDownLeft() {
-
-  if(countkdl == 0){
-  kingleft = kingleft - 63 
-  kingtop = kingtop + 63 
-  }
-  countkdl++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(kingtop, SPRING_CONFIG),
-      left: spring(kingleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-
-  KingUpRight() {
-
-  if(countkur == 0){
-  kingleft = kingleft + 63 
-  kingtop = kingtop - 63 
-  }
-  countkur++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(kingtop, SPRING_CONFIG),
-      left: spring(kingleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-  
-  KingUpLeft() {
-
-  if(countkul == 0){
-  kingleft = kingleft - 63 
-  kingtop = kingtop - 63 
-  }
-  countkul++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(kingtop, SPRING_CONFIG),
-      left: spring(kingleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-  initialKnightOne(){
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k1top, SPRING_CONFIG),
-      left: spring(k1left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-KnightOneLeftUpTwo(){
- if (countk1leftup2 == 0) {
-
-  k1left = k1left - 63
-  k1top = k1top - 126
- }
-  countk1leftup2++;
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k1top, SPRING_CONFIG),
-      left: spring(k1left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-KnightOneLeftUpOne(){
-
-  if (countk1leftup1 == 0) {
-
-  k1left = k1left - 126
-  k1top = k1top - 63
- }
-  countk1leftup1++;
-
-
-
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k1top, SPRING_CONFIG),
-      left: spring(k1left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-
-KnightOneLeftDownTwo(){
-
-  if (countk1leftdown2 == 0) {
-
-  k1left = k1left - 63
-  k1top = k1top + 126
- }
-  countk1leftdown2++;
-
-
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k1top, SPRING_CONFIG),
-      left: spring(k1left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-  
-KnightOneLeftDownOne(){
-
-  if (countk1leftdown1 == 0) {
-
-  k1left = k1left - 126
-  k1top = k1top + 63
- }
-  countk1leftdown1++;
-
-
-
-
-
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k1top, SPRING_CONFIG),
-      left: spring(k1left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-  
-KnightOneRightUpTwo(){
-
- 
- if (countk1rightup2 == 0) {
-
-  k1left = k1left + 63
-  k1top = k1top - 126
- }
-  countk1rightup2++;
-
-
-
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k1top, SPRING_CONFIG),
-      left: spring(k1left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-
-KnightOneRightUpOne(){
-
-  
-   if (countk1rightup1 == 0) {
-
-  k1left = k1left + 126
-  k1top = k1top - 63
- }
-  countk1rightup1++;
-
-
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k1top, SPRING_CONFIG),
-      left: spring(k1left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-  
-KnightOneRightDownTwo(){
-
-  
-   if (countk1rightdown2 == 0) {
-
-  k1left = k1left + 63
-  k1top = k1top + 126
- }
-  countk1rightdown2++;
-
-
-
-
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k1top, SPRING_CONFIG),
-      left: spring(k1left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-
-KnightOneRightDownOne(){
-
-   if (countk1rightdown1 == 0) {
-
-  k1left = k1left + 126
-  k1top = k1top + 63
- }
-
-countk1rightdown1++;
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(k1top, SPRING_CONFIG),
-      left: spring(k1left, SPRING_CONFIG),
-      
-      
-    };
-  
-
-
-  }
-  
-
-
-
-
-
-  
-
-
-
-
-  initialBishopOne() {
-
-  return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(btop, SPRING_CONFIG),
-      left: spring(bleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-  BishopDownRight(d,l) {
-
-  if(countbdr == 0){
-  bleft = bleft + (63 * l)
-  btop = btop + (63 * d)
-  }
-  countbdr++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(btop, SPRING_CONFIG),
-      left: spring(bleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-
-  BishopDownLeft(d,l) {
-
-  if(countbdl == 0){
-  bleft = bleft - (63 * l)
-  btop = btop + (63 * d)
-  }
-  countbdl++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(btop, SPRING_CONFIG),
-      left: spring(bleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-
-  BishopUpRight(d,l) {
-
-  if(countbur == 0){
-  bleft = bleft + (63 * l)
-  btop = btop - (63 * d)
-  }
-  countbur++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(btop, SPRING_CONFIG),
-      left: spring(bleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-  
-  BishopUpLeft(d,l) {
-
-  if(countbul == 0){
-  bleft = bleft - (63 * l)
-  btop = btop - (63 * d)
-  }
-  countbul++;
-
-  return {
-      
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(btop, SPRING_CONFIG),
-      left: spring(bleft, SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-
-
-
-initialCastle() {
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(thetop, SPRING_CONFIG),
-      left: spring(theleft, SPRING_CONFIG),
-      
-      
-    };
-  }
-
-
-
-
-
-
-  DownOneCastle(d) {
-    
-    // console.log("thetop is" + " " + thetop)
-    if(countme == 0) {
-    thetop = thetop + (63 * d)
-    }
-    countme++;
-   
-    return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(thetop  , SPRING_CONFIG),
-      left: spring(theleft , SPRING_CONFIG),
-      
-      
-    };
-  }
-
-  RightOneCastle(d) {
-    if(countmeup == 0) {
-    thelef1 = theleft + (63 * d)
-    }
-    countmeup++;
-       return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(thetop , SPRING_CONFIG),
-      left: spring( theleft , SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-    UpOneCastle(d) {
-       if(countup == 0) {
-    thetop = thetop - (63 * d)
-    }
-    countup++;
-       
-       return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(thetop , SPRING_CONFIG),
-      left: spring(theleft , SPRING_CONFIG),
-      
-      
-    };
-
-
-  }
-  
-   LeftOneCastle(d) {
-    if(countleft == 0) {
-    theleft = theleft - (63 * d)
-    }
-    countleft++;
-       return {
-      width: CHILD_BUTTON_DIAM,
-      height: CHILD_BUTTON_DIAM,
-      top: spring(thetop , SPRING_CONFIG),
-      left: spring( theleft , SPRING_CONFIG),
-      
-      
-    };
-}
-
-
-
-  toggleMenu() {
-    // e.stopPropagation();
-    if (count > 200){
-    let{isOpen} = this.state;
-    this.setState({
-      isOpen: !isOpen
-    });
-
-     this.animateChildButtonsWithDelay();
-     // console.log("animating")
-   }
-  }
-
-  closeMenu() {
-    this.setState({ isOpen: false});
-    this.animateChildButtonsWithDelay();
-  }
-
-  animateChildButtonsWithDelay() {
-    range(NUM_CHILDREN).forEach((index) => {
-      let {childButtons} = this.state;
-      setTimeout(() => {
-        // console.log("the index is " + index)
-        childButtons[index]  = this.renderChildButton(index);
-        this.setState({childButtons: childButtons.slice(0)});
-      }, index * 50);
-    
-
-
-    });
-  
-
-if(count == 1){
-
-$("#p4").hide()
-
-}
-
-  }
-
-  renderChildButton(index) {
-    let {isOpen} = this.state;
-    // let style = isOpen ? this.finalChildButtonStyles(index) : this.initialChildButtonStyles() ;
-    
-   
-
-
-    // console.log("the index is" + index)
-    
-    if(index == 0){
-    
-      var c  = 9820}
-      else if(index == 1) {
-
-        var c = 9821}
-      
-    else if(index == 2) {
-
-      var c = 9822
-    }
-   else if(index == 3){
-
-    var c = 9819
-   }
-else if(index == 4) {
-
- var c = 9818
-}
-
-else if(index == 5) {
- var c = 9822
-
-}
-
-else if(index == 6){
- var c = 9821
-
-}
-
-else if(index == 7){
- var c = 9820
-
-} 
-
-else {
-
-  var c = 9823
-}
-
-
-
-  var es =  decodeURIComponent(escape(c));
- // console.log(es);
-
-    
-    
-      // console.log("animation")
-    if(index == 0){
-
-    if (count == 0) {
-      
-      style1 = this.initialBishopOne();
-      stylec = this.initialCastle()
-      stylek1 = this.initialKnightOne()
-      styleq = this.initialQueen()
-      styleking = this.initialKing()
-      stylek2 = this.initialKnight2()
-      styleb2 = this.initialBishop2()
-      stylec2 = this.initialCastle2()
-      stylep1 = this.initialP1()
-      stylep2 = this.initialP2()
-      stylep3 = this.initialP3()
-      stylep4 = this.initialP4()
-      stylep5 = this.initialP5()
-      stylep6 = this.initialP6()
-      stylep7 = this.initialP7()
-      stylep8 = this.initialP8()
-    }
-
-    else if (count == 1) {
-      // style1 = this.BishopDownRight(4,4);
-      // move = 6
-      // stylec = this.DownOneCastle(2)
-      // stylek1 = this.KnightOneLeftDownTwo()
-      // styleq = this.QueenDown(7)
-      // styleking = this.KingDown()
-      // stylek2 = this.Knight2LeftDownTwo()
-      // styleb2 = this.Bishop2DownLeft(4,4)
-      // stylec2 = this.DownOneCastle2(7)
-      // stylep1 = this.p1Up(1)
-      // stylep2 = this.p2Up(2)
-      // stylep3 = this.p3Up(2)
-      stylep4 = this.p4Up(2)
-      // stylep5 = this.p5Up(1)
-      // stylep6 = this.p6Up(1)
-      // stylep7 = this.p7Up(2)
-      // stylep8 = this.p8Up(2)
-
-
-
-
-    }
-
-    else if (count == 2)
-
-    {
-    // move = 6;
-    // stylec = this.RightOneCastle(move)
-    // style1 = this.BishopDownLeft(3,3)
-    // stylek1 = this.KnightOneRightDownOne()
-    // styleq = this.QueenUp(6)
-    // styleking = this.KingRight();
-    // stylek2 = this.Knight2RightDownOne()
-    // styleb2 = this.Bishop2DownRight(3,3)
-    // stylec2 = this.LeftOneCastle2(6)
-    // stylep1 = this.p1Right()
-    // stylep2 = this.p2Right()
-    // stylep3 = this.p3Right()
-    // stylep4 = this.p4Right()
-    // stylep5 = this.p5Left()
-    // stylep6 = this.p6Left()
-    // stylep7 = this.p7Left()
-    // stylep8 = this.p8Left()
-
-    }
-
-    else if (count == 3) {
-  // move = 3
-  // stylec = this.UpOneCastle(1)
-  // style1 = this.BishopUpRight(3,3)
-  // stylek1 = this.KnightOneLeftUpOne()
-  // styleq = this.QueenRight(4)
-  // styleking = this.KingUp() 
-  // stylek2 = this.Knight2LeftUpOne()  
-  // styleb2 = this.Bishop2UpLeft(3,3) 
-  // stylec2 = this.UpOneCastle2(1)
-    }
-else if (count == 4) {
-//     move = 4
-//    stylec = this.RightOneCastle(3)
-//  style1 = this.BishopUpLeft(2,2)
-// stylek1 = this.KnightOneRightDownTwo()
-// styleq = this.QueenLeft(4)
-// styleking = this.KingLeft();
-// stylek2 = this.Knight2RightDownTwo()
-// styleb2 = this.Bishop2UpRight(2,2)
-// stylec2 = this.RightOneCastle2(5)
-}
-
-
-else if(count == 5){
-
-// stylek1 = this.KnightOneRightUpTwo()
-// styleq = this.QueenDownRight(4,4)
-// styleking = this.KingDownLeft();
-// stylek2 = this.Knight2RightUpTwo()
-}
-    
-else if(count == 6){
-// stylek1 = this.KnightOneLeftDownOne()
-// styleq = this.QueenUpLeft(4,4)
-// styleking = this.KingDownRight()  
-// stylek2 = this.Knight2LeftDownOne() 
-  } 
-
-
-else if(count == 7){
-
-// stylek1 = this.KnightOneLeftUpTwo()
-// styleq = this.QueenDownLeft(3,3)
-// styleking =this.KingUpLeft();
-// stylek2 = this.Knight2LeftUpTwo()
-}
-
- else if(count == 8) {
-
-
-// stylek1 = this.KnightOneRightUpOne()
-// styleq = this.QueenUpRight(4,4)
-// styleking = this.KingUpRight();
-// stylek2 = this.Knight2RightUpOne()
- }  
-
-}
-
-
-
-    if(index == 0) {
-
-    return (
-      <Motion style={stylec} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "C1"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 25,
-        fontWeight: 'bold',
-        cursor: 'move',
-
-        
-      }}>
-
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
- } 
-
-else if(index == 1) {
-
-    return (
-      <Motion style={style1} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "b1"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-
-}
-
-else if(index == 2) {
-
-    return (
-      <Motion style={stylek1} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "k1"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-
-}
-
- else if(index == 3) {
-
-
- return (
-      <Motion style={styleq} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "q"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-
-else if(index == 4){
-
-return (
-      <Motion style={styleking} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "k"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-else if(index == 5){
-
-return (
-      <Motion style={stylek2} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "k2"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-
-else if(index == 6){
-
-return (
-      <Motion style={styleb2} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "b2"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-
-else if(index == 7){
-
-return (
-      <Motion style={stylec2} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "c2"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-else if(index == 8){
-
-return (
-      <Motion style={stylep1} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "p1"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-
-else if(index == 9){
-
-return (
-      <Motion style={stylep2} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "p2"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-else if(index == 10){
-
-return (
-      <Motion style={stylep3} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "p3"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-else if(index == 11){
-
-return (
-      <Motion style={stylep4} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "p4"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-
-else if(index == 12){
-
-return (
-      <Motion style={stylep5} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "p5"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-
-else if(index == 13){
-
-return (
-      <Motion style={stylep6} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "p6"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-else if(index == 14){
-
-return (
-      <Motion style={stylep7} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "p7"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-
-else if(index == 15){
-
-return (
-      <Motion style={stylep8} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            id = "p8"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-{ String.fromCharCode(c) }</span>
-      </div>
-
-    }
-      </Motion>
-    );
-}
-
-
-
-
-
-}
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  renderBishopButton(index) {
-
-   return (
-      <Motion style={style} key={index}>
-        {({width, height, top, left,  scale}) => 
-          <div  
-            className="child-button"
-            style={{
-              width: width,
-              height: height,
-              top: top,
-              left: left
-              
-            }}>
-      
-          
-          <span style={{
-        
-        color: "black",
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
-      ♜</span>
-      </div>
-
-    }
-      </Motion>
-    );
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  render() {
-    let {isOpen, childButtons} = this.state;
-    let mainButtonRotation = isOpen ? {rotate: spring(0, [500, 30])} : {rotate: spring(-135, [500, 30])};
-    // console.log("rendering");
-    
-    return (
-      
-      <div className="t">
-        
-
-
-        {childButtons.map( (button, index) => {
-          return childButtons[index];
-        })}
-        
-     
-      </div>
-    );
-  } 
-};
- 
 
 
 
@@ -3367,7 +267,9 @@ return <span id="ec1" style={{
         color: "black",
         fontSize: 50,
         fontWeight: 'bold',
-        cursor: 'move'
+        cursor: 'move',
+        position: 'relative',
+        zIndex: "20"
       }}>
       ♜</span>
 
@@ -3384,7 +286,8 @@ return <span id="ec2" style={{
         color: "black",
         fontSize: 50,
         fontWeight: 'bold',
-        cursor: 'move'
+        cursor: 'move',
+        position: 'relative'
       }}>
       ♜</span>
 
@@ -3406,7 +309,8 @@ return <span id="eb" style={{
         color: "black",
         fontSize: 50,
         fontWeight: 'bold',
-        cursor: 'move'
+        cursor: 'move',
+        position: 'relative'
       }}>
       ♝</span>
 
@@ -3423,7 +327,8 @@ return <span id="eb2" style={{
         color: "black",
         fontSize: 50,
         fontWeight: 'bold',
-        cursor: 'move'
+        cursor: 'move',
+        position: 'relative'
       }}>
       ♝</span>
 
@@ -3441,7 +346,8 @@ return <span id="ek" style={{
         color: "black",
         fontSize: 50,
         fontWeight: 'bold',
-        cursor: 'move'
+        cursor: 'move',
+        position: 'relative'
       }}>
       ♞</span>
 
@@ -3459,7 +365,8 @@ return <span id="ek2" style={{
         color: "black",
         fontSize: 50,
         fontWeight: 'bold',
-        cursor: 'move'
+        cursor: 'move',
+        position: 'relative'
       }}>
       ♞</span>
 
@@ -3487,7 +394,8 @@ return <span id ="eq" style={{
         color: "black",
         fontSize: 50,
         fontWeight: 'bold',
-        cursor: 'move'
+        cursor: 'move',
+        position: 'relative'
       }}>
       ♛</span>
 
@@ -3504,7 +412,8 @@ return <span id="ek" style={{
         color: "black",
         fontSize: 50,
         fontWeight: 'bold',
-        cursor: 'move'
+        cursor: 'move',
+        position: 'relative'
       }}>
       ♚</span>
 
@@ -3688,8 +597,8 @@ return <span id="ep8" style={{
 
 var castlePosition1 = [0,7]
 var castlePosition2 = [7,7]
-var queenPosition = [4,7]
-var kingPosition = [3,7]
+var queenPosition = [3,7]
+var kingPosition = [4,7]
 var knightPosition = [2, 7];
 var knightPosition2 = [5,7]
 var bishopPosition = [1,7]
@@ -3858,8 +767,7 @@ var canMovePawn5 = function (toX, toY) {
   const dx = toX - x;
   const dy = toY - y;
 
-  return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
-         (Math.abs(dx) === 1 && Math.abs(dy) === 2);
+  return (dy === -1 && dx === 0);
 }
 
 var movePawn6 = function (toX, toY) {
@@ -5141,26 +2049,29 @@ setInterval(this.checkpos,100)
 
 checkpos() {
 
- var t = (eptop - 15) % 62.5 == 0
-var l = (epleft - 8) % 62.5 == 0
-console.log(eptop)
-console.log(epleft)
+ var t = ($("#ec1").offset().top - 15) % 62.5 == 0
+var l = ( $("#ec1").offset().left- 8) % 62.5 == 0
+// console.log(eptop)
+// console.log(epleft)
+console.log("BOOLEAN")
 console.log(t)
 console.log(l)
 
-console.log(125 % 62.5 == 0)
-
-if(eptop != prevept  && t === true && l === true ||  epleft != prevepl && t === true && l === true ){
-  console.log(eptop % 62.5 == 0)
-  console.log(epleft % 62.5 == 0)
-  console.log("yes,damnitt")
-  console.log("eptop is " + " " + eptop)
-  console.log("epleft is" +  " " + epleft)
-  console.log("prevept is" + " " + prevept)
-  console.log("prevepl is" + " " + prevepl)
+console.log(ec1offsety)
+console.log($("#ec1").offset().top)
+if(ec1offsetx != $("#ec1").offset().left && t === true && l === true ||
+ec1offsety != $("#ec1").offset().top && t === true && l === true ){
+  // console.log(eptop % 62.5 == 0)
+  // console.log(epleft % 62.5 == 0)
+  // console.log("yes,damnitt")
+  // console.log("eptop is " + " " + eptop)
+  // console.log("epleft is" +  " " + epleft)
+  // console.log("prevept is" + " " + prevept)
+  // console.log("prevepl is" + " " + prevepl)
+  emitChange();
   whosemove = "black"
   this.forceUpdate()
-  count++;
+  count--;
 }
 
 else {
@@ -5243,16 +2154,22 @@ renderPiece: function (x, y) {
   
   
 
+  var ECASTLE1X = (ec1offsetx - 8) / 62.5 
   
+  var ECASTLE1y = (ec1offsety - 15) / 62.5
+
   
+  var EBISHOP1X = (eb1offsetx - 8) / 62.5
+
+  var EBISHOP1Y = (eb1offsety - 15) / 62.5
+  console.log(eb1offsety)
+  console.log(eb1offsetx - 8)
+  console.log(EBISHOP1X)
+  console.log(EBISHOP1X)
+  console.log("OFFSET")
 
 
-
-
-
-
-
-
+console.log("the count is" + " " + count)
 
 
 
@@ -5278,7 +2195,10 @@ prevc = pcheck.slice(0)
 
 pcheck = []
 
-pcheck.push(knightX,knightY,knight2X,knight2Y, bishopX,bishopY,bishop2X, bishop2Y)
+pcheck.push(knightX,knightY,knight2X,knight2Y, bishopX,bishopY,bishop2X, bishop2Y,
+  pawn1X,pawn1Y,pawn2X,pawn2Y,pawn3X,pawn3Y,pawn4X,pawn4Y,pawn5X,pawn5Y,pawn6X,
+  pawn6Y, pawn7X, pawn7Y, pawn8X, pawn8Y, castle1X, castle1Y, castle2X, castle2Y,
+  queenX,queenY,kingX,kingY)
 
 if(pcheck.toString() != prevc.toString()){
 
@@ -5453,48 +2373,48 @@ else if( x == 7 && y == 1) {
 else if(x == 2 && y == 4 ){
 
 
-  if(eptop == 265 && epleft == 133 && epkillcount < 300000){
+  // if(eptop == 265 && epleft == 133 && epkillcount < 300000){
 
-  if(knightX == 2 && knightY == 4 || knight2X == 2 && knight2Y == 4){
+  // if(knightX == 2 && knightY == 4 || knight2X == 2 && knight2Y == 4){
 
-    epkillcount++;
-  }
+  //   epkillcount++;
+  // }
 
 
-  return <EPawn/>
+  // return <EPawn/>
             
-   }   
+  //  }   
 }
 
 
 else if(x == 2 && y == 5 ){
 
- if(eptop == 327.5 && epleft == 133 && epkillcount < 3000000){
+ // if(eptop == 327.5 && epleft == 133 && epkillcount < 3000000){
 
-  if(knightX == 2 && knightY == 5 || knight2X == 2 && knight2Y == 5){
+ //  if(knightX == 2 && knightY == 5 || knight2X == 2 && knight2Y == 5){
 
-    epkillcount++;
-  }
+ //    epkillcount++;
+ //  }
 
 
-  return <EPawn/>
- } 
+ //  return <EPawn/>
+ // } 
 
 
 }
 
 else if(x == 3 && y == 5){
 
-if(eptop == 327.5 && epleft == 195.5 && epkillcount < 300000){
+// if(eptop == 327.5 && epleft == 195.5 && epkillcount < 300000){
 
-  if(knightX == 3 && knightY == 5 || knight2X == 3 && knight2Y == 5){
+//   if(knightX == 3 && knightY == 5 || knight2X == 3 && knight2Y == 5){
 
-    epkillcount++;
-  }
+//     epkillcount++;
+//   }
 
 
-  return <EPawn/>
- } 
+//   return <EPawn/>
+//  } 
   
 
 
@@ -5505,13 +2425,13 @@ if(eptop == 327.5 && epleft == 195.5 && epkillcount < 300000){
 }
 
 
-else if(x == 0 && y == 0 ){
+else if(x == ECASTLE1X && y == ECASTLE1y ){
 
  return <ECastle1/> 
 
 }
 
-else if(x == 1 && y == 0){
+else if(x == EBISHOP1X && y == EBISHOP1Y){
 return <EBishop/>
 
 }
@@ -5552,6 +2472,41 @@ else if(x == 7 && y == 0){
 
   return <ECastle2/>
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 else {
@@ -5614,48 +2569,48 @@ else if( x == 7 && y == 1) {
 else if(x == 2 && y == 4 ){
 
 
-  if(eptop == 265 && epleft == 133 && epkillcount < 300000){
+  // if(eptop == 265 && epleft == 133 && epkillcount < 300000){
 
-  if(knightX == 2 && knightY == 4 || knight2X == 2 && knight2Y == 4){
+  // if(knightX == 2 && knightY == 4 || knight2X == 2 && knight2Y == 4){
 
-    epkillcount++;
-  }
+  //   epkillcount++;
+  // }
 
 
-  return <EPawn/>
+  // return <EPawn/>
             
-   }   
+  //  }   
 }
 
 
 else if(x == 2 && y == 5 ){
 
- if(eptop == 327.5 && epleft == 133 && epkillcount < 3000000){
+ // if(eptop == 327.5 && epleft == 133 && epkillcount < 3000000){
 
-  if(knightX == 2 && knightY == 5 || knight2X == 2 && knight2Y == 5){
+ //  if(knightX == 2 && knightY == 5 || knight2X == 2 && knight2Y == 5){
 
-    epkillcount++;
-  }
+ //    epkillcount++;
+ //  }
 
 
-  return <EPawn/>
- } 
+ //  return <EPawn/>
+ // } 
 
 
 }
 
 else if(x == 3 && y == 5){
 
-if(eptop == 327.5 && epleft == 195.5 && epkillcount < 300000){
+// if(eptop == 327.5 && epleft == 195.5 && epkillcount < 300000){
 
-  if(knightX == 3 && knightY == 5 || knight2X == 3 && knight2Y == 5){
+//   if(knightX == 3 && knightY == 5 || knight2X == 3 && knight2Y == 5){
 
-    epkillcount++;
-  }
+//     epkillcount++;
+//   }
 
 
-  return <EPawn/>
- } 
+//   return <EPawn/>
+ // } 
   
 
 
@@ -5664,13 +2619,13 @@ if(eptop == 327.5 && epleft == 195.5 && epkillcount < 300000){
 
 
 }
-else if(x == 0 && y == 0 ){
+else if(x == ECASTLE1X && y == ECASTLE1y ){
 
  return <ECastle1/> 
 
 }
 
-else if(x == 1 && y == 0){
+else if(x == EBISHOP1X && y == EBISHOP1Y){
 return <EBishop/>
 
 }
@@ -5685,13 +2640,13 @@ return <EKnight/>
 
 else if(x == 3 && y == 0 ){
 
-return <EKing/>
+return <EQueen/>
  
 }
 
 else if(x == 4 && y == 0){
 
-  return <EQueen/>
+  return <EKing/>
 }
 
 
@@ -5816,6 +2771,22 @@ else if(x == kingX && y == kingY){
   return <KING/>
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 },
@@ -5828,39 +2799,39 @@ var squares = [];
     // console.log("rerendering")
     // console.log(BS1)
     
-
+ console.log("the count is " + " " + count)
 
     for (let i = 0; i < 64; i++) {
       
 
       if(count ==  0) {
         // console.log("the count is 0 push bs1")
-        squares.push(this.renderSquare(i,BS1));}
+        squares.push(this.renderSquare(i,PB5));}
 
         else if (count == 1) {
           // console.log("the count is 1 push bs2")
-          squares.push(this.renderSquare(i,BS2));
+          squares.push(this.renderSquare(i,PB3));
 
         
         }
     
       else if (count == 2) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,BishopBoard1));
+              squares.push(this.renderSquare(i,PB5));
 
       }
       
      
        else if (count == 3) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,BishopBoard2));
+              squares.push(this.renderSquare(i,PB5));
 
       }
 
      
   else if (count == 4) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,BishopBoard1));
+              squares.push(this.renderSquare(i,PB5));
 
       }
 
@@ -5868,7 +2839,7 @@ var squares = [];
 
      else {
 
-      squares.push(this.renderSquare(i,BishopBoard2));
+      squares.push(this.renderSquare(i,PB5));
 
      }
 
@@ -6042,13 +3013,13 @@ observe(function (knightPosition2) {
   
 // });
 
-function pawnDown() {
+function pawnDown(element) {
 
-$("#ep").animate(
+$(element).animate(
                 {
                         
-                        "left" : "125px",
-                        "top" : "125px"
+                        
+                        "top" : "437.5px"
                 }, 
                 1000
         );
@@ -6057,9 +3028,9 @@ $("#ep").animate(
 function animate () {
 
 
-  if(count == 2){
+  if(count == 1){
 
-    pawnDown()
+    pawnDown("#ec1")
   }
 }
 
@@ -6069,23 +3040,36 @@ setInterval(animate, 100);
 
 function checkOffset(){
 
-try {
+
    
-   prevept = eptop
-    prevepl = epleft
-   eptop = $("#ep").offset().top 
-  epleft = $("#ep").offset().left  
-//   console.log(eptop)
-// console.log(epleft)
+  
+  var eptop = $("#ec1").offset().top 
+  ec1offsety = eptop
+ var epleft = $("#ec1").offset().left  
+ ec1offsetx = epleft
+ var bisht = $("#eb").offset().top 
+ eb1offsety = bisht
+ var bishl = $("#eb").offset().left 
+eb1offsetx = bishl
+ var eknt = $("#ek").offset().top
+ var eknl = $("#ek").offset().left
+
+  
+  console.log("CASTLE")
+  console.log(eptop)
+   console.log(epleft)
+  console.log("BISHOP")
+  console.log(bisht)
+   console.log(bishl)
+   console.log("KNIGHT")
+   console.log(eknt)
+   console.log(eknl)
+
+
 // console.log(prevept)
 // console.log(prevepl)
 // console.log("break")
-}
-catch(e) {
-    
-epkillcount++;
 
-}
 
 
 
