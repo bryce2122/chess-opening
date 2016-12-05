@@ -212,7 +212,7 @@
 	var pcheck = [2, 7, 5, 7];
 	
 	var whosemove;
-	
+	var C1kill = 0;
 	var ec1offsetx = 8;
 	var ec1offsety = 15;
 	var eb1offsetx = 70.5;
@@ -220,7 +220,8 @@
 	// Components 
 	
 	//Constants 
-	
+	var Xarray = [];
+	var Yarray = [];
 	// Diameter of the main button in pixels
 	var MAIN_BUTTON_DIAM = 90;
 	var CHILD_BUTTON_DIAM = 48;
@@ -1839,12 +1840,12 @@
 	    var l = ($("#ec1").offset().left - 8) % 62.5 == 0;
 	    // console.log(eptop)
 	    // console.log(epleft)
-	    console.log("BOOLEAN");
-	    console.log(t);
-	    console.log(l);
+	    // console.log("BOOLEAN")
+	    // console.log(t)
+	    // console.log(l)
 	
-	    console.log(ec1offsety);
-	    console.log($("#ec1").offset().top);
+	    // console.log(ec1offsety)
+	    // console.log($("#ec1").offset().top)
 	    if (ec1offsetx != $("#ec1").offset().left && t === true && l === true || ec1offsety != $("#ec1").offset().top && t === true && l === true) {
 	      // console.log(eptop % 62.5 == 0)
 	      // console.log(epleft % 62.5 == 0)
@@ -1853,10 +1854,10 @@
 	      // console.log("epleft is" +  " " + epleft)
 	      // console.log("prevept is" + " " + prevept)
 	      // console.log("prevepl is" + " " + prevepl)
-	      emitChange();
+	
 	      whosemove = "black";
-	      this.forceUpdate();
-	      count--;
+	      emitChange();
+	      count++;
 	    } else {
 	
 	      whosemove = "white";
@@ -1925,20 +1926,33 @@
 	    var kingX = this.props.kingPosition[0];
 	    var kingY = this.props.kingPosition[1];
 	
-	    var ECASTLE1X = (ec1offsetx - 8) / 62.5;
+	    Xarray = [];
 	
-	    var ECASTLE1y = (ec1offsety - 15) / 62.5;
+	    try {
+	
+	      var ECASTLE1X = ($("#ec1").offset().left - 8) / 62.5;
+	
+	      var ECASTLE1y = ($("#ec1").offset().top - 15) / 62.5;
+	    } catch (e) {
+	
+	      var ECASTLE1X = (ec1offsetx - 8) / 62.5;
+	
+	      var ECASTLE1y = (ec1offsety - 15) / 62.5;
+	    }
 	
 	    var EBISHOP1X = (eb1offsetx - 8) / 62.5;
 	
 	    var EBISHOP1Y = (eb1offsety - 15) / 62.5;
-	    console.log(eb1offsety);
-	    console.log(eb1offsetx - 8);
-	    console.log(EBISHOP1X);
-	    console.log(EBISHOP1X);
-	    console.log("OFFSET");
+	    // console.log(eb1offsety)
+	    // console.log(eb1offsetx - 8)
+	    // console.log(EBISHOP1X)
+	    // console.log(EBISHOP1X)
+	    // console.log("OFFSET")
+	
 	
 	    console.log("the count is" + " " + count);
+	
+	    Xarray.push([ECASTLE1X, ECASTLE1y], [EBISHOP1X, EBISHOP1Y]);
 	
 	    // console.log(knightPosition[0])
 	    // console.log(count);
@@ -1998,9 +2012,21 @@
 	      } else if (x == pawn8X && y == pawn8Y) {
 	
 	        return React.createElement(P8, null);
-	      } else if (x == castle1X && y == castle1Y) {
+	      } else if (x == castle1X && y == castle1Y && C1kill == 0) {
+	        console.log(Xarray);
+	        console.log("XARRAY");
 	
-	        return React.createElement(C1, null);
+	        var a = Xarray.some(function (c) {
+	          return c[0] == castle1X && c[1] == castle1Y;
+	        });
+	
+	        if (a === false) {
+	
+	          return React.createElement(C1, null);
+	        } else {
+	
+	          C1kill++;
+	        }
 	      } else if (x == castle2X && y == castle2Y) {
 	
 	        return React.createElement(C2, null);
@@ -2225,7 +2251,7 @@
 	      } else if (x == pawn8X && y == pawn8Y) {
 	
 	        return React.createElement(P8, null);
-	      } else if (x == castle1X && y == castle1Y) {
+	      } else if (x == castle1X && y == castle1Y && C1kill == 0) {
 	
 	        return React.createElement(C1, null);
 	      } else if (x == castle2X && y == castle2Y) {
@@ -2435,15 +2461,16 @@
 	  var eknt = $("#ek").offset().top;
 	  var eknl = $("#ek").offset().left;
 	
-	  console.log("CASTLE");
-	  console.log(eptop);
-	  console.log(epleft);
-	  console.log("BISHOP");
-	  console.log(bisht);
-	  console.log(bishl);
-	  console.log("KNIGHT");
-	  console.log(eknt);
-	  console.log(eknl);
+	  // console.log("CASTLE")
+	  // console.log(eptop)
+	  //  console.log(epleft)
+	  // console.log("BISHOP")
+	  // console.log(bisht)
+	  //  console.log(bishl)
+	  //  console.log("KNIGHT")
+	  //  console.log(eknt)
+	  //  console.log(eknl)
+	
 	
 	  // console.log(prevept)
 	  // console.log(prevepl)
