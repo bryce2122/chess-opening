@@ -9,6 +9,7 @@ var ReactDOM = require('react-dom');
 var DragDropContext = require('react-dnd').DragDropContext
 var square;
 var i;
+var checkmecount = 0
 var HTML5Backend = require('react-dnd-html5-backend');
 var DragSource = require('react-dnd').DragSource;
 var DropTarget = require('react-dnd').DropTarget;
@@ -18,6 +19,10 @@ var BS1;
 var dragstate;
 var kkillcount = 0;
 var arr = []
+var prevept;
+var prevepl;
+var kntop = 0
+var knleft = 0
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group')
 var PropTypes = React.PropTypes;
 var eptop = 265
@@ -156,7 +161,7 @@ var prevkillsquare = [0,1,2,3,4,5,6,7,8,9,10,12,13,14,15]
 var prevc = []
 var pcheck = [2,7,5,7]
  
-
+var whosemove;
 
 
 // Components 
@@ -1582,7 +1587,7 @@ countk2rightdown1++;
 
  DownOneCastle2(d) {
     
-    console.log("thetop is" + " " + thetop)
+    // console.log("thetop is" + " " + thetop)
     if(countme2 == 0) {
     c2top = c2top + (63 * d)
     }
@@ -2434,7 +2439,7 @@ initialCastle() {
 
   DownOneCastle(d) {
     
-    console.log("thetop is" + " " + thetop)
+    // console.log("thetop is" + " " + thetop)
     if(countme == 0) {
     thetop = thetop + (63 * d)
     }
@@ -4003,7 +4008,7 @@ var Board = React.createClass({
 
 componentDidMount() {
 
-setInterval(this.checkpos,10)
+setInterval(this.checkpos,100)
 
 
 },
@@ -4011,12 +4016,36 @@ setInterval(this.checkpos,10)
 
 checkpos() {
 
-if(prevkillsquare.toString() != killsquare.toString()){
-  console.log("previous" + " " + prevkillsquare.toString())
-  console.log("current" + " " + killsquare.toString())
+ var t = (eptop - 15) % 62.5 == 0
+var l = (epleft - 8) % 62.5 == 0
+console.log(eptop)
+console.log(epleft)
+console.log(t)
+console.log(l)
 
+console.log(125 % 62.5 == 0)
+
+if(eptop != prevept  && t === true && l === true ||  epleft != prevepl && t === true && l === true ){
+  console.log(eptop % 62.5 == 0)
+  console.log(epleft % 62.5 == 0)
+  console.log("yes,damnitt")
+  console.log("eptop is " + " " + eptop)
+  console.log("epleft is" +  " " + epleft)
+  console.log("prevept is" + " " + prevept)
+  console.log("prevepl is" + " " + prevepl)
+  whosemove = "black"
   this.forceUpdate()
+  count++;
 }
+
+else {
+
+  whosemove = "white"
+}
+
+
+
+
 
 },
 
@@ -4026,7 +4055,7 @@ renderSquare: function (i,BS) {
   var x = i % 8;
   var y = Math.floor(i / 8);
   var kn = this.renderPiece(x,y)
- console.log(kn)
+ // console.log(kn)
   
   // var black = (x + y) % 2 === 1;
 
@@ -4058,15 +4087,15 @@ renderPiece: function (x, y) {
   var knightY = this.props.knightPosition[1];
   var knight2X = this.props.knightPosition2[0]
   var knight2Y = this.props.knightPosition2[1]
-  console.log(knightPosition[0])
-  console.log(count);
+  // console.log(knightPosition[0])
+  // console.log(count);
   
   
 
-  console.log("knightx" + " " + knightX)
-  console.log("knighty" + " " + knightY)
-  console.log("knight2X" + " " + knight2X)
-  console.log("knight2Y" + " " + knight2Y)
+  // console.log("knightx" + " " + knightX)
+  // console.log("knighty" + " " + knightY)
+  // console.log("knight2X" + " " + knight2X)
+  // console.log("knight2Y" + " " + knight2Y)
 
 prevc = pcheck.slice(0)
 
@@ -4079,7 +4108,12 @@ if(pcheck.toString() != prevc.toString()){
   count++;
 }
 
-  console.log("the count is " + " " + count)
+  
+
+
+  if(whosemove == "white"){
+
+  
 
   if (x === knightX && y === knightY && kkillcount == 0  ) {
   
@@ -4097,9 +4131,99 @@ else if(x == 7 && y == 3){
 }
 
 else if(x == 1 && y == 0){
- console.log("what are the killsquares?")
-  console.log("prevkillsquare" + " " + prevkillsquare)
-  console.log("ks" + " " + killsquare)
+ // console.log("what are the killsquares?")
+ //  console.log("prevkillsquare" + " " + prevkillsquare)
+ //  console.log("ks" + " " + killsquare)
+  
+  
+}
+
+else if(x == 2 && y == 4 ){
+
+
+  if(eptop == 265 && epleft == 133 && epkillcount < 300000){
+
+  if(knightX == 2 && knightY == 4 || knight2X == 2 && knight2Y == 4){
+
+    epkillcount++;
+  }
+
+
+  return <EPawn/>
+            
+   }   
+}
+
+
+else if(x == 2 && y == 5 ){
+
+ if(eptop == 327.5 && epleft == 133 && epkillcount < 3000000){
+
+  if(knightX == 2 && knightY == 5 || knight2X == 2 && knight2Y == 5){
+
+    epkillcount++;
+  }
+
+
+  return <EPawn/>
+ } 
+
+
+}
+
+else if(x == 3 && y == 5){
+
+if(eptop == 327.5 && epleft == 195.5 && epkillcount < 300000){
+
+  if(knightX == 3 && knightY == 5 || knight2X == 3 && knight2Y == 5){
+
+    epkillcount++;
+  }
+
+
+  return <EPawn/>
+ } 
+  
+
+
+
+
+
+
+}
+else if(x == 5 && y == 0 && count < 127){
+
+  
+}
+
+else if(x == 6 && y == 2 && count == 130){
+// this.forceUpdate();
+
+}
+
+
+else if(x == 6 && y == 4){
+
+  
+}
+
+else if(y == 1 ){
+
+
+ 
+}
+
+}
+
+else {
+
+
+
+
+ if(x == 1 && y == 0){
+ // console.log("what are the killsquares?")
+ //  console.log("prevkillsquare" + " " + prevkillsquare)
+ //  console.log("ks" + " " + killsquare)
   
   
 }
@@ -4180,6 +4304,59 @@ else if(y == 1 ){
 }
 
 
+else if (x === knightX && y === knightY && kkillcount == 0  ) {
+  
+    return <K/>
+  }
+else if(x == knight2X && y == knight2Y) {
+
+return <K2/>
+  
+}
+
+else if(x == 7 && y == 3){
+  
+  return <EK2/>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 },
 
@@ -4188,8 +4365,8 @@ else if(y == 1 ){
 
 render: function () {
 var squares = [];
-    console.log("rerendering")
-    console.log(BS1)
+    // console.log("rerendering")
+    // console.log(BS1)
     
 
 
@@ -4197,22 +4374,38 @@ var squares = [];
       
 
       if(count ==  0) {
-        console.log("the count is 0 push bs1")
-        squares.push(this.renderSquare(i,BS2));}
+        // console.log("the count is 0 push bs1")
+        squares.push(this.renderSquare(i,BS1));}
 
         else if (count == 1) {
-          console.log("the count is 1 push bs2")
-          squares.push(this.renderSquare(i,BS1));
+          // console.log("the count is 1 push bs2")
+          squares.push(this.renderSquare(i,BS2));
 
         
         }
     
       else if (count == 2) {
-              console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,BS2));
+              // console.log("the count is 2 push bs1")
+              squares.push(this.renderSquare(i,BS1));
 
       }
       
+     
+       else if (count == 3) {
+              // console.log("the count is 2 push bs1")
+              squares.push(this.renderSquare(i,BS2));
+
+      }
+
+     
+  else if (count == 4) {
+              // console.log("the count is 2 push bs1")
+              squares.push(this.renderSquare(i,BS2));
+
+      }
+
+
+
      else {
 
       squares.push(this.renderSquare(i,BS1));
@@ -4383,8 +4576,9 @@ function pawnDown() {
 
 $("#ep").animate(
                 {
-                        "top" : "62.5px",
-                        "left" : "62.5px"
+                        
+                        "left" : "125px",
+                        "top" : "125px"
                 }, 
                 1000
         );
@@ -4393,7 +4587,7 @@ $("#ep").animate(
 function animate () {
 
 
-  if(count == 1){
+  if(count == 2){
 
     pawnDown()
   }
@@ -4406,11 +4600,16 @@ setInterval(animate, 100);
 function checkOffset(){
 
 try {
+   
+   prevept = eptop
+    prevepl = epleft
    eptop = $("#ep").offset().top 
   epleft = $("#ep").offset().left  
-  console.log(eptop)
-console.log(epleft)
-
+//   console.log(eptop)
+// console.log(epleft)
+// console.log(prevept)
+// console.log(prevepl)
+// console.log("break")
 }
 catch(e) {
     
@@ -4418,18 +4617,7 @@ epkillcount++;
 
 }
 
-try {
-   var kntop = $("#wk").offset().top 
-   var knleft = $("#wk").offset().left  
-  console.log(kntop)
-console.log(knleft)
-console.log("killcount" + " " + kkillcount)
-}
-catch(e) {
-console.log("Error. error")    
-kkillcount++;
 
-}
 
 
 
