@@ -2050,13 +2050,21 @@ setInterval(this.checkpos,100)
 
 checkpos() {
 
- var t = ($("#ec1").offset().top - 15) % 62.5 == 0
+try { var t = ($("#ec1").offset().top - 15) % 62.5 == 0
 var l = ( $("#ec1").offset().left- 8) % 62.5 == 0
-// console.log(eptop)
+    }// console.log(eptop)
 // console.log(epleft)
 // console.log("BOOLEAN")
 // console.log(t)
 // console.log(l)
+
+catch(e){
+
+ECastle1kill++;
+
+}
+
+
 
 // console.log(ec1offsety)
 // console.log($("#ec1").offset().top)
@@ -2664,19 +2672,9 @@ else if(x == ECASTLE1X && y == ECASTLE1y && ECastle1kill == 0 ){
 
  console.log("CASTLEBLACK")
   console.log(Yarray)
-  var cb1 = Yarray.some(function(c) {
-return c[0] == ECASTLE1X && c[1] == ECASTLE1y
-    })
 
-console.log(cb1)
-if(cb1 === false){
 
   return <ECastle1/>
-}
-else {
-
-  ECastle1kill++;
-}
 
 
 
@@ -3079,7 +3077,7 @@ $(element).animate(
                 {
                         
                         
-                        "top" : "312.5px"
+                        "top" : "437.5px"
                 }, 
                 1000
         );

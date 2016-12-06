@@ -1837,13 +1837,19 @@
 	  },
 	  checkpos: function checkpos() {
 	
-	    var t = ($("#ec1").offset().top - 15) % 62.5 == 0;
-	    var l = ($("#ec1").offset().left - 8) % 62.5 == 0;
-	    // console.log(eptop)
+	    try {
+	      var t = ($("#ec1").offset().top - 15) % 62.5 == 0;
+	      var l = ($("#ec1").offset().left - 8) % 62.5 == 0;
+	    } // console.log(eptop)
 	    // console.log(epleft)
 	    // console.log("BOOLEAN")
 	    // console.log(t)
 	    // console.log(l)
+	
+	    catch (e) {
+	
+	      ECastle1kill++;
+	    }
 	
 	    // console.log(ec1offsety)
 	    // console.log($("#ec1").offset().top)
@@ -2200,18 +2206,8 @@
 	
 	        console.log("CASTLEBLACK");
 	        console.log(Yarray);
-	        var cb1 = Yarray.some(function (c) {
-	          return c[0] == ECASTLE1X && c[1] == ECASTLE1y;
-	        });
 	
-	        console.log(cb1);
-	        if (cb1 === false) {
-	
-	          return React.createElement(ECastle1, null);
-	        } else {
-	
-	          ECastle1kill++;
-	        }
+	        return React.createElement(ECastle1, null);
 	      } else if (x == EBISHOP1X && y == EBISHOP1Y) {
 	        return React.createElement(EBishop, null);
 	      } else if (x == 2 && y == 0) {
@@ -2451,7 +2447,7 @@
 	
 	  $(element).animate({
 	
-	    "top": "312.5px"
+	    "top": "437.5px"
 	  }, 1000);
 	}
 	
